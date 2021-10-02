@@ -1,0 +1,2916 @@
+{
+  "msg": null,
+  "data": [
+    {
+      "path": "/index",
+      "children": [],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "COMPANY",
+        "title": "首页",
+        "meta": null
+      },
+      "component": "plaf/project/home",
+      "name": "219c2d756e9b4a9db7d47ce708d52f95",
+      "hidden": false
+    },
+    {
+      "path": "/drawing",
+      "children": [
+        {
+          "path": "/drawing/Index",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "065c237c2b86478692269948abed887b",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "file1",
+            "title": "施工图纸管理",
+            "meta": null
+          },
+          "component": "drawing/Index",
+          "name": "6999899ce0264d7981901ff683b12b9d",
+          "hidden": false
+        },
+        {
+          "path": "/organ",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "065c237c2b86478692269948abed887b",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "undefined",
+            "title": "工程部位关联图纸",
+            "meta": null
+          },
+          "component": "test",
+          "name": "c4e93bb8b1be402ca79691533fa64135",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_YM",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "undefined",
+        "title": "图纸管理",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "065c237c2b86478692269948abed887b",
+      "hidden": false
+    },
+    {
+      "path": "/dirSubItem",
+      "children": [
+        {
+          "path": "/in",
+          "children": [
+            {
+              "path": "/inventory/systemVersion",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7aae8c62b2f34a6f867d74c52fcda005",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "版本管理",
+                "meta": null
+              },
+              "component": "subitem/inventory/systemVersion",
+              "name": "4ca53d57d51240ac9747e27341ab35b0",
+              "hidden": false
+            },
+            {
+              "path": "/inventory/system",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7aae8c62b2f34a6f867d74c52fcda005",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "系统清单",
+                "meta": null
+              },
+              "component": "subitem/inventory/systemInventory",
+              "name": "6488c8381fa549968c246ea2f25c7c28",
+              "hidden": false
+            },
+            {
+              "path": "/inventory/project",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7aae8c62b2f34a6f867d74c52fcda005",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "项目清单",
+                "meta": null
+              },
+              "component": "subitem/inventory/projectInventory",
+              "name": "2da358875aa240f3bcd5f65e8b8a49b2",
+              "hidden": false
+            },
+            {
+              "path": "/inventory/section",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7aae8c62b2f34a6f867d74c52fcda005",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "标段清单",
+                "meta": null
+              },
+              "component": "subitem/inventory/sectionInventory",
+              "name": "d40c09c7cf5c455796642f25d0339468",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "a193e4df96494cd5bf30243111bcd995",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "list",
+            "title": "清单管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "7aae8c62b2f34a6f867d74c52fcda005",
+          "hidden": false
+        },
+        {
+          "path": "/division",
+          "children": [
+            {
+              "path": "/division/wbsSystem",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c42ed86f18474df1ad14c2e85e0378ad",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "WBS系统模板",
+                "meta": null
+              },
+              "component": "subitem/division/systemWBSTemplate",
+              "name": "cf526a2c7131472f8a89ad3b02c99233",
+              "hidden": false
+            },
+            {
+              "path": "/division/wbsProject",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c42ed86f18474df1ad14c2e85e0378ad",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "WBS项目模版",
+                "meta": null
+              },
+              "component": "subitem/division/projectWBSTemplate",
+              "name": "4a16a2e62ec34bcdaaf8d2a1ee9a0184",
+              "hidden": false
+            },
+            {
+              "path": "/division/subdivide",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c42ed86f18474df1ad14c2e85e0378ad",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "工程分解",
+                "meta": null
+              },
+              "component": "subitem/division/subdivide",
+              "name": "d4d64b45a4164079acaa44c46eed1ad9",
+              "hidden": false
+            },
+            {
+              "path": "/division/stage",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c42ed86f18474df1ad14c2e85e0378ad",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "工程台账",
+                "meta": null
+              },
+              "component": "subitem/division/stage",
+              "name": "f3ab28c795dc4b9ea575f34abe979ca3",
+              "hidden": false
+            },
+            {
+              "path": "/division/revision",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c42ed86f18474df1ad14c2e85e0378ad",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "file",
+                "title": "修编管理",
+                "meta": null
+              },
+              "component": "subitem/division/revision",
+              "name": "61b78902c9f44c038a3715f63970cabb",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "a193e4df96494cd5bf30243111bcd995",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "edit",
+            "title": "工程划分",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "c42ed86f18474df1ad14c2e85e0378ad",
+          "hidden": false
+        },
+        {
+          "path": "/orgal",
+          "children": [
+            {
+              "path": "/orgr",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c2d62b2b2ced4ca587a311d938608228",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "变更申请",
+                "meta": null
+              },
+              "component": "",
+              "name": "7e76bf7d353e4758a67933a523971064",
+              "hidden": false
+            },
+            {
+              "path": "/orgu",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c2d62b2b2ced4ca587a311d938608228",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "变更审核",
+                "meta": null
+              },
+              "component": "",
+              "name": "8a7747afa2514e019df4ee3c48ee464d",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "a193e4df96494cd5bf30243111bcd995",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "工程变更",
+            "meta": null
+          },
+          "component": "",
+          "name": "c2d62b2b2ced4ca587a311d938608228",
+          "hidden": false
+        },
+        {
+          "path": "/orgau",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "a193e4df96494cd5bf30243111bcd995",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "修编管理",
+            "meta": null
+          },
+          "component": "",
+          "name": "d89eef61553b4613a790526ccf1603c9",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "WORKSITE",
+        "title": "工程分解",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "a193e4df96494cd5bf30243111bcd995",
+      "hidden": false
+    },
+    {
+      "path": "/dirworkSeq",
+      "children": [
+        {
+          "path": "/startReports",
+          "children": [
+            {
+              "path": "/startReport",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9d06fe7caf83404fa5082ba9a0a56481",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "documentation",
+                "title": "开工报告",
+                "meta": null
+              },
+              "component": "steps/startReport/startReport",
+              "name": "1398171939528245248",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "93accf59ade74c858d70f693d71c754d",
+          "isCache": "1",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "开工报告",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "9d06fe7caf83404fa5082ba9a0a56481",
+          "hidden": false
+        },
+        {
+          "path": "/processChecks",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "93accf59ade74c858d70f693d71c754d",
+          "isCache": "1",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "工序报验",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "6805b0eebbf742d68b58efee5eab744b",
+          "hidden": false
+        },
+        {
+          "path": "/orgas",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "93accf59ade74c858d70f693d71c754d",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "交工证书",
+            "meta": null
+          },
+          "component": "",
+          "name": "d0b31c2f69f843899d74845b726ea09e",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "clipboard",
+        "title": "工序管理",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "93accf59ade74c858d70f693d71c754d",
+      "hidden": false
+    },
+    {
+      "path": "/rateManage",
+      "children": [
+        {
+          "path": "/orgbh",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "aed79629849b450abadc02a0c5e7a87d",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "进度上报",
+            "meta": null
+          },
+          "component": "",
+          "name": "f5249306228f46229b6cac5f300d31cf",
+          "hidden": false
+        },
+        {
+          "path": "/orgo",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "aed79629849b450abadc02a0c5e7a87d",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "进度审核",
+            "meta": null
+          },
+          "component": "",
+          "name": "75e89be297aa49d7a6c86af265413e5b",
+          "hidden": false
+        },
+        {
+          "path": "/orgag",
+          "children": [],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "aed79629849b450abadc02a0c5e7a87d",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "进度报表",
+            "meta": null
+          },
+          "component": "",
+          "name": "bdf2d04006d34b57a8c5a3a4bb674287",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "icon-add",
+        "title": "进度管理",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "aed79629849b450abadc02a0c5e7a87d",
+      "hidden": false
+    },
+    {
+      "path": "/dirAssets",
+      "children": [
+        {
+          "path": "/investControl",
+          "children": [
+            {
+              "path": "/investSatistact",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "6d748cee3c3941df84c8b1929001e09e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "clipboard",
+                "title": "统计分析",
+                "meta": null
+              },
+              "component": "system/dict/index",
+              "name": "7140843b08d34cc099ed238297ab0838",
+              "hidden": false
+            },
+            {
+              "path": "/gaisuanqingkuang",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "6d748cee3c3941df84c8b1929001e09e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "code",
+                "title": "概算情况",
+                "meta": null
+              },
+              "component": "system/dict/index",
+              "name": "85864d3da3464078ab651d949f91d91a",
+              "hidden": false
+            },
+            {
+              "path": "/zijinjianguan",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "6d748cee3c3941df84c8b1929001e09e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "chart",
+                "title": "资金监管",
+                "meta": null
+              },
+              "component": "system/dict/index",
+              "name": "86ececdde043476090815f1b66cdbb8a",
+              "hidden": false
+            },
+            {
+              "path": "/gongchengjuesuan",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "6d748cee3c3941df84c8b1929001e09e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "chart",
+                "title": "工程决算",
+                "meta": null
+              },
+              "component": "system/dict/index",
+              "name": "21d1eba9c20e485e99e23e2b626cc963",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "/investSatistact",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "chart",
+            "title": "投资控制",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "6d748cee3c3941df84c8b1929001e09e",
+          "hidden": false
+        },
+        {
+          "path": "/orgap",
+          "children": [
+            {
+              "path": "/orgh",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "合同类别",
+                "meta": null
+              },
+              "component": "",
+              "name": "4d1a6c875034470e8aa97000180bb023",
+              "hidden": false
+            },
+            {
+              "path": "/orgx",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "合同登记",
+                "meta": null
+              },
+              "component": "",
+              "name": "9992d2165fe64124913787e4d001cbe7",
+              "hidden": false
+            },
+            {
+              "path": "/orgz",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "合同支付",
+                "meta": null
+              },
+              "component": "",
+              "name": "a0120fa61d6245a295ef46ce940e91f7",
+              "hidden": false
+            },
+            {
+              "path": "/orgi",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "合同台账",
+                "meta": null
+              },
+              "component": "",
+              "name": "5243f93ca476468d89a2f3042ab89505",
+              "hidden": false
+            },
+            {
+              "path": "/orgl",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "索赔管理",
+                "meta": null
+              },
+              "component": "",
+              "name": "68ec674cab9240a1845eb8110738ecb4",
+              "hidden": false
+            },
+            {
+              "path": "/orgat",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "cd3542c37474433f9ec206f51804559e",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "违约管理",
+                "meta": null
+              },
+              "component": "",
+              "name": "d187b10fb65c4034ab8f39ac971bb1e6",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "合同管理",
+            "meta": null
+          },
+          "component": "",
+          "name": "cd3542c37474433f9ec206f51804559e",
+          "hidden": false
+        },
+        {
+          "path": "/payment",
+          "children": [
+            {
+              "path": "/advanceCharge",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "开工预付款申请",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/advancePaymentApplication",
+              "name": "4b89a24bcafe4e0dbcef876b1d7d8ab4",
+              "hidden": false
+            },
+            {
+              "path": "/advanceCharge/AdvancePaymentAudit",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "0",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "开工预付款审核",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/advancePaymentAudit",
+              "name": "0b8c149009a64680beb33d68fe03b0ee",
+              "hidden": false
+            },
+            {
+              "path": "/AuditDetails",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "0",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "审核详情",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/auditDetails",
+              "name": "bc7174a35a144ee1842915f444978716",
+              "hidden": false
+            },
+            {
+              "path": "/MateriaScience",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "材料预付款申请",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/MateriaScience",
+              "name": "e05452606f3b45e0abe1141d3772449a",
+              "hidden": false
+            },
+            {
+              "path": "/materiaAudit",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "材料预付款审核",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/materiaAudit",
+              "name": "ac8aa84cc1d6445bb177787492aae6f4",
+              "hidden": false
+            },
+            {
+              "path": "/materiaDetails",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "审核详情",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/materiaDetails",
+              "name": "3cd206e8dfc941818bf8fd8493ac4fe0",
+              "hidden": false
+            },
+            {
+              "path": "/supervisionApplication",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "监理动员预付款申请",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/supervisionApplication",
+              "name": "f2990cfdb60d49e6b61954dba8b4a563",
+              "hidden": false
+            },
+            {
+              "path": "/supervisionsAudit",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ffda36943ad44b81a382e36ee08908f9",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "监理动员预付款审核",
+                "meta": null
+              },
+              "component": "meterage/advanceCharge/supervisionsAudit",
+              "name": "9f4b60ef42094ea1abf0b689b5e3d2ef",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "BIM",
+            "title": "预付款",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "ffda36943ad44b81a382e36ee08908f9",
+          "hidden": false
+        },
+        {
+          "path": "/estimate",
+          "children": [
+            {
+              "path": "/meterage/apply",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7b357c69bc6d4d8f8dac8352cde524ff",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "international",
+                "title": "计量申请",
+                "meta": null
+              },
+              "component": "meterage/meterageApply/index",
+              "name": "792eec196b834ea7beb54b41d9f70859",
+              "hidden": false
+            },
+            {
+              "path": "/meterageApproval",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7b357c69bc6d4d8f8dac8352cde524ff",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "international",
+                "title": "计量审核",
+                "meta": null
+              },
+              "component": "meterage/meterageApproval/index",
+              "name": "792eec196b834ea7beb54b41d9f70851",
+              "hidden": false
+            },
+            {
+              "path": "/backlog",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7b357c69bc6d4d8f8dac8352cde524ff",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "OA",
+                "title": "计量查询",
+                "meta": null
+              },
+              "component": "meterage/backlog/index",
+              "name": "ac84c46497e8483389a49fb7bbfa32fd",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "/listVersion",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "build",
+            "title": "计量支付",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "7b357c69bc6d4d8f8dac8352cde524ff",
+          "hidden": false
+        },
+        {
+          "path": "/supervisorMeterage",
+          "children": [
+            {
+              "path": "/supervisorMeterageConfig",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ee4dda772d29473480d356894ba1c684",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "监理费计量配置",
+                "meta": null
+              },
+              "component": "meterage/supervisorMeterage/supervisorMeterageConfig/index",
+              "name": "1396656781307936768",
+              "hidden": false
+            },
+            {
+              "path": "/supervisorMeterageApply",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ee4dda772d29473480d356894ba1c684",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "监理费计量申请",
+                "meta": null
+              },
+              "component": "meterage/supervisorMeterage/supervisorMeterageApply/index",
+              "name": "081986cd97e44302bbf2e56c3451ba15",
+              "hidden": false
+            },
+            {
+              "path": "/supervisorMeterageApproval",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "ee4dda772d29473480d356894ba1c684",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "BIM",
+                "title": "监理费计量审核",
+                "meta": null
+              },
+              "component": "meterage/supervisorMeterage/supervisorMeterageApproval/index",
+              "name": "449dfc249c79428fbfff5d0f0e34e92b",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "BIM",
+            "title": "监理费计量",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "ee4dda772d29473480d356894ba1c684",
+          "hidden": false
+        },
+        {
+          "path": "/dirMater",
+          "children": [
+            {
+              "path": "/orgaa",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "信息价调差申报",
+                "meta": null
+              },
+              "component": "",
+              "name": "a421466d96c54519accb5de56cf26b0c",
+              "hidden": false
+            },
+            {
+              "path": "/orgaq",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "信息价调差审核",
+                "meta": null
+              },
+              "component": "",
+              "name": "cd428061d3004dd285afa6ff0cc9122b",
+              "hidden": false
+            },
+            {
+              "path": "/orgai",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "信息价调差报表",
+                "meta": null
+              },
+              "component": "",
+              "name": "bfb535c006ca4a5dbfef38c351c9be79",
+              "hidden": false
+            },
+            {
+              "path": "/orgav",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "甲控信息价调差申报",
+                "meta": null
+              },
+              "component": "",
+              "name": "d8b4bb9871f84f32becf90373e320d0c",
+              "hidden": false
+            },
+            {
+              "path": "/orgd",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "甲控信息价调差审核",
+                "meta": null
+              },
+              "component": "",
+              "name": "25dee6dd31584c1ba8f9032eaf6f78c9",
+              "hidden": false
+            },
+            {
+              "path": "/orgt",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "甲控信息价调差报表",
+                "meta": null
+              },
+              "component": "",
+              "name": "8a56ec9d9e134e7880d4374749bbc67f",
+              "hidden": false
+            },
+            {
+              "path": "/orgj",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "21c5e828980b4019b7f66437814d55fb",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "指数调差报表",
+                "meta": null
+              },
+              "component": "",
+              "name": "540fbfbef85e4e02b34517fe2c5af5c4",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "PROJECT",
+            "title": "材料调差",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "21c5e828980b4019b7f66437814d55fb",
+          "hidden": false
+        },
+        {
+          "path": "/orgab",
+          "children": [
+            {
+              "path": "/orge",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "aad3a5c9e3de4bcd9adc0b2fc63de291",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "概算分解",
+                "meta": null
+              },
+              "component": "",
+              "name": "420c9692d92547a78356ca237cdf3609",
+              "hidden": false
+            },
+            {
+              "path": "/orgae",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "aad3a5c9e3de4bcd9adc0b2fc63de291",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "概算执行",
+                "meta": null
+              },
+              "component": "",
+              "name": "b1e7357ad4e34ffb8d8539f74084d420",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "概算管理",
+            "meta": null
+          },
+          "component": "",
+          "name": "aad3a5c9e3de4bcd9adc0b2fc63de291",
+          "hidden": false
+        },
+        {
+          "path": "/orgbi",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "",
+            "title": "决算管理",
+            "meta": null
+          },
+          "component": "",
+          "name": "fedb0211b3c44f848fae51a7cc269e9a",
+          "hidden": false
+        },
+        {
+          "path": "/orgbc",
+          "children": [
+            {
+              "path": "/orgv",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "e762f9589d4046cdaec5c9d3351eefe2",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "合同信息",
+                "meta": null
+              },
+              "component": "",
+              "name": "90c7e3cef6d749c3825cbb722603ed8f",
+              "hidden": false
+            },
+            {
+              "path": "/orgw",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "e762f9589d4046cdaec5c9d3351eefe2",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "月度预算",
+                "meta": null
+              },
+              "component": "",
+              "name": "937e26f054494be38b993d42f0c46c6a",
+              "hidden": false
+            },
+            {
+              "path": "/orgq",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "e762f9589d4046cdaec5c9d3351eefe2",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "资金支付",
+                "meta": null
+              },
+              "component": "",
+              "name": "79de14b56d844fc3b5373b3a012720bc",
+              "hidden": false
+            },
+            {
+              "path": "/orgn",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "e762f9589d4046cdaec5c9d3351eefe2",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "资金监管台账",
+                "meta": null
+              },
+              "component": "",
+              "name": "710f46be98a84de88fce83c34f3be860",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "60368756de1c4f6a9444883929e22d78",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "undefined",
+            "title": "资金监管",
+            "meta": null
+          },
+          "component": "",
+          "name": "e762f9589d4046cdaec5c9d3351eefe2",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "date-range",
+        "title": "投资控制",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "60368756de1c4f6a9444883929e22d78",
+      "hidden": false
+    },
+    {
+      "path": "/orgp",
+      "children": [],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "dashboard",
+        "title": "固定资产",
+        "meta": null
+      },
+      "component": "",
+      "name": "78b70944abb14a84acc5ec7e51270d37",
+      "hidden": false
+    },
+    {
+      "path": "/manage",
+      "children": [
+        {
+          "path": "/orgUsers",
+          "children": [
+            {
+              "path": "/org",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "8c6e6b15e1f846ea8619e3cd5090097d",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "clipboard",
+                "title": "机构管理",
+                "meta": null
+              },
+              "component": "system/org/org/index",
+              "name": "52201e2da35c4139b713c950bb384f93",
+              "hidden": false
+            },
+            {
+              "path": "/position",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "8c6e6b15e1f846ea8619e3cd5090097d",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "color",
+                "title": "岗位管理",
+                "meta": null
+              },
+              "component": "system/org/position/index",
+              "name": "4913b877b0b14ed394dbdb6d99dbdfa4",
+              "hidden": false
+            },
+            {
+              "path": "/positionLib",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "8c6e6b15e1f846ea8619e3cd5090097d",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "code",
+                "title": "岗位库",
+                "meta": null
+              },
+              "component": "system/org/positionLib/index",
+              "name": "080e0edcbd4a4f52bf4463eff5db6d31",
+              "hidden": false
+            },
+            {
+              "path": "/orgUsers",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "8c6e6b15e1f846ea8619e3cd5090097d",
+              "isCache": "0",
+              "status": "1",
+              "meta": {
+                "noCache": false,
+                "icon": "WORKSITE",
+                "title": "机构用户",
+                "meta": null
+              },
+              "component": "system/org/user/index",
+              "name": "49ec6ea2467448169d747ffbe803fbc4",
+              "hidden": true
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "date",
+            "title": "机构管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "8c6e6b15e1f846ea8619e3cd5090097d",
+          "hidden": false
+        },
+        {
+          "path": "/account",
+          "children": [
+            {
+              "path": "/user",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "authMMaanger",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "peoples",
+                "title": "用户管理",
+                "meta": null
+              },
+              "component": "system/user/index",
+              "name": "MembersList",
+              "hidden": false
+            },
+            {
+              "path": "/usergroup",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "authMMaanger",
+              "isCache": null,
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-yonghuzuguanli1",
+                "title": "用户组管理",
+                "meta": null
+              },
+              "component": "system/userGroup/index",
+              "name": "userGroup",
+              "hidden": false
+            },
+            {
+              "path": "/duty",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "authMMaanger",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "people",
+                "title": "职务维护",
+                "meta": null
+              },
+              "component": "system/duty/index",
+              "name": "11db3894290b4130bf9db341379e0114",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": null,
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "cascader",
+            "title": "账号管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "authMMaanger",
+          "hidden": false
+        },
+        {
+          "path": "/auth",
+          "children": [
+            {
+              "path": "/role",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "04344abaacc74dc888dfdd90e2f621a7",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-yonghuzuguanli",
+                "title": "角色管理",
+                "meta": null
+              },
+              "component": "system/role/myRole/index",
+              "name": "sss",
+              "hidden": false
+            },
+            {
+              "path": "/client",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "04344abaacc74dc888dfdd90e2f621a7",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "phone",
+                "title": "终端管理",
+                "meta": null
+              },
+              "component": "system/client/index",
+              "name": "2a22b52bef5d4a80b68873f297ca2cfd",
+              "hidden": false
+            },
+            {
+              "path": "/resmanager",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "04344abaacc74dc888dfdd90e2f621a7",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-ziyuanguanli",
+                "title": "资源管理",
+                "meta": null
+              },
+              "component": "system/menu/index",
+              "name": "afa5cee7-9917-11eb-8103-00155d01340f",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_YM",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "log",
+            "title": "授权管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "04344abaacc74dc888dfdd90e2f621a7",
+          "hidden": false
+        },
+        {
+          "path": "/approvalFlow",
+          "children": [
+            {
+              "path": "/qwass",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7fb4dfe1c2d444039538b6c4ff26d435",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "cascader",
+                "title": "流程设计",
+                "meta": null
+              },
+              "component": "工作流设计",
+              "name": "workflowmanager",
+              "hidden": true
+            },
+            {
+              "path": "/aaaaaaa",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7fb4dfe1c2d444039538b6c4ff26d435",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "dashboard",
+                "title": "流程实例",
+                "meta": null
+              },
+              "component": "流程实例",
+              "name": "flowInstance",
+              "hidden": true
+            },
+            {
+              "path": "/dsd33ss",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7fb4dfe1c2d444039538b6c4ff26d435",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "component",
+                "title": "流程待办",
+                "meta": null
+              },
+              "component": "流程待办",
+              "name": "userUndoList",
+              "hidden": true
+            },
+            {
+              "path": "/dsss",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "7fb4dfe1c2d444039538b6c4ff26d435",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "date-range",
+                "title": "流程督办",
+                "meta": null
+              },
+              "component": "我的待办",
+              "name": "myundoList",
+              "hidden": true
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "bug",
+            "title": "工作流程",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "7fb4dfe1c2d444039538b6c4ff26d435",
+          "hidden": false
+        },
+        {
+          "path": "/system",
+          "children": [
+            {
+              "path": "/systemDictManager",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "chart",
+                "title": "系统字典",
+                "meta": null
+              },
+              "component": "system/newDict/index",
+              "name": "dictManager",
+              "hidden": false
+            },
+            {
+              "path": "/systemLog",
+              "children": [],
+              "resTypeCode": "SOURCE_WJJ",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "chart",
+                "title": "系统日志",
+                "meta": null
+              },
+              "component": "Layout",
+              "name": "f4b383f6dd314138af77640d57e035f5",
+              "hidden": false
+            },
+            {
+              "path": "/systemConf",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-nav",
+                "title": "系统配置",
+                "meta": null
+              },
+              "component": "system/config/index",
+              "name": "SystemConfigList",
+              "hidden": true
+            },
+            {
+              "path": "/onlineCount",
+              "children": [],
+              "resTypeCode": "SOURCE_WJJ",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "documentation",
+                "title": "在线人数",
+                "meta": null
+              },
+              "component": "Layout",
+              "name": "201b4d8d05b1468aa8710125d4c2044f",
+              "hidden": false
+            },
+            {
+              "path": "/commonTypeManager",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-leixing",
+                "title": "类型管理",
+                "meta": null
+              },
+              "component": "system/commonType/typeList",
+              "name": "commonTypeManager",
+              "hidden": true
+            },
+            {
+              "path": "/todolist",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-daibanguanli",
+                "title": "待办管理",
+                "meta": null
+              },
+              "component": "authmanage/todolist/index",
+              "name": "ToDealList",
+              "hidden": false
+            },
+            {
+              "path": "/timerManager",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-dingshi",
+                "title": "定时管理",
+                "meta": null
+              },
+              "component": "system/timing/index",
+              "name": "timingManager",
+              "hidden": true
+            },
+            {
+              "path": "/region",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-shengshiqu",
+                "title": "区域管理",
+                "meta": null
+              },
+              "component": "system/region/index",
+              "name": "RegionList",
+              "hidden": true
+            },
+            {
+              "path": "/system",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-HGxitongmokuai",
+                "title": "系统管理",
+                "meta": null
+              },
+              "component": "system/systemManager/index",
+              "name": "systemModuleManager",
+              "hidden": false
+            },
+            {
+              "path": "/version",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-banben",
+                "title": "版本管理",
+                "meta": null
+              },
+              "component": "system/version/index",
+              "name": "versionManager",
+              "hidden": true
+            },
+            {
+              "path": "/news",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-xinwenguanli",
+                "title": "新闻管理",
+                "meta": null
+              },
+              "component": "system/news/index",
+              "name": "NewsManager01",
+              "hidden": true
+            },
+            {
+              "path": "/operateLog",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "system-manager",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-xitongrizhi",
+                "title": "操作日志",
+                "meta": null
+              },
+              "component": "system/operateLog/index",
+              "name": "operateLogManager1",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": null,
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "dict",
+            "title": "系统管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "system-manager",
+          "hidden": false
+        },
+        {
+          "path": "/msg",
+          "children": [
+            {
+              "path": "/wechatAccount",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": "1",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "bug",
+                "title": "公众号管理",
+                "meta": null
+              },
+              "component": "msg/wechatAccount/index",
+              "name": "weChatNumList",
+              "hidden": false
+            },
+            {
+              "path": "/orgfff",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "公众号菜单定制",
+                "meta": null
+              },
+              "component": "公众号菜单定制",
+              "name": "wxMenu",
+              "hidden": true
+            },
+            {
+              "path": "/orgad",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "公众号自动回复",
+                "meta": null
+              },
+              "component": "公众号自动回复",
+              "name": "autoReplyConf",
+              "hidden": true
+            },
+            {
+              "path": "/orgeeee",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "发送微信消息",
+                "meta": null
+              },
+              "component": "发送微信消息",
+              "name": "wxInput",
+              "hidden": true
+            },
+            {
+              "path": "/orgee",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-yifasongxiaoxi",
+                "title": "发送模板消息",
+                "meta": null
+              },
+              "component": "发送模板消息",
+              "name": "wechatTemplateInput",
+              "hidden": true
+            },
+            {
+              "path": "/orgeaaaa",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "发送图文消息",
+                "meta": null
+              },
+              "component": "发送图文消息",
+              "name": "sendWechatNews",
+              "hidden": true
+            },
+            {
+              "path": "/orgeffffff",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-yonghuliebiao",
+                "title": "公众号用户列表",
+                "meta": null
+              },
+              "component": "公众号用户列表",
+              "name": "weChatNumUserList",
+              "hidden": true
+            },
+            {
+              "path": "/orgefff",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-fenxiangjilu",
+                "title": "分享记录列表",
+                "meta": null
+              },
+              "component": "分享记录列表",
+              "name": "shareRecord-list",
+              "hidden": true
+            },
+            {
+              "path": "/orgce",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-xiaoxi",
+                "title": "消息管理",
+                "meta": null
+              },
+              "component": "消息管理",
+              "name": "messagesRecordList",
+              "hidden": true
+            },
+            {
+              "path": "/orgbac",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-zhanneixin",
+                "title": "站内信管理",
+                "meta": null
+              },
+              "component": "站内信管理",
+              "name": "innerMsgList",
+              "hidden": true
+            },
+            {
+              "path": "/orgee",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": null,
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "wechatManager",
+              "isCache": null,
+              "status": null,
+              "meta": {
+                "noCache": false,
+                "icon": "icon-qrcode",
+                "title": "二维码管理",
+                "meta": null
+              },
+              "component": "二维码管理",
+              "name": "qrCodeConfig",
+              "hidden": true
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": null,
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "消息管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "wechatManager",
+          "hidden": false
+        },
+        {
+          "path": "/project-manager",
+          "children": [
+            {
+              "path": "/subitem/project/config",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "2010689c5db24c05bf5a8ad74232bce6",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "COMPANY",
+                "title": "工程信息配置",
+                "meta": null
+              },
+              "component": "subitem/project/config/index",
+              "name": "46f0907bc88c4476b031c68928dbd8d7",
+              "hidden": false
+            },
+            {
+              "path": "/subitem/project/reg",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "2010689c5db24c05bf5a8ad74232bce6",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "COMPANY",
+                "title": "项目登记",
+                "meta": null
+              },
+              "component": "subitem/project/reg",
+              "name": "91729b2cc21a481eb4e05b0dc6b1397c",
+              "hidden": false
+            },
+            {
+              "path": "/subitem/project/office",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "2010689c5db24c05bf5a8ad74232bce6",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "COMPANY",
+                "title": "项目办信息",
+                "meta": null
+              },
+              "component": "subitem/project/office",
+              "name": "06c03c8712204ff491c7d3f013bb7e9b",
+              "hidden": false
+            },
+            {
+              "path": "/subitem/project/supervisor",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "2010689c5db24c05bf5a8ad74232bce6",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "COMPANY",
+                "title": "监理信息",
+                "meta": null
+              },
+              "component": "subitem/project/supervisor",
+              "name": "012ab5da465c4579b2e3785f3ee865c8",
+              "hidden": false
+            },
+            {
+              "path": "/subitem/project/mark",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "2010689c5db24c05bf5a8ad74232bce6",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "COMPANY",
+                "title": "标段信息",
+                "meta": null
+              },
+              "component": "subitem/project/mark",
+              "name": "f901d4768723497b859df431cd49b8e4",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "COMPANY",
+            "title": "工程信息管理",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "2010689c5db24c05bf5a8ad74232bce6",
+          "hidden": false
+        },
+        {
+          "path": "/base",
+          "children": [
+            {
+              "path": "/basicConfiguration",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-update",
+                "title": "标准库",
+                "meta": null
+              },
+              "component": "subitem/basicConfig/basicConfiguration",
+              "name": "539157f809a14d93a643e0c568b5065d",
+              "hidden": false
+            },
+            {
+              "path": "/basicProjectConfiguration",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "icon-update",
+                "title": "项目基础配置",
+                "meta": null
+              },
+              "component": "subitem/basicConfig/basicProjectConfiguration",
+              "name": "f25445b5b5c44f849f13f771c0c440e9",
+              "hidden": false
+            },
+            {
+              "path": "/materialManagement",
+              "children": [],
+              "resTypeCode": "SOURCE_WJJ",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "材料管理",
+                "meta": null
+              },
+              "component": "Layout",
+              "name": "1396759689085059072",
+              "hidden": false
+            },
+            {
+              "path": "/sysMaterial",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "OA",
+                "title": "材料-系统级",
+                "meta": null
+              },
+              "component": "subitem/basicConfig/MaterialManagement/systemMaterial",
+              "name": "1396759947693260800",
+              "hidden": false
+            },
+            {
+              "path": "/projectMaterial",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "材料-项目级",
+                "meta": null
+              },
+              "component": "subitem/basicConfig/MaterialManagement/projectMaterial",
+              "name": "1397157141692809216",
+              "hidden": false
+            },
+            {
+              "path": "/sectionMaterial",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "9ede03ffd2054b0983b67b310e217550",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "材料-标段级",
+                "meta": null
+              },
+              "component": "subitem/basicConfig/MaterialManagement/sectionMaterial",
+              "name": "1397376654552072192",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "form",
+            "title": "基础配置",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "9ede03ffd2054b0983b67b310e217550",
+          "hidden": false
+        },
+        {
+          "path": "/materConf",
+          "children": [
+            {
+              "path": "/basePrice",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "043e439a95d84ab9bf1fca0d5a36141f",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "标段基价管理",
+                "meta": null
+              },
+              "component": "materialAdjustment/config/index",
+              "name": "07d419e6a3a2498c9d94fa789ec8ba4d",
+              "hidden": false
+            },
+            {
+              "path": "/inforPrice",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "043e439a95d84ab9bf1fca0d5a36141f",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "标段信息价管理",
+                "meta": null
+              },
+              "component": "materialAdjustment/config/inforPrice",
+              "name": "b1774e4973314df38379832b3c576667",
+              "hidden": false
+            },
+            {
+              "path": "/listConsume",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "043e439a95d84ab9bf1fca0d5a36141f",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "",
+                "title": "清单消耗管理",
+                "meta": null
+              },
+              "component": "materialAdjustment/config/listConsume",
+              "name": "27f529f1f0b74075a3948caca4266c50",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "file",
+            "title": "材料调差配置",
+            "meta": null
+          },
+          "component": "Layout",
+          "name": "043e439a95d84ab9bf1fca0d5a36141f",
+          "hidden": false
+        },
+        {
+          "path": "/orgaf",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "monitor",
+            "title": "进度配置",
+            "meta": null
+          },
+          "component": "",
+          "name": "ba5013711f8e429597b5e67efdfee7d6",
+          "hidden": false
+        },
+        {
+          "path": "/orgam",
+          "children": [
+            {
+              "path": "/orgbb",
+              "children": [],
+              "resTypeCode": "SOURCE_YM",
+              "isFrame": "1",
+              "redirect": "",
+              "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+              "parentId": "c378c8e3a589483e9093a2410c40899c",
+              "isCache": "0",
+              "status": "0",
+              "meta": {
+                "noCache": false,
+                "icon": "undefined",
+                "title": "标准概算",
+                "meta": null
+              },
+              "component": "",
+              "name": "e1461bb521ca4a7bb4fd042f1a38ecef",
+              "hidden": false
+            }
+          ],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "COMPANY",
+            "title": "概算配置",
+            "meta": null
+          },
+          "component": "",
+          "name": "c378c8e3a589483e9093a2410c40899c",
+          "hidden": false
+        },
+        {
+          "path": "/orgs",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "决算配置",
+            "meta": null
+          },
+          "component": "",
+          "name": "7ec7f5e837a543778fc6fac080961f2b",
+          "hidden": false
+        },
+        {
+          "path": "/orgc",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "固定资产配置",
+            "meta": null
+          },
+          "component": "",
+          "name": "0d84d5e8682c4a3fb57b8a6481bcc801",
+          "hidden": false
+        },
+        {
+          "path": "/orgao",
+          "children": [],
+          "resTypeCode": "SOURCE_WJJ",
+          "isFrame": "1",
+          "redirect": "",
+          "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+          "parentId": "1961ee9f07c04a15a78b0d4b216043f7",
+          "isCache": "0",
+          "status": "0",
+          "meta": {
+            "noCache": false,
+            "icon": "documentation",
+            "title": "资金监管配置",
+            "meta": null
+          },
+          "component": "",
+          "name": "c4fa73382fa84243bd2443721389cb92",
+          "hidden": false
+        }
+      ],
+      "resTypeCode": "SOURCE_WJJ",
+      "isFrame": "1",
+      "redirect": "",
+      "clientId": "08d69d53-6003-b0f7-c79a-523744000004",
+      "parentId": "0",
+      "isCache": "0",
+      "status": "0",
+      "meta": {
+        "noCache": false,
+        "icon": "build",
+        "title": "系统设定",
+        "meta": null
+      },
+      "component": "Layout",
+      "name": "1961ee9f07c04a15a78b0d4b216043f7",
+      "hidden": false
+    }
+  ],
+  "success": true,
+  "rtnCode": 200,
+  "meta": null
+}
