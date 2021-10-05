@@ -10,8 +10,7 @@
   </div>
 </template>
 <script>
-import { saveData, getById } from "@/api/postment/vhcRegion";
-import { createdzwl, updatedzwl, cxdzwl } from "@/api/postment/gdapi";
+
 export default {
   components: {
   },
@@ -89,56 +88,7 @@ export default {
 
     // 修改时回显数据
     getData(id) {
-      getById(id).then(response => {
-        this.form = response.data;
-        this.obj.gfid = response.data.gid//添加gfid，用于修改电子围栏
-        var obj = {
-          key: 'b2a611d75ef46c09636cb4ffe0be68ca',
-          sid: 411497,//猎鹰服务获取唯一sid
-          outputshape: 1,
-          gfids: response.data.gid
-        }
-        cxdzwl(obj).then(res => {
-          var str = res.data.results[0].shape.points.split(';')
-          var arr = []
-          for (let i = 0; i < str.length; i++) {
-            arr.push(str[i].split(','))
-          }//将数组里面的字符转换成数组试试
-          // console.log(arr);
-          for (let k = 0; k < arr.length; k++) {
-            for (let h = 0; h < arr[k].length; h++) {
-              arr[k][h] = arr[k][h] * 1
-            }
-          }
-          this.polygon = new AMap.Polygon({
-            path: arr,
-            strokeColor: "#FF33FF",
-            strokeWeight: 6,
-            strokeOpacity: 0.2,
-            fillOpacity: 0.4,
-            fillColor: '#1791fc',
-            zIndex: 50,
-          })
-          this.map.add(this.polygon);
-          this.map.setFitView();
-          this.polyEditor = new AMap.PolyEditor(this.map, this.polygon);
-          var _this = this
-          _this.polyEditor.on('end', function (event) {
-            var array = event.target.w.path
-            console.log(array);
-            for (let i = 0; i < array.length; i++) {
-              if (!array[i][0]) {
-                _this.obj.points += array[i].lng + ',' + array[i].lat + ';'
-              } else {
-                _this.obj.points += array[i][0] + ',' + array[i][1] + ';'
-              }
-            }
-          })
-          if (this.edit) {
-            this.polyEditor.open()
-          }
-        })
-      })
+
     }
   },
 }
