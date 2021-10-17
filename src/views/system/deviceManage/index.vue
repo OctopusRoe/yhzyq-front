@@ -1,6 +1,6 @@
 <template>
   <div class="dev-man-contianer">
-    <Form></Form>
+    <Form @submitForm="submitForm"></Form>
     <Table
       @openDialog="openDialog"
       ref="tableRef"
@@ -16,6 +16,7 @@
 import Form from './Form';
 import Table from './Table';
 import Dialog from './Dialog';
+import { initForm } from './initData';
 export default {
   name: "",
   components: {
@@ -40,6 +41,10 @@ export default {
     },
     submitSucc() {
       this.$refs.tableRef.getListDev()
+    },
+    submitForm(form) {
+      console.log('%c 🌽 form: ', 'font-size:20px;background-color: #465975;color:#fff;', form);
+      this.$refs.tableRef.getListDev({ ...form, pageNumber: initForm.pageNumber, pageSize: initForm.pageSize })
     }
   }
 };

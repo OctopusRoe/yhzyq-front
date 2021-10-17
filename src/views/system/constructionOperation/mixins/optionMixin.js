@@ -2,13 +2,11 @@ import { getDicts } from "@/api/system/org/org";
 export default {
     data() {
         return {
-            devStaOptions: [],
-            devTypeOptions: []
+            worStaOptions: [],
         }
     },
     async mounted() {
-        this.devStaOptions = await this.getDicts('DEVICE_STATUS');
-        this.devTypeOptions = await this.getDicts('DEVICE_TYPE')
+        this.worStaOptions = await this.getDicts('WORK_JOB_STATUS');
     },
     methods: {
         async getDicts(type) {

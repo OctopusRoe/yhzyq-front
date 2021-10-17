@@ -6,7 +6,7 @@
     >新增</el-button>
     <el-button
       type='danger'
-      @click="deleteDev()"
+      @click="deleteWor()"
     >删除</el-button>
     <el-table
       v-loading="loading"
@@ -25,52 +25,57 @@
         width="50"
       >
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="deviceName"
-        label="设备名称"
-        width="200"
+        label="违规提醒"
+        width="50"
       >
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
-        prop="deviceNumber"
-        label="设备编号（序列号）"
+        prop=""
+        label="施工作业名称"
         width="200"
       >
       </el-table-column>
       <el-table-column
         prop="deviceType"
-        label="设备类型"
+        label="施工区域"
+        width="200"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="planTimeStart"
+        label="计划开始时间"
+        width="200"
+      >
+      </el-table-column>
+      <el-table-column
+        label="联系人"
         width="200"
       >
         <template slot-scope="scope">
-          {{selectDictLabelEx(devTypeOptions,scope.row.deviceType)}}
+          {{`${scope.row.contactName}--${scope.row.contactPhone}`}}
         </template>
       </el-table-column>
       <el-table-column
-        prop="deviceStatus"
-        label="设备状态"
+        prop="deviceType"
+        label="施工状态"
         width="200"
       >
         <template slot-scope="scope">
-          {{selectDictLabelEx(devStaOptions,scope.row.deviceStatus)}}
+          {{selectDictLabelEx(worStaOptions,scope.row.jobStatus,'val')}}
         </template>
       </el-table-column>
       <el-table-column
-        prop="isConnectPlatform"
-        label="是否联接第三方平台"
+        prop="jobTimeStart"
+        label="开始时间"
         width="200"
       >
       </el-table-column>
       <el-table-column
-        prop="address"
-        label="当前位置"
-        width=""
-      >
-      </el-table-column>
-      <el-table-column
-        prop="centerName"
-        label="所属管理中心"
-        width="150"
+        prop="jobTimeEnd"
+        label="结束时间"
+        width="200"
       >
       </el-table-column>
       <el-table-column label="操作">
@@ -86,7 +91,7 @@
 </template>
 
 <script>
-import { getListDev, deleteDev } from '@/api/system/deviceManage';
+import { getListWor, deleteWor } from '@/api/system/constructionOperation';
 import optionMixin from './mixins/optionMixin';
 import { initForm } from './initData';
 export default {
@@ -99,7 +104,7 @@ export default {
   },
   mixins: [optionMixin],
   mounted() {
-    this.getListDev();
+    this.getListWor();
   },
   methods: {
     selectionChange(selection) {
@@ -108,10 +113,10 @@ export default {
     openDialog(isEdit, info) {
       this.$emit("openDialog", isEdit, info)
     },
-    async getListDev(form = initForm) {
+    async getListWor(form = initForm) {
       try {
         this.loading = true
-        const { code, result } = await getListDev(form)
+        const { code, result } = await getListWor(form)
         this.loading = false
         if (code === 200) {
           this.tableData = result.list
@@ -121,14 +126,14 @@ export default {
       }
 
     },
-    async deleteDev(ids = this.selIds) {
+    async deleteWor(ids = this.selIds) {
       try {
         this.loading = true
-        const { code, message } = await deleteDev(ids)
+        const { code, message } = await deleteWor(ids)
         this.loading = false
         if (code === 200) {
           this.$message.success(message)
-          this.getListDev(initForm)
+          this.getListWor(initForm)
         }
       } catch (error) {
         this.loading = false
