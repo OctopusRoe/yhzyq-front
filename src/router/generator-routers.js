@@ -1,5 +1,6 @@
 import { Layout, PageWapper } from "@/layout";
 import { cloneDeep } from "lodash";
+import BigScreen from '@/views/bigScreen'
 
 // 前端路由表
 const constantRouterComponents = {
@@ -20,9 +21,17 @@ const rootRouter = {
   meta: {
     // title: '首页'
   },
-  redirect: "/index",
+  // redirect: "/index",
   children: []
 };
+
+// 大屏的路由
+const bigScreen = {
+  key: 'bigScreen',
+  path: '/bigScreen',
+  name: 'bigScreen',
+  component: BigScreen
+}
 
 /**
  * 设置路由的redirect属性
@@ -62,8 +71,14 @@ export const actualRoutersHandler = tempRouters => {
 
   const jointRouter = { ...rootRouter };
 
+  let bigScreendeep = {}
+
   const func = list => {
     list.forEach(item => {
+      if (item.path === '/bigScreen') {
+        bigScreendeep = bigScreen
+        return
+      }
       const tempItem = { ...item };
 
       delete tempItem.children;
@@ -86,7 +101,7 @@ export const actualRoutersHandler = tempRouters => {
 
   console.log("3333333333", jointRouter);
 
-  return [jointRouter];
+  return [jointRouter, bigScreendeep];
 };
 
 /**

@@ -13,10 +13,12 @@ const whiteList = [
   "/bind",
   "/register",
   "/sheet",
-  "/loginPage"
+  "/loginPage",
+  "/bigScreen"
 ];
 
 router.beforeEach((to, from, next) => {
+  
   NProgress.start();
   if (getToken()) {
     /* has token*/

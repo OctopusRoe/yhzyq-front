@@ -54,7 +54,9 @@ const permission = {
 
           // console.log("22222222", accessedRoutes);
 
-          accessedRoutes.forEach(item => addRedirectTo(item));
+          accessedRoutes.forEach(item => {
+            addRedirectTo(item)
+          });
           // addRedirectTo(accessedRoutes);
 
           accessedRoutes.push({
