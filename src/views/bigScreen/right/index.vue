@@ -1,19 +1,16 @@
 <script>
 /**
- * @description 大屏的主页面
+ * @description 左侧组件容器
  * @author OctopusRoe
- * @version 0.0.1
-*/
+ */
 
-import Head from './head'
-import Left from './left'
-import Right from './right'
+import Buttom from './buttom'
+import Top from './top'
 
 export default {
   components: {
-    Head,
-    Left,
-    Right
+    Buttom,
+    Top
   },
   props: {
   },
@@ -39,18 +36,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.big-screen-box {
-  height: 1080px;
-  width: 1920px;
-  background-color: red;
-  position: relative;
+.big-screen-right-box {
+  width: 448px;
+  height: 867px;
+  padding-top: 10px;
+  position: absolute;
+  right: 16px;
 }
 </style>
 <template>
-  <div class="big-screen-box">
-
-    <Head />
-    <Left />
-    <Right />
+  <div class="big-screen-right-box">
+    <Top />
+    <Buttom />
   </div>
 </template>

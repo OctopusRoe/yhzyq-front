@@ -1,8 +1,4 @@
 <script>
-/**
- * @description 左侧头部组件
- * @author OctopusRoe
- */
 export default {
   props: {
   },
@@ -27,16 +23,17 @@ export default {
 
 }
 </script>
-<style lang='scss' scoped>
-.big-screen-left-top-box {
+<style lang="scss" scoped>
+.big-screen-left-buttom-box {
   width: 100%;
-  height: 685px;
-  background: url('~@/assets/image/bigScreen/one.png') no-repeat;
-  background-size: 100% 685px;
+  height: 306px;
+  background: url('~../assets/images/two.png') no-repeat center / contain;
+  background-size: 100% 306px;
+  margin-top: 18px;
 }
 </style>
 <template>
-  <div class="big-screen-left-top-box">
+  <div class="big-screen-left-buttom-box">
     111
   </div>
 </template>
