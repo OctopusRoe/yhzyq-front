@@ -4,12 +4,12 @@
  * @author OctopusRoe
  */
 
-import Buttom from './buttom'
+import Bottom from './bottom'
 import Top from './top'
 
 export default {
   components: {
-    Buttom,
+    Bottom,
     Top
   },
   props: {
@@ -35,6 +35,12 @@ export default {
 
 }
 </script>
+<template>
+  <div class="big-screen-left-box">
+    <Top />
+    <Bottom />
+  </div>
+</template>
 <style lang="scss" scoped>
 .big-screen-left-box {
   width: 448px;
@@ -44,9 +50,3 @@ export default {
   left: 16px;
 }
 </style>
-<template>
-  <div class="big-screen-left-box">
-    <Top />
-    <Buttom />
-  </div>
-</template>

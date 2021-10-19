@@ -23,6 +23,11 @@ export default {
 
 }
 </script>
+<template>
+  <div class="big-screen-right-buttom-box">
+    111
+  </div>
+</template>
 <style lang="scss" scoped>
 .big-screen-right-buttom-box {
   width: 100%;
@@ -32,8 +37,3 @@ export default {
   margin-top: 18px;
 }
 </style>
-<template>
-  <div class="big-screen-right-buttom-box">
-    111
-  </div>
-</template>

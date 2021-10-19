@@ -23,6 +23,11 @@ export default {
 
 }
 </script>
+<template>
+  <div class="big-screen-right-top-box">
+    111
+  </div>
+</template>
 <style lang="scss" scoped>
 .big-screen-right-top-box {
   width: 100%;
@@ -31,8 +36,3 @@ export default {
   background-size: 100% 644px;
 }
 </style>
-<template>
-  <div class="big-screen-right-top-box">
-    111
-  </div>
-</template>
