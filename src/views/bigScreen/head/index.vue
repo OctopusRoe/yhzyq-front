@@ -13,24 +13,24 @@ export default {
     return {
       navList,
       setingList,
-      activeIndex: 0
+      activeIndex: 4
     }
-  },
-  computed: {
-  },
-  watch: {
-  },
-  beforeDestroy () {
-  },
-  activated () {
-  },
-  created () {
-  },
-  mounted () {
   },
   methods: {
     activeNav (index) {
       this.activeIndex = index
+    },
+
+    activeSeting (item) {
+      switch (item.key) {
+        case 'seting':
+          break;
+        case 'jump':
+          break;
+        case 'logout':
+          this.$router.push(item.path)
+          break;
+      }
     }
   }
 
@@ -48,25 +48,28 @@ export default {
         class="big-screen-nav-item"
         :class="{'nav-active': index === activeIndex}"
         @click="activeNav(index)"
+        :style="{left: item.offset}"
       >
         {{item.label}}
       </div>
     </div>
-    <div></div>
-    <div></div>
+    <div class="big-screen-head-three">
+      <div
+        v-for="(item, index) in setingList"
+        :key="index"
+        @click="activeSeting(item)"
+        class="big-screen-seting-item"
+      >
+        <img :src="item.icon">
+        {{item.label}}
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
-.big-screen-nav-item {
-  width: 175px;
-  height: 62px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .nav-active {
   background: url('~../assets/images/four.png') no-repeat center / contain;
-  background-size: 175px 60px;
+  background-size: 210px 70px;
 }
 
 .big-screen-head-box {
@@ -90,9 +93,8 @@ export default {
   }
 
   .big-screen-head-two {
-    width: 980px;
+    width: 990px;
     height: 62px;
-    padding: 0 40px;
     font-size: 16px;
     font-family: Microsoft YaHei;
     font-weight: 400;
@@ -101,6 +103,40 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
+
+    .big-screen-nav-item {
+      position: relative;
+      width: 220px;
+      height: 62px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .big-screen-head-three {
+    display: flex;
+    justify-content: space-around;
+    width: 370px;
+    height: 50px;
+
+    .big-screen-seting-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 18px;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #c5f3ff;
+
+      img {
+        margin-right: 10px;
+        width: 22px;
+        height: 22px;
+      }
+    }
   }
 }
 </style>

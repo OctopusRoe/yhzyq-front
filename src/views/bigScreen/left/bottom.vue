@@ -1,5 +1,15 @@
 <script>
+/**
+ * @description 底部容器
+ * @author OctopusRoe
+ */
+
+import TitleBox from '../components/titleBox'
+
 export default {
+  components: {
+    TitleBox
+  },
   props: {
   },
   data () {
@@ -25,7 +35,7 @@ export default {
 </script>
 <template>
   <div class="big-screen-left-buttom-box">
-    111
+    <TitleBox title="管理中心施工情况" />
   </div>
 </template>
 <style lang="scss" scoped>
