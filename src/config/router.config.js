@@ -21,6 +21,7 @@ import flowManage from "../views/flow/flowManage";
 import flowType from "../views/flow/flowType";
 import demoFlow from "../components/flow/page/examine/startFlow";
 import daiBanTsk from "../views/flow/daiBanTask";
+import BigScreen from '../views/bigscreen'
 
 Vue.use(Router);
 
@@ -44,6 +45,12 @@ Vue.use(Router);
 
 // 公共路由（不允许更改！！！）
 export const constantRoutes = [
+  {
+    // 大屏静态路由
+    path: "/bigScreen",
+    name: 'bigScreen',
+    component: BigScreen
+  },
   {
     path: "/home",
     name: "home",
