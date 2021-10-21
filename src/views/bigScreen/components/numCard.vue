@@ -6,8 +6,8 @@
 export default {
   props: {
     background: {
-      type: Object,
-      default: () => { }
+      type: String,
+      default: ''
     },
     color: {
       type: String,
