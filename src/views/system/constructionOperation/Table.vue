@@ -12,6 +12,9 @@
       v-loading="loading"
       class="custom-table"
       :data="tableData"
+      height="650"
+      highlight-current-row
+      @row-click="handleRowClick"
       @selection-change="selectionChange"
     >
       <el-table-column
@@ -87,19 +90,40 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="pagination.pageNumber"
+      :page-sizes="[10,15,25,50]"
+      :page-size="pagination.pageSize"
+      layout="total, sizes, prev, pager, next"
+      :total="pagination.total"
+    >
+    </el-pagination>
   </div>
 </template>
 
 <script>
+import { initPagination } from './initData';
 import { getListWor, deleteWor } from '@/api/system/constructionOperation';
 import optionMixin from './mixins/optionMixin';
-import { initForm } from './initData';
 export default {
+  props: {
+    selDevInfo: {
+      type: Object | null,
+      default: null
+    },
+    form: {
+      type: Object,
+      default: () => { }
+    }
+  },
   data() {
     return {
       tableData: [],
       selIds: [],
-      loading: false
+      loading: false,
+      pagination: initPagination,
     }
   },
   mixins: [optionMixin],
@@ -113,10 +137,19 @@ export default {
     openDialog(isEdit, info) {
       this.$emit("openDialog", isEdit, info)
     },
-    async getListWor(form = initForm) {
+    handleSizeChange(pageSize) {
+      this.getListDev(1, pageSize)
+    },
+    handleCurrentChange(pageNumber) {
+      this.getListDev(pageNumber, undefined)
+    },
+    handleRowClick(row) {
+      this.$emit("update:selWorInfo", row)
+    },
+    async getListWor(pageNumber = this.pagination.pageNumber, pageSize = this.pagination.pageSize) {
       try {
         this.loading = true
-        const { code, result } = await getListWor(form)
+        const { code, result } = await getListWor({ ...this.form, pageNumber, pageSize })
         this.loading = false
         if (code === 200) {
           this.tableData = result.list
@@ -133,7 +166,7 @@ export default {
         this.loading = false
         if (code === 200) {
           this.$message.success(message)
-          this.getListWor(initForm)
+          this.getListWor()
         }
       } catch (error) {
         this.loading = false
@@ -146,5 +179,8 @@ export default {
 <style lang="scss" scoped>
 .custom-table {
   margin-top: 20px;
+}
+::v-deep .el-pagination {
+  text-align: right;
 }
 </style>

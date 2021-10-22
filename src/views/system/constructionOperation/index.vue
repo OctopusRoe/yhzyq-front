@@ -1,18 +1,26 @@
 <template>
   <div class="dev-man-contianer">
-    <Form @submitForm="submitForm"></Form>
-    <Table
-      @openDialog="openDialog"
-      ref="tableRef"
-    ></Table>
-    <Dialog
-      ref="dialogRef"
-      @submitSucc="submitSucc"
-    ></Dialog>
+    <template v-if="!selWorInfo">
+      <Form @submitForm="submitForm"></Form>
+      <Table
+        :form="form"
+        :selWorInfo.sync="selWorInfo"
+        @openDialog="openDialog"
+        ref="tableRef"
+      ></Table>
+      <Dialog
+        ref="dialogRef"
+        @submitSucc="submitSucc"
+      ></Dialog>
+    </template>
+    <template v-else>
+      <WorkInfo :selWorInfo.sync="selWorInfo"></WorkInfo>
+    </template>
   </div>
 </template>
 
 <script>
+import WorkInfo from './WorkInfo';
 import Form from './Form';
 import Table from './Table';
 import Dialog from './Dialog';
@@ -20,6 +28,7 @@ import { initForm } from './initData';
 export default {
   name: "",
   components: {
+    WorkInfo,
     Form,
     Table,
     Dialog
@@ -27,7 +36,10 @@ export default {
   props: {},
   model: "",
   data() {
-    return {};
+    return {
+      form: initForm,
+      selWorInfo: null
+    };
   },
   created() { },
   mounted() { },
@@ -40,10 +52,11 @@ export default {
       this.$refs.dialogRef.open(isEdit, info)
     },
     submitSucc() {
-      this.$refs.tableRef.getListDev()
+      this.$refs.tableRef.getListWor()
     },
     submitForm(form) {
-      this.$refs.tableRef.getListDev({ ...form, pageNumber: initForm.pageNumber, pageSize: initForm.pageSize })
+      this.form = form
+      this.$refs.tableRef.getListWor({ ...form, pageNumber: initForm.pageNumber, pageSize: initForm.pageSize })
     }
   }
 };

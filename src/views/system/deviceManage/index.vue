@@ -1,40 +1,51 @@
 <template>
   <div class="dev-man-contianer">
-    <Form @submitForm="submitForm"></Form>
-    <Table
-      @openDialog="openDialog"
-      ref="tableRef"
-    ></Table>
-    <Dialog
-      ref="dialogRef"
-      @submitSucc="submitSucc"
-    ></Dialog>
+    <template v-if="!selDevInfo">
+      <Form @submitForm="submitForm"></Form>
+      <Table
+        :form="form"
+        :selDevInfo.sync="selDevInfo"
+        @openDialog="openDialog"
+        ref="tableRef"
+      ></Table>
+      <Dialog
+        ref="dialogRef"
+        @submitSucc="submitSucc"
+      ></Dialog>
+    </template>
+    <template v-else>
+      <DeviceInfo :selDevInfo.sync="selDevInfo"></DeviceInfo>
+    </template>
   </div>
 </template>
 
 <script>
+import DeviceInfo from './DeviceInfo';
+import Dialog from './Dialog';
 import Form from './Form';
 import Table from './Table';
-import Dialog from './Dialog';
 import { initForm } from './initData';
 export default {
   name: "",
   components: {
+    DeviceInfo,
+    Dialog,
     Form,
     Table,
-    Dialog
   },
-  props: {},
   model: "",
+  props: {},
   data() {
-    return {};
+    return {
+      form: initForm,
+      selDevInfo: null
+    };
   },
+  computed: {},
+  watch() { },
   created() { },
   mounted() { },
   beforeDestroy() { },
-  watch() { },
-  computed: {},
-  filter: {},
   methods: {
     openDialog(isEdit, info) {
       this.$refs.dialogRef.open(isEdit, info)
@@ -43,10 +54,11 @@ export default {
       this.$refs.tableRef.getListDev()
     },
     submitForm(form) {
-      console.log('%c 🌽 form: ', 'font-size:20px;background-color: #465975;color:#fff;', form);
-      this.$refs.tableRef.getListDev({ ...form, pageNumber: initForm.pageNumber, pageSize: initForm.pageSize })
+      this.form = form
+      this.$refs.tableRef.getListDev()
     }
-  }
+  },
+  filter: {},
 };
 </script>
 

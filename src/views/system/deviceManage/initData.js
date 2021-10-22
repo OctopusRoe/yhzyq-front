@@ -2,10 +2,14 @@ const initForm = {
     deviceName: '',
     deviceNumber: '',
     deviceType: '',
-    deviceStatus: '',
+    deviceStatus: ''
+}
+const initPagination = {
     pageNumber: 1,
-    pageSize: 10
+    pageSize: 10,
+    total: 0
 }
 export {
-    initForm
+    initForm,
+    initPagination
 }

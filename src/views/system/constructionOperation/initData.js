@@ -1,12 +1,15 @@
 const initForm = {
-    deviceName: '',
-    deviceNumber: '',
-    deviceType: '',
-    deviceStatus: '',
-    pageNumber: 1,
-    pageSize: 10
+    // jobName: '',
+    // jobStatus: '',
+    // planTimeStart: '',
+    // planTimeEnd: ''
 }
-
+const initPagination = {
+    pageNumber: 1,
+    pageSize: 10,
+    total: 0
+}
 export {
-    initForm
+    initForm,
+    initPagination
 }

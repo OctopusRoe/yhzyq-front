@@ -12,6 +12,9 @@
       v-loading="loading"
       class="custom-table"
       :data="tableData"
+      height="650"
+      highlight-current-row
+      @row-click="handleRowClick"
       @selection-change="selectionChange"
     >
       <el-table-column
@@ -73,31 +76,52 @@
         width="150"
       >
       </el-table-column>
-      <el-table-column label="操作">
+      <!-- <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
             type="success"
             @click="openDialog(1,scope.row)"
           >编辑</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="pagination.pageNumber"
+      :page-sizes="[10,15,25,50]"
+      :page-size="pagination.pageSize"
+      layout="total, sizes, prev, pager, next"
+      :total="pagination.total"
+    >
+    </el-pagination>
   </div>
 </template>
 
 <script>
-import { getListDev, deleteDev } from '@/api/system/deviceManage';
+import { initPagination } from './initData';
 import optionMixin from './mixins/optionMixin';
-import { initForm } from './initData';
+import { getListDev, deleteDev } from '@/api/system/deviceManage';
 export default {
+  mixins: [optionMixin],
+  props: {
+    selDevInfo: {
+      type: Object | null,
+      default: null
+    },
+    form: {
+      type: Object,
+      default: () => { }
+    }
+  },
   data() {
     return {
       tableData: [],
       selIds: [],
-      loading: false
+      loading: false,
+      pagination: initPagination,
     }
   },
-  mixins: [optionMixin],
   mounted() {
     this.getListDev();
   },
@@ -108,13 +132,23 @@ export default {
     openDialog(isEdit, info) {
       this.$emit("openDialog", isEdit, info)
     },
-    async getListDev(form = initForm) {
+    handleSizeChange(pageSize) {
+      this.getListDev(1, pageSize)
+    },
+    handleCurrentChange(pageNumber) {
+      this.getListDev(pageNumber, undefined)
+    },
+    handleRowClick(row) {
+      this.$emit("update:selDevInfo", row)
+    },
+    async getListDev(pageNumber = this.pagination.pageNumber, pageSize = this.pagination.pageSize) {
       try {
         this.loading = true
-        const { code, result } = await getListDev(form)
+        const { code, result } = await getListDev({ ...this.form, pageNumber, pageSize })
         this.loading = false
         if (code === 200) {
           this.tableData = result.list
+          this.pagination.total = result.total
         }
       } catch (error) {
         this.loading = false
@@ -128,7 +162,7 @@ export default {
         this.loading = false
         if (code === 200) {
           this.$message.success(message)
-          this.getListDev(initForm)
+          this.getListDev()
         }
       } catch (error) {
         this.loading = false
@@ -141,5 +175,8 @@ export default {
 <style lang="scss" scoped>
 .custom-table {
   margin-top: 20px;
+}
+::v-deep .el-pagination {
+  text-align: right;
 }
 </style>

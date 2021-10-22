@@ -151,10 +151,10 @@ export default {
   computed: {
     rules() {
       return {
-        deviceName: [{ required: true, message: '请输入设备名称', trigger: 'blur' }],
-        deviceNumber: [{ required: true, message: '请输入设备编号', trigger: 'blur' }],
-        deviceType: [{ required: true, message: '请选择设备类型', trigger: 'blur' }],
-        centerId: [{ required: true, message: '请选择管理中心', trigger: 'blur' }]
+        // deviceName: [{ required: true, message: '请输入设备名称', trigger: 'blur' }],
+        // deviceNumber: [{ required: true, message: '请输入设备编号', trigger: 'blur' }],
+        // deviceType: [{ required: true, message: '请选择设备类型', trigger: 'blur' }],
+        // centerId: [{ required: true, message: '请选择管理中心', trigger: 'blur' }]
       }
     },
     laneOptions: [
