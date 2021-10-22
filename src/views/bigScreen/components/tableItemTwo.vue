@@ -33,30 +33,70 @@ export default {
 </script>
 <template>
   <div class="table-item">
-    <div class="table-item-box">
-      <div class="item-column-one">
+    <div
+      class="table-item-box"
+      :class="{['background-url']: item.endTime}"
+    >
+      <div
+        class="item-column center-box"
+        style="width: 80px"
+      >
         {{item.highway}}
       </div>
-      <div class="item-column-one">
+      <div
+        class="item-column center-box"
+        style="width: 120px"
+      >
         {{item.start}}
       </div>
-      <div class="item-column-one">
-        {{item.startTime}}
+      <div
+        class="item-column center-box"
+        style="width: 100px"
+      >
+        <div class="date-box">
+          <div>{{item.startTime.split(' ')[0]}}</div>
+          <div>{{item.startTime.split(' ')[1]}}</div>
+        </div>
       </div>
-      <div class="item-column-one">
-        {{item.endTime || '-'}}
+      <div
+        class="item-column center-box"
+        style="width: 100px"
+      >
+        <div
+          v-if="item.endTime"
+          class="date-box"
+        >
+          <div>{{item.startTime.split(' ')[0]}}</div>
+          <div>{{item.startTime.split(' ')[1]}}</div>
+        </div>
+        <div v-else>{{ '-' }}</div>
       </div>
     </div>
     <img src="../assets/images/list-line.png" />
   </div>
 </template>
 <style lang='scss' scoped>
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-box {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .table-item {
   width: 418px;
   height: 50px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  color: #ffffff;
+
   .table-item-box {
     display: flex;
     width: 418px;
@@ -64,6 +104,14 @@ export default {
   }
   img {
     width: 416;
+  }
+
+  .background-url {
+    background: url('~../assets/images/list-item.png') no-repeat center /
+      contain;
+    background-size: 100% 44px;
+    margin-bottom: 3px;
+    color: #0a243c;
   }
 }
 </style>

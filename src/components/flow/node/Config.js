@@ -9,7 +9,7 @@ let Config = {
   },
 
 };
-Image = {
+const Images = {
   Event_Start_Ico: "/static/icons/type.startevent.none.png",
   Event_End_Ico: "/static/icons/type.endevent.none.png",
   User_Task_Ico: "/static/icons/type.user.png",
@@ -25,5 +25,5 @@ Image = {
   Exclusive_Gateway_Ico: "/static/icons/type.gateway.exclusive.png"
 }
 export default {
-  Image
+  Images
 }

@@ -52,7 +52,7 @@ export default {
         <TableTitleTwo :label-array="tableTitle" />
       </div>
       <div class="table-content">
-        <el-scrollbar style="height: 550px">
+        <el-scrollbar style="height: 490px">
           <TableItemTwo
             v-for="(item, index) in ex"
             :key="index"
@@ -83,7 +83,7 @@ export default {
     }
 
     .table-content {
-      margin-top: 14px;
+      margin-top: 8px;
       width: 418px;
       height: 550px;
     }
