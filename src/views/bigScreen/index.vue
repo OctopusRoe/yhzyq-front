@@ -5,9 +5,9 @@
  * @version 0.0.1
 */
 
-import Head from './components/head'
-import Left from './components/left'
-import Right from './components/right'
+import Head from './head'
+import Left from './left'
+import Right from './right'
 
 export default {
   components: {
@@ -15,20 +15,32 @@ export default {
     Left,
     Right
   },
+  props: {
+  },
   data () {
-
+    return {
+    }
+  },
+  computed: {
+  },
+  watch: {
+  },
+  beforeDestroy () {
+    document.getElementById('app').style.cssText = 'transform: scale(1, 1.125)'
+  },
+  activated () {
+  },
+  created () {
+    // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 真尼玛会写，技术要不要这么菜
+    document.getElementById('app').style.cssText = 'height: 1080px !important'
+  },
+  mounted () {
+  },
+  methods: {
   }
+
 }
 </script>
-
-<style lang="scss" scoped>
-.big-screen-box {
-  height: 100%;
-  width: 100%;
-  background-color: red;
-  position: relative;
-}
-</style>
 <template>
   <div class="big-screen-box">
 
@@ -37,3 +49,11 @@ export default {
     <Right />
   </div>
 </template>
+<style lang="scss" scoped>
+.big-screen-box {
+  height: 1080px;
+  width: 1920px;
+  background-color: red;
+  position: relative;
+}
+</style>

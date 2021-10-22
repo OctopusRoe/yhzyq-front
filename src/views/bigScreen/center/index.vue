@@ -23,10 +23,10 @@ export default {
 
 }
 </script>
-<style lang='scss' scoped>
-</style>
 <template>
   <div>
     111
   </div>
 </template>
+<style lang="scss" scoped>
+</style>
