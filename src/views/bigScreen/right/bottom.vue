@@ -5,10 +5,12 @@
  */
 
 import TitleBox from '../components/titleBox'
+import Line from './Line'
 
 export default {
   components: {
-    TitleBox
+    TitleBox,
+    Line
   },
   props: {
   },
@@ -36,6 +38,7 @@ export default {
 <template>
   <div class="big-screen-right-buttom-box">
     <TitleBox title="月度施工情况" />
+    <Line />
   </div>
 </template>
 <style lang="scss" scoped>

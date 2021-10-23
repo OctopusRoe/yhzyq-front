@@ -6,7 +6,6 @@
 */
 
 import MapInit from 'octopus-map-one'
-import ol from 'openlayers'
 
 import Head from './head'
 import Left from './left'

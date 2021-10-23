@@ -18,6 +18,7 @@ import permission from "./directive/permission";
 // import "./permission"; // permission control
 Vue.use(permission);
 import "./assets/icons"; // icon
+import "./views/bigScreen/echarts"
 
 
 
