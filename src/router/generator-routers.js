@@ -1,6 +1,6 @@
 import { Layout, PageWapper } from "@/layout";
 import { cloneDeep } from "lodash";
-import BigScreen from '@/views/bigscreen'
+import BigScreen from '@/views/bigScreen'
 
 // 前端路由表
 const constantRouterComponents = {

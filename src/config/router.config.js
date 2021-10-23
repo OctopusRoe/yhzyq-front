@@ -21,7 +21,7 @@ import flowManage from "../views/flow/flowManage";
 import flowType from "../views/flow/flowType";
 import demoFlow from "../components/flow/page/examine/startFlow";
 import daiBanTsk from "../views/flow/daiBanTask";
-import BigScreen from '../views/bigscreen'
+import BigScreen from '../views/bigScreen'
 
 Vue.use(Router);
 
