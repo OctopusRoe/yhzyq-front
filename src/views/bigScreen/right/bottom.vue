@@ -5,12 +5,12 @@
  */
 
 import TitleBox from '../components/titleBox'
-import Line from './Line'
+import LineComponent from './Line.vue'
 
 export default {
   components: {
     TitleBox,
-    Line
+    LineComponent
   },
   props: {
   },
@@ -38,7 +38,9 @@ export default {
 <template>
   <div class="big-screen-right-buttom-box">
     <TitleBox title="月度施工情况" />
-    <Line />
+    <div class="echarts-box">
+      <LineComponent />
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -48,5 +50,11 @@ export default {
   background: url('~../assets/images/two.png') no-repeat center / contain;
   background-size: 100% 306px;
   margin-top: 18px;
+
+  .echarts-box {
+    width: 100%;
+    height: 256px;
+    padding: 5px 15px;
+  }
 }
 </style>

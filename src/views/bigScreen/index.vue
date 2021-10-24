@@ -14,8 +14,15 @@ import Right from './right'
 import Example from './components/example'
 import DropDownTree from './components/dropDownTree'
 
-import { treeList } from './mock'
-import { getMapData, tileBaseUrl } from './api/index'
+import {
+  getMapData,
+  tileBaseUrl,
+  queryMangeCenter,
+  querySelectDeviceByTypeCount,
+  selectDeviceByMangeCenter
+} from './api/index'
+import MapOverlayer from './components/mapOverlayer'
+import controlMap from './controlMap'
 
 export default {
   components: {
@@ -23,14 +30,21 @@ export default {
     Left,
     Right,
     Example,
-    DropDownTree
+    DropDownTree,
+    MapOverlayer
   },
+  mixins: [controlMap],
   props: {
   },
   data () {
     return {
-      treeList: treeList,
-      map: null
+      treeList: null,
+      map: null,
+      defaultProps: {
+        children: 'children',
+        label: 'name'
+      },
+      treeName: ''
     }
   },
   computed: {
@@ -43,14 +57,26 @@ export default {
   activated () {
   },
   created () {
-    // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
-    document.getElementById('app').style.cssText = 'height: 1080px !important'
   },
   mounted () {
-    // this.mapInit()
+    // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
+    document.getElementById('app').style.cssText = 'height: 1080px !important'
     this.getMap()
+    this.getManagerCenter()
+    this.selectDeviceByMangeCenter()
   },
   methods: {
+
+    async getMap () {
+      try {
+        const back = await getMapData()
+        this.mapInit(back.data)
+      } catch (e) {
+        console.error(e)
+        console.error(e.error)
+      }
+    },
+
     // 初始化地图
     mapInit (data) {
       this.map = new MapInit({
@@ -79,19 +105,42 @@ export default {
       // })
     },
 
-    async getMap () {
-      try {
-        const back = await getMapData()
-        this.mapInit(back.data)
-      } catch (e) {
+    // 获取管理中心
+    async getManagerCenter () {
+      const back = await queryMangeCenter()
+      this.treeName = back.result[0].name
+      this.treeList = back.result
+    },
 
-      }
+    // 获取设备总量列表
+    async querySelectDeviceByTypeCount () {
+      const back = await querySelectDeviceByTypeCount()
+      console.log(back)
+    },
+
+    // 获取全部设备信息
+    async selectDeviceByMangeCenter (id = '') {
+      const back = await selectDeviceByMangeCenter({ id: id })
+      this.createMark(back.result)
+    },
+
+    // 点击树形
+    nodeClick (data, node) {
+      this.selectDeviceByMangeCenter(data.id)
+    },
+
+    // 关闭 overlayer
+    closeOverlayer (data) {
+      console.log('%c 🍏 data: ', 'font-size:20px;background-color: #B03734;color:#fff;', data);
+      // this.map.removeOverlay(this.map.searchOverlays('viewMarker'))
+      console.log('%c 🍚 document.getElementById(data.item.id): ', 'font-size:20px;background-color: #33A5FF;color:#fff;', document.getElementById(data.item.id));
+      document.getElementById('viewDomMarkder').style.display = 'none'
     },
 
     // 转跳意见反馈
     goToYJFK () {
 
-    }
+    },
   }
 
 }
@@ -109,6 +158,9 @@ export default {
     <DropDownTree
       class="tree-box"
       :data="treeList"
+      :props="defaultProps"
+      :title="treeName"
+      @node-click="nodeClick"
     />
     <Left />
     <Right />
@@ -119,9 +171,19 @@ export default {
       @clcik="goToYJFK"
     />
 
+    <div class="overlayer-center-box">
+      <MapOverlayer
+        ref="overlayer"
+        id="viewDomMarker"
+      />
+    </div>
+
   </div>
 </template>
 <style lang="scss" scoped>
+.overlayer-center-box {
+  display: none;
+}
 .big-screen-box {
   height: 1080px;
   width: 1920px;

@@ -1,7 +1,10 @@
 <script>
 export default {
   props: {
-
+    title: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {
@@ -13,7 +16,7 @@ export default {
 <template>
   <el-dropdown placement="bottom-start">
     <div class="button-style">
-      南昌南管理中心
+      {{title}}
       <img src="../assets/images/5.png">
     </div>
 
@@ -34,7 +37,7 @@ export default {
 }
 
 .button-style {
-  width: 227px;
+  width: 220px;
   height: 49px;
   border: 2px solid #1b8777;
   border-radius: 2px;
@@ -56,13 +59,23 @@ export default {
 .el-popper,
 .el-dropdown-menu--medium {
   background-color: #0a243c;
-  width: 227px;
+  width: 220px;
   border: 2px solid #1b8777;
 }
 
 ::v-deep .el-tree {
   background-color: #0a243c;
   color: #ffffff;
+}
+
+::v-deep
+  .el-tree--highlight-current
+  .el-tree-node.is-current
+  > .el-tree-node__content {
+  background-color: #1b8777 !important;
+}
+::v-deep .el-tree-node:focus > .el-tree-node__content {
+  background-color: #1b8777 !important;
 }
 
 ::v-deep .el-tree-node__content:hover {

@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <v-chart style="width: 375px; height: 223px;" :option="options"></v-chart>
-  </div>
+  <v-chart
+    style="width: 100%; height: 100%;"
+    :option="options"
+  ></v-chart>
 </template>
 
 <script>
@@ -10,19 +11,19 @@ export default {
   name: 'App',
   components: {},
   computed: {
-    options() {
-      return  {
+    options () {
+      return {
         title: {
           subtext: "km",
           left: 15,// 距离左边位置
           top: -10,// 距离上面位置
-          subtextStyle:{ // 设置二级标题的样式
-            color:"#B4D1D3"
+          subtextStyle: { // 设置二级标题的样式
+            color: "#B4D1D3"
           }
         },
         grid: {
           left: 15,
-          top: 15,
+          top: 30,
           right: 15,
           bottom: 15,
           containLabel: true
@@ -94,5 +95,4 @@ export default {
 </script>
 
 <style>
-
 </style>
