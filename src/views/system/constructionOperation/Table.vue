@@ -97,7 +97,7 @@
         <template slot-scope="scope">
           <el-button
             type="success"
-            @click="openDialog(1,scope.row)"
+            @click.stop="openDialog(1,scope.row)"
           >编辑</el-button>
         </template>
       </el-table-column>

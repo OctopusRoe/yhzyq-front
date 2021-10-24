@@ -56,8 +56,8 @@ export default {
     },
     submitForm(form) {
       this.form = form
-      this.$refs.tableRef.getListWor({ ...form, pageNumber: initForm.pageNumber, pageSize: initForm.pageSize })
-    }
+      this.$refs.tableRef.getListWor(initForm.pageNumber, initForm.pageSize)
+    },
   }
 };
 </script>

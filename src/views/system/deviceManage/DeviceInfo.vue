@@ -17,10 +17,10 @@
         {{selDevInfo.deviceNumber}}
       </el-form-item>
       <el-form-item label="设备类型">
-        {{selectDictLabelEx(devTypeOptions,scope.row.deviceType)}}
+        {{selectDictLabelEx(devTypeOptions,selDevInfo.deviceType)}}
       </el-form-item>
       <el-form-item label="设备状态">
-        {{selectDictLabelEx(devStaOptions,scope.row.deviceStatus)}}
+        {{selectDictLabelEx(devStaOptions,selDevInfo.deviceStatus)}}
       </el-form-item>
       <el-form-item label="电池电量">
         {{selDevInfo.electricity}}
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import optionMixin from './mixins/optionMixin';
 import mapMixin from '../constructionOperation/mixins/mapMixin';
 export default {
   props: {
@@ -67,7 +68,7 @@ export default {
       iconUrl: ''
     }
   },
-  mixins: [mapMixin],
+  mixins: [mapMixin, optionMixin],
   methods: {
     closeDevInf() {
       this.$emit("update:selDevInfo", null)

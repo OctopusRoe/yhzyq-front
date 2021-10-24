@@ -42,8 +42,8 @@
       >
         <el-form-item label="施工作业名称">
           <div>{{selWorInfo.jobStatus | jonFil }}</div>
-          <div>开始施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.startTime }}</div>
-          <div>结束施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.endTime }}</div>
+          <div>开始施工时间&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.startTime }}</div>
+          <div>结束施工时间&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.endTime }}</div>
         </el-form-item>
         <el-form-item label="施工作业平面图">
           <div
@@ -87,9 +87,62 @@ export default {
       }
     }
   },
+  watch: {
+    selWorInfo: {
+      immediate: true,
+      handler(info) {
+        if (info && info?.centerPoint?.length) {
+          setTimeout(() => {
+            // info.centerPoint
+            this.setMapCenter(undefined)
+            const points = this.splitStrArr(info.roadGeo)
+            this.createPolygon(undefined)
+          }, 1000)
+        }
+      }
+    }
+  },
   methods: {
     closeWorInf() {
       this.$emit("update:selWorInfo", null)
+    },
+    splitStrArr(roadGeo) {
+      const arr = []
+      const resArr = roadGeo.split(',').map((item) => {
+        const arr = item.split(' ')
+        return [arr[0], arr[1]]
+      })
+      arr.push(resArr)
+      return arr
+    },
+    setMapCenter(center = [115.904642, 28.680854]) {
+      this.map.setCenter(center)
+      this.map.setZoom(15)
+    },
+    createPolygon(point = [
+      [115.904642, 28.680854],
+      [115.90469, 28.680417],
+      [115.905204, 28.680444],
+      [115.905222, 28.680264],
+      [115.905566, 28.680263],
+      [115.905616, 28.680216],
+      [115.905634, 28.680041],
+      [115.906109, 28.680052],
+      [115.906133, 28.680499],
+      [115.905709, 28.680494],
+      [115.905693, 28.680914],
+      [115.904642, 28.680854]
+    ]) {
+      console.log('%c 🍗 [point]: ', 'font-size:20px;background-color: #465975;color:#fff;', [point]);
+      const gridPolygon = this.map.GridPolygon({
+        stroke: { color: 'rgba(255, 255, 255, 0.8)', width: '200', lineDash: [0, 0] }
+      })
+      gridPolygon.create({
+        point: [point],
+        color: '#fff'
+      })
+      this.map.addLayer(gridPolygon.layer)
+      console.log('%c 🍵 this.map: ', 'font-size:20px;background-color: #4b4b4b;color:#fff;', this.map);
     }
   },
 }
@@ -116,7 +169,7 @@ h4 {
   font-size: 18px;
 }
 .map-box {
-  width: 600px;
+  width: 90%;
   height: 400px;
 }
 </style>
