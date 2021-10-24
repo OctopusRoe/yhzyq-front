@@ -15,6 +15,7 @@
         <!--  :key="route.path  + index"-->
         <sidebar-item
           v-for="(route, index) in _threeMenu"
+          :key="index"
           :item="route"
           :base-path="route.path"
         />

@@ -111,7 +111,7 @@
               width="230"
               class-name="treeline"
             >
-              <template scope="scope">
+              <template slot-scope="scope">
                 <div class="line"></div>
                 <svg-icon
                   icon-class="file1"

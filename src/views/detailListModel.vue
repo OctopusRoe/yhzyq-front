@@ -58,7 +58,7 @@
             width="200"
             :show-overflow-tooltip="true"
           >
-            <template scope="scope">
+            <template slot-scope="scope">
               <div class="line"></div>
               <!-- 显示文件夹图标 -->
               <span class="sp" v-if="scope.row.children"> </span>
