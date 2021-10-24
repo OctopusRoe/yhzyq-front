@@ -35,22 +35,34 @@
       >
       </el-table-column> -->
       <el-table-column
-        prop=""
+        prop="jobName"
         label="施工作业名称"
         width="200"
       >
       </el-table-column>
-      <el-table-column
-        prop="deviceType"
+      <!-- <el-table-column
+        prop=""
         label="施工区域"
         width="200"
       >
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
-        prop="planTimeStart"
+        prop="planStartTime"
         label="计划开始时间"
         width="200"
       >
+        <template v-slot="{row}">
+          {{row.planStartTime.substr(0,10)}}
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="planEndTime"
+        label="计划结束时间"
+        width="200"
+      >
+        <template v-slot="{row}">
+          {{row.planEndTime.substr(0,10)}}
+        </template>
       </el-table-column>
       <el-table-column
         label="联系人"
@@ -66,7 +78,7 @@
         width="200"
       >
         <template slot-scope="scope">
-          {{selectDictLabelEx(worStaOptions,scope.row.jobStatus,'val')}}
+          {{selectDictLabelEx(worStaOptions,scope.row.jobStatus.toString(),'vals')}}
         </template>
       </el-table-column>
       <el-table-column
@@ -85,7 +97,7 @@
         <template slot-scope="scope">
           <el-button
             type="success"
-            @click="openDialog(1,scope.row)"
+            @click.stop="openDialog(1,scope.row)"
           >编辑</el-button>
         </template>
       </el-table-column>

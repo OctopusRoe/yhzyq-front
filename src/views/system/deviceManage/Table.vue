@@ -58,12 +58,12 @@
           {{selectDictLabelEx(devStaOptions,scope.row.deviceStatus)}}
         </template>
       </el-table-column>
-      <el-table-column
+      <!-- <el-table-column
         prop="isConnectPlatform"
         label="是否联接第三方平台"
         width="200"
       >
-      </el-table-column>
+      </el-table-column> -->
       <el-table-column
         prop="address"
         label="当前位置"
@@ -76,14 +76,14 @@
         width="150"
       >
       </el-table-column>
-      <!-- <el-table-column label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button
             type="success"
-            @click="openDialog(1,scope.row)"
+            @click.stop="openDialog(1,scope.row)"
           >编辑</el-button>
         </template>
-      </el-table-column> -->
+      </el-table-column>
     </el-table>
     <el-pagination
       @size-change="handleSizeChange"
@@ -144,7 +144,7 @@ export default {
     async getListDev(pageNumber = this.pagination.pageNumber, pageSize = this.pagination.pageSize) {
       try {
         this.loading = true
-        const { code, result } = await getListDev({ ...this.form, pageNumber, pageSize })
+        const { code, result } = await getListDev(pageNumber, pageSize, this.form)
         this.loading = false
         if (code === 200) {
           this.tableData = result.list

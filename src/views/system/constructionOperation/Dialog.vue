@@ -42,7 +42,10 @@
         label="请选择车道"
         prop="lane"
       >
-        <el-select v-model="form.lane">
+        <el-select
+          v-model="form.lane"
+          style="width:100%"
+        >
           <el-option
             v-for="item in laneOptions"
             :key="item.name"
@@ -57,7 +60,7 @@
         prop="address"
       >
         <el-date-picker
-          v-model="form.planTimeStart"
+          v-model="form.planStartTime"
           type="date"
           format="yyyy-MM-dd"
           value-format="yyyy-MM-dd"
@@ -66,7 +69,7 @@
         </el-date-picker>
         <span style="margin:0 10px">~</span>
         <el-date-picker
-          v-model="form.planTimeEnd"
+          v-model="form.planEndTime"
           type="date"
           format="yyyy-MM-dd"
           value-format="yyyy-MM-dd"
@@ -78,13 +81,37 @@
         label="管理中心"
         prop="centerId"
       >
-        <el-select v-model="form.centerId"></el-select>
+        <el-select
+          style="width:100%"
+          v-model="form.centerId"
+          @change="nodeClick"
+        >
+          <el-option
+            style="height: 300px"
+            :value="form.centerId"
+            :label="form.centerName"
+          >
+            <el-tree
+              ref="tree"
+              :data="centerTree"
+              @node-click="nodeClick"
+              :props="{children: 'children',label: 'name'}"
+            >
+            </el-tree>
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item
-        label="联系人"
+        label="联系人名称"
         prop="centerId"
       >
-        <el-select v-model="form.contactId"></el-select>
+        <el-input v-model="form.contactName" />
+      </el-form-item>
+      <el-form-item
+        label="联系方式"
+        prop="centerId"
+      >
+        <el-input v-model="form.contactPhone" />
       </el-form-item>
       <el-form-item
         label="备注"
@@ -112,8 +139,9 @@
 <script>
 import { saveWor } from '@/api/system/constructionOperation';
 import optionMixin from './mixins/optionMixin';
+import centerOption from './mixins/centerTreeMixin';
 export default {
-  mixins: [optionMixin],
+  mixins: [optionMixin, centerOption],
   props: {
     info: {
       type: Object,
@@ -125,8 +153,8 @@ export default {
       dialogVisible: false,
       isEdit: 0,
       form: {
-        centerId: "1111",
-        centerName: "1111",
+        centerId: "",
+        centerName: "",
         contactName: "",
         contactPhone: "",
         endTime: "",
@@ -145,7 +173,30 @@ export default {
         roadId: "",
         roadName: "",
         startTime: "",
-      }
+      },
+      laneOptions: [
+        {
+          name: '一车道',
+        },
+        {
+          name: '二车道',
+        },
+        {
+          name: '三车道',
+        },
+        {
+          name: '四车道',
+        },
+        {
+          name: '五车道',
+        },
+        {
+          name: '六车道',
+        },
+        {
+          name: '七车道',
+        },
+      ]
     }
   },
   computed: {
@@ -156,30 +207,7 @@ export default {
         // deviceType: [{ required: true, message: '请选择设备类型', trigger: 'blur' }],
         // centerId: [{ required: true, message: '请选择管理中心', trigger: 'blur' }]
       }
-    },
-    laneOptions: [
-      {
-        name: '一车道',
-      },
-      {
-        name: '二车道',
-      },
-      {
-        name: '三车道',
-      },
-      {
-        name: '四车道',
-      },
-      {
-        name: '五车道',
-      },
-      {
-        name: '六车道',
-      },
-      {
-        name: '七车道',
-      },
-    ]
+    }
   },
   methods: {
     open(isEdit, info) {

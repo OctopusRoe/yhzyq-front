@@ -55,8 +55,26 @@
       <el-form-item
         label="管理中心"
         prop="centerId"
+        style="width:100%"
       >
-        <el-select v-model="form.centerId"></el-select>
+        <el-select
+          v-model="form.centerId"
+          style="width:88%"
+        >
+          <el-option
+            style="height: 300px"
+            :value="form.centerId"
+            :label="form.centerName"
+          >
+            <el-tree
+              ref="tree"
+              :data="centerTree"
+              @node-click="nodeClick"
+              :props="{children: 'children',label: 'name'}"
+            >
+            </el-tree>
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item
         label="设备地址"
@@ -72,7 +90,7 @@
         <el-input v-model="form.electricity">
         </el-input>
       </el-form-item>
-      <el-form-item
+      <!-- <el-form-item
         label="是否对接第三方平台"
         prop="isConnectPlatform"
       >
@@ -84,6 +102,20 @@
         prop="isOnline"
       >
         <el-input v-model="form.isOnline">
+        </el-input>
+      </el-form-item> -->
+      <el-form-item
+        label="经度"
+        prop="longitude"
+      >
+        <el-input v-model="form.longitude">
+        </el-input>
+      </el-form-item>
+      <el-form-item
+        label="纬度"
+        prop="latitude"
+      >
+        <el-input v-model="form.latitude">
         </el-input>
       </el-form-item>
     </el-form>
@@ -100,8 +132,9 @@
 <script>
 import { saveDev } from '@/api/system/deviceManage';
 import optionMixin from './mixins/optionMixin';
+import centerTreeMixin from '../constructionOperation/mixins/centerTreeMixin';
 export default {
-  mixins: [optionMixin],
+  mixins: [optionMixin, centerTreeMixin],
   props: {
     info: {
       type: Object,
@@ -114,8 +147,8 @@ export default {
       isEdit: 0,
       form: {
         address: "",
-        centerId: "111111",
-        centerName: "1111111",
+        centerId: "",
+        centerName: "",
         createUser: "",
         deviceName: "",
         deviceNumber: "",
@@ -125,6 +158,8 @@ export default {
         isConnectPlatform: "",
         isOnline: "",
         pileNumber: "",
+        latitude: '',
+        longitude: ''
       }
     }
   },
