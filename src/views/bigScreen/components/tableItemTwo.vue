@@ -45,7 +45,7 @@ export default {
       </div>
       <div
         class="item-column center-box"
-        style="width: 120px"
+        style="width: 130px"
       >
         {{item.start}}
       </div>
