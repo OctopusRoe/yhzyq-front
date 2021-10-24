@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             devStaOptions: [],
-            devTypeOptions: []
+            devTypeOptions: [],
         }
     },
     async mounted() {

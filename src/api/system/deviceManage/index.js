@@ -4,7 +4,7 @@
 import request from '@/utils/request'
 
 const url = {
-    pageDataList: '/yhDevice/pageDataList',
+    pageDataList(pageNumber, pageSize) { return `/yhDevice/pageDataList/${pageNumber}/${pageSize}` },
     delete: '/yhDevice/delete',
     save: '/yhDevice/save',
     selectById: '/yhDevice/selectById'
@@ -19,9 +19,9 @@ export function deleteDev(data) {
     });
 }
 // 获取设备列表
-export function getListDev(params) {
+export function getListDev(pageNumber, pageSize, params) {
     return request({
-        url: url.pageDataList,
+        url: url.pageDataList(pageNumber, pageSize),
         method: "get",
         params
     });

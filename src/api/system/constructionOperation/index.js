@@ -7,7 +7,8 @@ const url = {
     delete: '/yhzyq/workJob/deleteWorkJob',
     pageDataList: '/yhzyq/workJob/pageDataList',
     saveOrUpdate: '/yhzyq/workJob/saveOrUpdate',
-    selectById: '/yhzyq/workJob/selectById'
+    selectById: '/yhzyq/workJob/selectById',
+    queryMangeCenter: '/yhzyq/workJob/queryMangeCenter'
 }
 
 // 删除施工作业
@@ -41,6 +42,15 @@ export function saveWor(data) {
 export function selectByIdWor(params) {
     return request({
         url: url.selectById,
+        method: "get",
+        params
+    });
+}
+
+// 查询管理中心
+export function queryMangeCenter(params) {
+    return request({
+        url: url.queryMangeCenter,
         method: "get",
         params
     });

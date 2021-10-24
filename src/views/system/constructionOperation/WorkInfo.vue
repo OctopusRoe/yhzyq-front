@@ -1,62 +1,70 @@
 <template>
   <div class="detail-info">
-    <el-page-header
-      content="施工作业详情"
-      @back="closeWorInf"
-    >
-    </el-page-header>
-    <h4>施工作业基本信息</h4>
-    <el-form
-      class="custom-form"
-      label-width="100"
-      label-position="left"
-    >
-      <el-form-item label="施工作业名称">
-        {{selWorInfo.jobName}}
-      </el-form-item>
-      <el-form-item label="施工区域">
-        {{`${selWorInfo.roadName}${selWorInfo.landmarkStart}至${selWorInfo.landmarkStartId}`}}
-      </el-form-item>
-      <el-form-item label="车道">
-        {{selWorInfo.lane}}
-      </el-form-item>
-      <el-form-item label="计划施工时间">
-        {{`${selWorInfo.planStartTime}至${selWorInfo.planEndTime}`}}
-      </el-form-item>
-      <el-form-item label="选择联系人">
-        {{selWorInfo.electricity}}
-      </el-form-item>
-      <el-form-item label="管理中心">
-        {{`${selWorInfo.contactName}-${selWorInfo.contactPhone}`}}
-      </el-form-item>
-      <el-form-item label="备注">
-        {{`${selWorInfo.remark}`}}
-      </el-form-item>
-    </el-form>
-    <h4>施工作业开工信息</h4>
-    <el-form
-      class="custom-form"
-      label-width="100"
-      label-position="left"
-    >
-      <el-form-item label="施工作业名称">
-        <div>{{selWorInfo.jobStatus | jonFil }}</div>
-        <div>开始施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.startTime }}</div>
-        <div>结束施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.endTime }}</div>
-      </el-form-item>
-      <el-form-item label="施工作业平面图">
-      </el-form-item>
-      <el-form-item label="施工作业视频">
-      </el-form-item>
-      <el-form-item label="违规消息">
-      </el-form-item>
-      <el-form-item label="施工作业评价">
-      </el-form-item>
-    </el-form>
+    <el-scrollbar style="height:100%">
+      <el-page-header
+        content="施工作业详情"
+        @back="closeWorInf"
+      >
+      </el-page-header>
+      <h4>施工作业基本信息</h4>
+      <el-form
+        class="custom-form"
+        label-width="100"
+        label-position="left"
+      >
+        <el-form-item label="施工作业名称">
+          {{selWorInfo.jobName}}
+        </el-form-item>
+        <el-form-item label="施工区域">
+          {{`${selWorInfo.roadName}${selWorInfo.landmarkStart}至${selWorInfo.landmarkStartId}`}}
+        </el-form-item>
+        <el-form-item label="车道">
+          {{selWorInfo.lane}}
+        </el-form-item>
+        <el-form-item label="计划施工时间">
+          {{`${selWorInfo.planStartTime.substr(0,10)}至${selWorInfo.planEndTime.substr(0,10)}`}}
+        </el-form-item>
+        <el-form-item label="管理中心">
+          {{selWorInfo.centerName}}
+        </el-form-item>
+        <el-form-item label="联系人">
+          {{`${selWorInfo.contactName}-${selWorInfo.contactPhone}`}}
+        </el-form-item>
+        <el-form-item label="备注">
+          {{`${selWorInfo.remark}`}}
+        </el-form-item>
+      </el-form>
+      <h4>施工作业开工信息</h4>
+      <el-form
+        class="custom-form"
+        label-width="120"
+        label-position="left"
+      >
+        <el-form-item label="施工作业名称">
+          <div>{{selWorInfo.jobStatus | jonFil }}</div>
+          <div>开始施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.startTime }}</div>
+          <div>结束施工&nbsp;&nbsp;&nbsp;&nbsp;{{ selWorInfo.endTime }}</div>
+        </el-form-item>
+        <el-form-item label="施工作业平面图">
+          <div
+            ref="map"
+            class="map-box"
+            id="map"
+          />
+        </el-form-item>
+        <!-- <el-form-item label="施工作业视频">
+        </el-form-item>
+        <el-form-item label="违规消息">
+        </el-form-item>
+        <el-form-item label="施工作业评价">
+        </el-form-item> -->
+      </el-form>
+    </el-scrollbar>
   </div>
 </template>
 
 <script>
+import mapMixin from './mixins/mapMixin';
 export default {
   props: {
     selWorInfo: {
@@ -64,6 +72,7 @@ export default {
       default: null
     },
   },
+  mixins: [mapMixin],
   filters: {
     jonFil: (jobStatus) => {
       switch (jobStatus) {
@@ -99,6 +108,15 @@ export default {
   text-align: center;
 }
 .custom-form {
-  margin: 50px 40px 0;
+  margin: 10px 40px 0;
+}
+h4 {
+  margin: 10px 0;
+  text-align: left;
+  font-size: 18px;
+}
+.map-box {
+  width: 600px;
+  height: 400px;
 }
 </style>
