@@ -23,25 +23,55 @@
         prop="deviceNumber"
       >
         <el-select
-          v-model="form.roadId"
-          placeholder="请选择公路"
-          clearable
+          v-model="roadId"
+          filterable
+          remote
+          reserve-keyword
+          placeholder="请输入公路编码"
+          :remote-method="roadRemoteMethod"
+          :loading="loading"
         >
-          <el-option />
+          <el-option
+            v-for="item in highWayList"
+            :key="item.attributes.ID"
+            :label="`${item.attributes.LXMC} - ${item.attributes.KXMC || ''}`"
+            :value="item.attributes.LXBH"
+          />
         </el-select>
         <el-select
-          v-model="form.landmarkStartId"
-          placeholder="请选择起点桩号"
+          style="marginLeft: 20px"
+          v-model="landmarkStartId"
+          placeholder="请输入起点桩号"
+          filterable
+          remote
+          reserve-keyword
+          :remote-method="numberRemoteMethod"
+          :loading="loading"
           clearable
+          :disabled="roadId === ''"
         >
-          <el-option />
+          <el-option
+            v-for="item in searchNumberList"
+            :key="item.attributes.SFBM"
+            :label="`${item.attributes.KXMC} - ${item.attributes.SCZH}`"
+            :value="item.attributes.SFBM"
+          />
         </el-select>
         <el-select
-          v-model="form.landmarkStartId"
-          placeholder="请选择终点桩号"
+          style="marginLeft: 20px"
+          v-model="landmarkEndId"
+          placeholder="请输入终点桩号"
+          :remote-method="numberRemoteMethod"
+          :loading="loading"
           clearable
+          :disabled="roadId === ''"
         >
-          <el-option />
+          <el-option
+            v-for="item in searchNumberList"
+            :key="item.attributes.SFBM"
+            :label="`${item.attributes.KXMC} - ${item.attributes.SCZH}`"
+            :value="item.attributes.SFBM"
+          />
         </el-select>
       </el-form-item>
       <el-form-item
@@ -143,7 +173,7 @@
 </template>
 
 <script>
-import { saveWor } from '@/api/system/constructionOperation';
+import { saveWor, getHighwayInfo, getMileagePile } from '@/api/system/constructionOperation';
 import optionMixin from './mixins/optionMixin';
 import centerOption from './mixins/centerTreeMixin';
 export default {
@@ -156,8 +186,15 @@ export default {
   },
   data () {
     return {
+      loading: false,
       dialogVisible: false,
       isEdit: 0,
+      highWayList: [],
+      numberList: [],
+      searchNumberList: [],
+      roadId: '',
+      landmarkStartId: '',
+      landmarkEndId: '',
       form: {
         centerId: "",
         centerName: "",
@@ -245,6 +282,31 @@ export default {
       } else {
         failFun()
       }
+    },
+
+    roadRemoteMethod (query) {
+      const upString = query.toLocaleUpperCase()
+      this.getHighwayInfo(upString)
+      this.getMileagePile(this.roadId)
+    },
+
+    numberRemoteMethod (query) {
+      this.searchNumberList = this.numberList.fliter(item => item.SCZH.toString().indexOf(query) > -1)
+    },
+
+    // 查询公路
+    async getHighwayInfo (query) {
+      this.loading = true
+      const { result } = await getHighwayInfo({ pageSize: 20, pageNum: 1, roadCode: query })
+      this.highWayList = result.data.features
+      this.loading = false
+    },
+    // 查询桩号
+    async getMileagePile (roadId) {
+      this.loading = true
+      const { result } = await getMileagePile({ pageSize: 1000, pageNum: 1, roadCode: roadId })
+      this.numberList = result.data.features
+      this.loading = false
     }
   },
 }

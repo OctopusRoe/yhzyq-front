@@ -75,7 +75,7 @@
     </el-table-column>
       <el-table-column v-if="false" prop="id" lable="编号"> </el-table-column>
       <el-table-column prop="title" label="标题" width="240">
-        <template scope="scope">
+        <template slot-scope="scope">
           <div
             style="cursor: pointer; color: #1890ff;"
             @click="onDetail(scope.row)"

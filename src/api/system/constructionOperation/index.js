@@ -8,7 +8,9 @@ const url = {
   pageDataList: '/yhzyq/workJob/pageDataList',
   saveOrUpdate: '/yhzyq/workJob/saveOrUpdate',
   selectById: '/yhzyq/workJob/selectById',
-  queryMangeCenter: '/yhzyq/workJob/queryMangeCenter'
+  queryMangeCenter: '/yhzyq/workJob/queryMangeCenter',
+  roadInfo: '/geo/getRoadInfo',
+  mileagePile: '/geo/getMileagePile'
 }
 
 // 删除施工作业
@@ -56,8 +58,34 @@ export function queryMangeCenter (params) {
   });
 }
 
-// export function getHighwayInfo() {
-//   return request({
-//     url: url.
-//   })
-// }
+/**
+ * @description 查询公路
+ * @param {Object} params
+ * @param {Number} params.pageNum 起始页面
+ * @param {Number} params.pageSize 列表展示大小
+ * @param {String} params.roadCode 路线编码,或者文字
+ * @returns 
+ */
+export function getHighwayInfo (params) {
+  return request({
+    url: url.roadInfo,
+    method: 'get',
+    params
+  })
+}
+
+/**
+ * @description 查询桩号
+ * @param {Object} params
+ * @param {Number} params.pageNum 起始页面
+ * @param {Number} params.pageSize 列表展示大小
+ * @param {String} params.roadCode 路线编码,或者文字
+ * @returns 
+ */
+export function getMileagePile (params) {
+  return request({
+    url: url.mileagePile,
+    method: 'get',
+    params
+  })
+}

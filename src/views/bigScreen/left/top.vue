@@ -44,8 +44,8 @@ export default {
   created () {
   },
   mounted () {
-    // this.querySelectDeviceByTypeCount()
-    // this.queryCenterCount()
+    this.querySelectDeviceByTypeCount()
+    this.queryCenterCount()
   },
   methods: {
     // 获取设备总量列表

@@ -90,7 +90,7 @@ export default {
   watch: {
     selWorInfo: {
       immediate: true,
-      handler(info) {
+      handler (info) {
         if (info && info?.centerPoint?.length) {
           setTimeout(() => {
             // info.centerPoint
@@ -103,10 +103,10 @@ export default {
     }
   },
   methods: {
-    closeWorInf() {
+    closeWorInf () {
       this.$emit("update:selWorInfo", null)
     },
-    splitStrArr(roadGeo) {
+    splitStrArr (roadGeo) {
       const arr = []
       const resArr = roadGeo.split(',').map((item) => {
         const arr = item.split(' ')
@@ -115,11 +115,11 @@ export default {
       arr.push(resArr)
       return arr
     },
-    setMapCenter(center = [115.904642, 28.680854]) {
+    setMapCenter (center = [115.904642, 28.680854]) {
       this.map.setCenter(center)
       this.map.setZoom(15)
     },
-    createPolygon(point = [
+    createPolygon (point = [
       [115.904642, 28.680854],
       [115.90469, 28.680417],
       [115.905204, 28.680444],
@@ -133,16 +133,14 @@ export default {
       [115.905693, 28.680914],
       [115.904642, 28.680854]
     ]) {
-      console.log('%c 🍗 [point]: ', 'font-size:20px;background-color: #465975;color:#fff;', [point]);
       const gridPolygon = this.map.GridPolygon({
-        stroke: { color: 'rgba(255, 255, 255, 0.8)', width: '200', lineDash: [0, 0] }
+        stroke: { color: 'rgba(255, 255, 255, 0.8)', width: 10, lineDash: [0, 0] }
       })
       gridPolygon.create({
         point: [point],
         color: '#fff'
       })
       this.map.addLayer(gridPolygon.layer)
-      console.log('%c 🍵 this.map: ', 'font-size:20px;background-color: #4b4b4b;color:#fff;', this.map);
     }
   },
 }

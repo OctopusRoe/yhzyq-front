@@ -9,6 +9,7 @@ import TableTitleTwo from '../components/tableTitleTwo'
 import TableItemTwo from '../components/tableItemTwo'
 
 import { tableTitle } from './config'
+import { workJobInfo } from '../api/index'
 
 import ex from './mock'
 
@@ -23,7 +24,7 @@ export default {
   data () {
     return {
       tableTitle,
-      ex: ex()
+      tableList: []
     }
   },
   computed: {
@@ -37,8 +38,13 @@ export default {
   created () {
   },
   mounted () {
+    this.workJobInfo()
   },
   methods: {
+    async workJobInfo () {
+      const { result } = await workJobInfo()
+      this.tableList = result
+    }
   }
 
 }
@@ -54,7 +60,7 @@ export default {
       <div class="table-content">
         <el-scrollbar style="height: 490px">
           <TableItemTwo
-            v-for="(item, index) in ex"
+            v-for="(item, index) in tableList"
             :key="index"
             :item="item"
           />

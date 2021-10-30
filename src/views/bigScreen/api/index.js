@@ -7,7 +7,10 @@ const path = {
   manageCenter: '/yhzyq/workJob/queryMangeCenter',
   typeCount: '/yhBigScreen/selectDeviceByTypeCount',
   deviceManager: '/yhDevice/selectDeviceByMangeCenter',
-  centerCount: '/yhBigScreen/selectDeviceByCenterCount'
+  centerCount: '/yhBigScreen/selectDeviceByCenterCount',
+  workJobCount: '/yhBigScreen/selectCenterWorkJobCount',
+  workJobInfo: '/yhBigScreen/selectWorkJobInfo',
+  MonthWorkJobCount: '/yhMonthWorkJobCountBigScreen/select'
 }
 
 // 获取地图数据
@@ -33,4 +36,19 @@ export function selectDeviceByMangeCenter (params) {
 // 查询管理中心设备
 export function queryCenterCount () {
   return request.get(path.centerCount)
+}
+
+// 管理中心施工情况
+export function workJobCount () {
+  return request.get(path.workJobCount)
+}
+
+// 施工信息
+export function workJobInfo () {
+  return request.get(path.workJobInfo)
+}
+
+// 月度施工信息
+export function monthWorkJobCount () {
+  return request.get(path.MonthWorkJobCount)
 }

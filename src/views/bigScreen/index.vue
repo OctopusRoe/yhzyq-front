@@ -21,7 +21,6 @@ import {
   querySelectDeviceByTypeCount,
   selectDeviceByMangeCenter
 } from './api/index'
-import MapOverlayer from './components/mapOverlayer'
 import controlMap from './controlMap'
 
 export default {
@@ -30,8 +29,7 @@ export default {
     Left,
     Right,
     Example,
-    DropDownTree,
-    MapOverlayer
+    DropDownTree
   },
   mixins: [controlMap],
   props: {
@@ -91,18 +89,18 @@ export default {
         minZoom: 7
       })
 
-      this.map.useGLKF({
-        url: tileBaseUrl,
-        data: data,
-        proj: 'EPSG: 4326'
-      })
-
-      // this.map.useTianDiTu({
-      //   type: ['vec', 'cva'],
-      //   proj: 'EPSG:4326',
-      //   key: 'a3f0bbf7db728e8db4ebbe860679d4bb',
-      //   url: 'http://t{0-7}.tianditu.gov.cn/'
+      // this.map.useGLKF({
+      //   url: tileBaseUrl,
+      //   data: data,
+      //   proj: 'EPSG: 4326'
       // })
+
+      this.map.useTianDiTu({
+        type: ['vec', 'cva'],
+        proj: 'EPSG:4326',
+        key: 'a3f0bbf7db728e8db4ebbe860679d4bb',
+        url: 'http://t{0-7}.tianditu.gov.cn/'
+      })
     },
 
     // 获取管理中心
@@ -121,11 +119,6 @@ export default {
     // 点击树形
     nodeClick (data, node) {
       this.selectDeviceByMangeCenter(data.id)
-    },
-
-    // 关闭 overlayer
-    closeOverlayer (data) {
-      document.getElementById('viewDomMarkder').style.display = 'none'
     },
 
     // 转跳意见反馈
@@ -162,27 +155,102 @@ export default {
       @clcik="goToYJFK"
     />
 
-    <div class="overlayer-center-box">
-      <MapOverlayer
-        ref="overlayer"
-        id="viewDomMarker"
-      />
-    </div>
-
   </div>
 </template>
 <style lang="scss" scoped>
-.overlayer-center-box {
-  display: none;
+::v-deep .content-box {
+  width: 100%;
+  height: 40px;
+  display: flex;
 }
-.big-screen-box {
+
+::v-deep .line-box {
+  border-bottom: 1px solid #cbebec;
+}
+
+::v-deep .overlayer-box {
+  width: 324px;
+  height: 269px;
+  background: url('~./assets/images/five.png') no-repeat center / contain;
+  background-size: 324px 269px;
+  position: relative;
+}
+
+::v-deep .title-box {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+::v-deep .title {
+  padding: 10px 0 0 0;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::v-deep .big-screen-box {
   height: 1080px;
   width: 1920px;
   background-color: rgb(4, 2, 44);
   position: relative;
   z-index: 0;
 }
+::v-deep .close {
+  padding: 22px 20px 0 0;
+}
 
+::v-deep .close:hover {
+  cursor: pointer;
+}
+
+::v-deep .center-box-box {
+  width: 324px;
+  height: 219px;
+  padding: 5px 5px;
+}
+
+::v-deep .item-box {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0 13px;
+  width: 100%;
+  height: 40px;
+}
+
+::v-deep .center-title {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+::v-deep .center-center {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+::v-deep .one-zindex {
+  z-index: 100;
+}
+
+/*************************************/
 .map-box {
   width: 1920px;
   height: 1080px;

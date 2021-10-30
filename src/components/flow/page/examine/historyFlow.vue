@@ -2,9 +2,9 @@
   <el-dialog :title="title" :visible.sync="showHistory" append-to-body>
     <div>
       <el-steps  >
-          <el-step  v-for="itme in nodeList" :title="itme.name" :status="itme.order < order? 'success':itme.order===order?'process ':itme.order > order?'wait':'wait'" finish-status="finish">{{itme.name}}</el-step>
+          <el-step  v-for="(itme, index) in nodeList" :key="index" :title="itme.name" :status="itme.order < order? 'success':itme.order===order?'process ':itme.order > order?'wait':'wait'" finish-status="finish">{{itme.name}}</el-step>
       </el-steps>
-      
+
     </div>
     <div class="table-box">
       <el-table ref="daiBanList" :data="historyData" height="100%" row-key="id">

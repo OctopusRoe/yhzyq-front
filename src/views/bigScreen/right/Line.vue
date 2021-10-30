@@ -10,6 +10,16 @@
 export default {
   name: 'App',
   components: {},
+  props: {
+    nameList: {
+      type: Array,
+      default: () => []
+    },
+    valueList: {
+      type: Array,
+      default: () => []
+    }
+  },
   computed: {
     options () {
       return {
@@ -45,7 +55,7 @@ export default {
           axisTick: {
             show: false,
           },
-          data: ['2021-2-17', '2021-3-17', '2021-4-17', '2021-5-17', '2021-6-17', '2021-7-17', '2021-8-17',],
+          data: this.nameList
         }],
         yAxis: [{
           type: 'value',
@@ -115,7 +125,7 @@ export default {
             shadowColor: 'rgba(53,142,215, 0.9)', //阴影颜色
             shadowBlur: 20 //shadowBlur设图形阴影的模糊大小。配合shadowColor,shadowOffsetX/Y, 设置图形的阴影效果。
           },
-          data: [100, 120, 110, 60, 70, 130, 150]
+          data: this.valueList
         }
         ]
       }

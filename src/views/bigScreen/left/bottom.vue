@@ -7,6 +7,8 @@
 import TitleBox from '../components/titleBox'
 import Bar from './Bar.vue'
 
+import { workJobCount } from '../api/index'
+
 export default {
   components: {
     TitleBox,
@@ -16,6 +18,8 @@ export default {
   },
   data () {
     return {
+      nameList: [],
+      valueList: []
     }
   },
   computed: {
@@ -29,8 +33,17 @@ export default {
   created () {
   },
   mounted () {
+    this.workJobCount()
   },
   methods: {
+    async workJobCount () {
+      const { result } = await workJobCount()
+      result.forEach((item, index) => {
+        if (index > 7) return
+        this.$set(this.nameList, index, item.name)
+        this.$set(this.valueList, index, ~~item.mileSum)
+      })
+    }
   }
 
 }
@@ -39,7 +52,10 @@ export default {
   <div class="big-screen-left-buttom-box">
     <TitleBox title="管理中心施工情况" />
     <div class="echarts-box">
-      <Bar />
+      <Bar
+        :nameList="nameList"
+        :valueList="valueList"
+      />
     </div>
   </div>
 </template>

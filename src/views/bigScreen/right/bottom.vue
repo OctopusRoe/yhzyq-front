@@ -7,6 +7,8 @@
 import TitleBox from '../components/titleBox'
 import LineComponent from './Line.vue'
 
+import { monthWorkJobCount } from '../api/index'
+
 export default {
   components: {
     TitleBox,
@@ -16,6 +18,8 @@ export default {
   },
   data () {
     return {
+      nameList: [],
+      valueList: []
     }
   },
   computed: {
@@ -31,6 +35,14 @@ export default {
   mounted () {
   },
   methods: {
+    async monthWorkJobCount () {
+      const { result } = await monthWorkJobCount()
+      result.forEach((item, index) => {
+        if (index > 7) return
+        this.$set(this.nameList, index, item.name)
+        this.$set(this.valueList, index, ~~item.mileSum)
+      })
+    }
   }
 
 }
@@ -39,7 +51,10 @@ export default {
   <div class="big-screen-right-buttom-box">
     <TitleBox title="月度施工情况" />
     <div class="echarts-box">
-      <LineComponent />
+      <LineComponent
+        :nameList="nameList"
+        :valueList="valueList"
+      />
     </div>
   </div>
 </template>

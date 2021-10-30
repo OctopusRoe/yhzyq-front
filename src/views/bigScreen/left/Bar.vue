@@ -9,6 +9,16 @@
 
 export default {
   name: 'App',
+  props: {
+    nameList: {
+      type: Array,
+      default: () => []
+    },
+    valueList: {
+      type: Array,
+      default: () => []
+    }
+  },
   components: {},
   computed: {
     options () {
@@ -30,7 +40,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['抚州管理中心', '赣州管理中心', '萍乡管理中心', '南昌西管理中心', '九江管理中心', '上饶管理中心', '南昌东管理中心'],
+          data: this.nameList,
           axisLabel: {
             show: true,
             interval: 0,
@@ -64,7 +74,7 @@ export default {
         },
         series: [
           {
-            data: [120, 200, 150, 80, 70, 110, 130],
+            data: this.valueList,
             type: 'bar',
             barWidth: 25,
             color: {

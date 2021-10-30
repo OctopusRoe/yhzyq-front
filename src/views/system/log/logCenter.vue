@@ -70,7 +70,7 @@
         prop="contents"
         label="日志内容"
       >
-        <template scope="scope">
+        <template slot-scope="scope">
           <div
             style="cursor: pointer; color: #1890ff;"
             @click="onDetail(scope.row)"
@@ -164,7 +164,7 @@ export default {
       pageInfo: {
         total: 0,
         pages: 0,
-        
+
       },
       tableData: [],
       detailData: {
