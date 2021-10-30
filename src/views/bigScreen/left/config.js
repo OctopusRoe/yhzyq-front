@@ -8,29 +8,25 @@ const numCardList = [
     src: require('../assets/images/six.png'),
     color: '#3BFFFF',
     label: '智能锥桶',
-    key: '',
-    mock: '389'
+    key: 'zhuitong',
   },
   {
     src: require('../assets/images/seven.png'),
     color: '#FFD33B',
     label: '雷达',
-    key: '',
-    mock: '128'
+    key: 'leida',
   },
   {
     src: require('../assets/images/eight.png'),
     color: '#FF3BD3',
     label: '摄像机',
-    key: '',
-    mock: '689'
+    key: 'shexiangji',
   },
   {
     src: require('../assets/images/night.png'),
     color: '#0190FF',
     label: '智能标识牌',
-    key: '',
-    mock: '999'
+    key: 'biaoshipai',
   },
 ]
 

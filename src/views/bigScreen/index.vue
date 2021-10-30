@@ -112,12 +112,6 @@ export default {
       this.treeList = back.result
     },
 
-    // 获取设备总量列表
-    async querySelectDeviceByTypeCount () {
-      const back = await querySelectDeviceByTypeCount()
-      console.log(back)
-    },
-
     // 获取全部设备信息
     async selectDeviceByMangeCenter (id = '') {
       const back = await selectDeviceByMangeCenter({ id: id })
@@ -131,9 +125,6 @@ export default {
 
     // 关闭 overlayer
     closeOverlayer (data) {
-      console.log('%c 🍏 data: ', 'font-size:20px;background-color: #B03734;color:#fff;', data);
-      // this.map.removeOverlay(this.map.searchOverlays('viewMarker'))
-      console.log('%c 🍚 document.getElementById(data.item.id): ', 'font-size:20px;background-color: #33A5FF;color:#fff;', document.getElementById(data.item.id));
       document.getElementById('viewDomMarkder').style.display = 'none'
     },
 

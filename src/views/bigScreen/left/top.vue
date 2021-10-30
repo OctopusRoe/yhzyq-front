@@ -11,7 +11,10 @@ import TableItemOne from '../components/tableItemOne'
 
 import { numCardList, tableTitle } from './config'
 
-import ex from './mock'
+import {
+  querySelectDeviceByTypeCount,
+  queryCenterCount
+} from '../api/index'
 
 export default {
   components: {
@@ -26,7 +29,8 @@ export default {
     return {
       numCardList,
       tableTitle,
-      ex: ex()
+      numCardData: {},
+      centerList: []
     }
   },
   computed: {
@@ -40,8 +44,20 @@ export default {
   created () {
   },
   mounted () {
+    // this.querySelectDeviceByTypeCount()
+    // this.queryCenterCount()
   },
   methods: {
+    // 获取设备总量列表
+    async querySelectDeviceByTypeCount () {
+      const { result } = await querySelectDeviceByTypeCount()
+      this.numCardData = result
+    },
+    // 获取管理中心列表数据
+    async queryCenterCount () {
+      const { result } = await queryCenterCount()
+      this.centerList = result
+    }
   }
 
 }
@@ -55,7 +71,7 @@ export default {
         v-for="(item, index) in numCardList"
         :key="index"
         :background="item.src"
-        :data="item.mock"
+        :data="numCardData[item.key]"
         :label="item.label"
         :color="item.color"
       />
@@ -74,7 +90,7 @@ export default {
       <div class="table-content">
         <el-scrollbar style="height:400px">
           <TableItemOne
-            v-for="(item, index) in ex"
+            v-for="(item, index) in centerList"
             :key="index"
             :item="item"
           />

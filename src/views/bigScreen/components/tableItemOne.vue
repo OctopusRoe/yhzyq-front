@@ -34,16 +34,16 @@ export default {
 <template>
   <div class="table-item-box">
     <div class="item-column-one center-box">
-      {{item.colOne}}
+      {{item.name}}
     </div>
     <div class="item-column-two center-box">
-      {{item.colTwo}}
+      {{item.zhuitong}}
     </div>
     <div class="item-column-two center-box">
-      {{item.colThree}}
+      {{item.shexiangji}}
     </div>
     <div class="item-column-two center-box">
-      {{item.colFour}}
+      {{item.biaoshipai}}
     </div>
   </div>
 </template>

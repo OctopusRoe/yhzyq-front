@@ -26,17 +26,23 @@
           v-model="form.roadId"
           placeholder="请选择公路"
           clearable
-        ></el-select>
+        >
+          <el-option />
+        </el-select>
         <el-select
           v-model="form.landmarkStartId"
           placeholder="请选择起点桩号"
           clearable
-        ></el-select>
+        >
+          <el-option />
+        </el-select>
         <el-select
           v-model="form.landmarkStartId"
           placeholder="请选择终点桩号"
           clearable
-        ></el-select>
+        >
+          <el-option />
+        </el-select>
       </el-form-item>
       <el-form-item
         label="请选择车道"
@@ -148,7 +154,7 @@ export default {
       default: () => { }
     },
   },
-  data() {
+  data () {
     return {
       dialogVisible: false,
       isEdit: 0,
@@ -200,7 +206,7 @@ export default {
     }
   },
   computed: {
-    rules() {
+    rules () {
       return {
         // deviceName: [{ required: true, message: '请输入设备名称', trigger: 'blur' }],
         // deviceNumber: [{ required: true, message: '请输入设备编号', trigger: 'blur' }],
@@ -210,7 +216,7 @@ export default {
     }
   },
   methods: {
-    open(isEdit, info) {
+    open (isEdit, info) {
       this.isEdit = isEdit
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
@@ -219,10 +225,10 @@ export default {
       }
       this.dialogVisible = true
     },
-    close() {
+    close () {
       this.dialogVisible = false
     },
-    submitForm() {
+    submitForm () {
       this.$refs['formRef'].validate((valid) => {
         if (valid) {
           this.saveWor(undefined, () => { this.close(); this.$emit("submitSucc") })
@@ -231,7 +237,7 @@ export default {
         }
       })
     },
-    async saveWor(form = this.form, sucFun, failFun) {
+    async saveWor (form = this.form, sucFun, failFun) {
       const { code, message } = await saveWor(form)
       if (code === 200) {
         this.$message.success(message)
