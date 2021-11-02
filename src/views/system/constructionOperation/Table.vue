@@ -8,100 +8,92 @@
       type='danger'
       @click="deleteWor()"
     >删除</el-button>
-    <el-table
+    <vxe-table
       v-loading="loading"
-      class="custom-table"
       :data="tableData"
-      height="650"
+      border
+      auto-resize
+      show-overflow
       highlight-current-row
-      @row-click="handleRowClick"
-      @selection-change="selectionChange"
+      @cell-click="handleRowClick"
+      @checkbox-change="selectionChange"
+      @checkbox-all="selectionChange"
     >
-      <el-table-column
-        type="selection"
-        width="55"
+      <vxe-table-column
+        type="checkbox"
+        align="center"
+      ></vxe-table-column>
+      <!-- <vxe-table-column
+        field="deviceName"
+        title="违规提醒"
       >
-      </el-table-column>
-      <el-table-column
-        prop="index"
-        label="序号"
-        width="50"
+      </vxe-table-column> -->
+      <vxe-table-column
+        field="jobName"
+        title="施工作业名称"
       >
-      </el-table-column>
-      <!-- <el-table-column
-        prop="deviceName"
-        label="违规提醒"
-        width="50"
+      </vxe-table-column>
+      <!-- <vxe-table-column
+        field=""
+        title="施工区域"
       >
-      </el-table-column> -->
-      <el-table-column
-        prop="jobName"
-        label="施工作业名称"
-        width="200"
-      >
-      </el-table-column>
-      <!-- <el-table-column
-        prop=""
-        label="施工区域"
-        width="200"
-      >
-      </el-table-column> -->
-      <el-table-column
-        prop="planStartTime"
-        label="计划开始时间"
-        width="200"
+      </vxe-table-column> -->
+      <vxe-table-column
+        field="planStartTime"
+        title="计划开始时间"
       >
         <template v-slot="{row}">
           {{row.planStartTime.substr(0,10)}}
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="planEndTime"
-        label="计划结束时间"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="planEndTime"
+        title="计划结束时间"
       >
         <template v-slot="{row}">
           {{row.planEndTime.substr(0,10)}}
         </template>
-      </el-table-column>
-      <el-table-column
-        label="联系人"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        title="联系人"
       >
         <template slot-scope="scope">
           {{`${scope.row.contactName}--${scope.row.contactPhone}`}}
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="deviceType"
-        label="施工状态"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="deviceType"
+        title="施工状态"
       >
         <template slot-scope="scope">
           {{selectDictLabelEx(worStaOptions,scope.row.jobStatus.toString(),'vals')}}
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="jobTimeStart"
-        label="开始时间"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="jobTimeStart"
+        title="开始时间"
       >
-      </el-table-column>
-      <el-table-column
-        prop="jobTimeEnd"
-        label="结束时间"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="jobTimeEnd"
+        title="结束时间"
       >
-      </el-table-column>
-      <el-table-column label="操作">
+      </vxe-table-column>
+      <vxe-table-column title="操作">
         <template slot-scope="scope">
           <el-button
-            type="success"
+            type="text"
+            size="mini"
             @click.stop="openDialog(1,scope.row)"
           >编辑</el-button>
+          <el-button
+            type="text"
+            size="mini"
+            @click.stop="deleteWor([scope.row.id])"
+          >删除</el-button>
         </template>
-      </el-table-column>
-    </el-table>
+      </vxe-table-column>
+    </vxe-table>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -109,6 +101,7 @@
       :page-sizes="[10,15,25,50]"
       :page-size="pagination.pageSize"
       layout="total, sizes, prev, pager, next"
+      background
       :total="pagination.total"
     >
     </el-pagination>

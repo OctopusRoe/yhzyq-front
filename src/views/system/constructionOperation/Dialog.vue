@@ -34,21 +34,18 @@
           <el-option
             v-for="item in highWayList"
             :key="item.attributes.ID"
-            :label="`${item.attributes.LXMC} - ${item.attributes.KXMC || ''}`"
+            :label="`${item.attributes.LXMC}`"
             :value="item.attributes.LXBH"
           />
         </el-select>
         <el-select
-          style="marginLeft: 20px"
+          style="marginLeft: 10px"
           v-model="landmarkStartId"
-          placeholder="请输入起点桩号"
-          filterable
-          remote
-          reserve-keyword
+          placeholder="请选择起点桩号"
           :remote-method="numberRemoteMethod"
           :loading="loading"
           clearable
-          :disabled="roadId === ''"
+          :disabled="!highWayList.length"
         >
           <el-option
             v-for="item in searchNumberList"
@@ -58,13 +55,13 @@
           />
         </el-select>
         <el-select
-          style="marginLeft: 20px"
+          style="marginLeft: 10px"
           v-model="landmarkEndId"
-          placeholder="请输入终点桩号"
+          placeholder="请选择终点桩号"
           :remote-method="numberRemoteMethod"
           :loading="loading"
           clearable
-          :disabled="roadId === ''"
+          :disabled="!highWayList.length"
         >
           <el-option
             v-for="item in searchNumberList"
@@ -184,7 +181,7 @@ export default {
       default: () => { }
     },
   },
-  data () {
+  data() {
     return {
       loading: false,
       dialogVisible: false,
@@ -243,7 +240,7 @@ export default {
     }
   },
   computed: {
-    rules () {
+    rules() {
       return {
         // deviceName: [{ required: true, message: '请输入设备名称', trigger: 'blur' }],
         // deviceNumber: [{ required: true, message: '请输入设备编号', trigger: 'blur' }],
@@ -253,7 +250,7 @@ export default {
     }
   },
   methods: {
-    open (isEdit, info) {
+    open(isEdit, info) {
       this.isEdit = isEdit
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
@@ -262,10 +259,10 @@ export default {
       }
       this.dialogVisible = true
     },
-    close () {
+    close() {
       this.dialogVisible = false
     },
-    submitForm () {
+    submitForm() {
       this.$refs['formRef'].validate((valid) => {
         if (valid) {
           this.saveWor(undefined, () => { this.close(); this.$emit("submitSucc") })
@@ -274,7 +271,7 @@ export default {
         }
       })
     },
-    async saveWor (form = this.form, sucFun, failFun) {
+    async saveWor(form = this.form, sucFun, failFun) {
       const { code, message } = await saveWor(form)
       if (code === 200) {
         this.$message.success(message)
@@ -284,27 +281,33 @@ export default {
       }
     },
 
-    roadRemoteMethod (query) {
+    async roadRemoteMethod(query) {
       const upString = query.toLocaleUpperCase()
-      this.getHighwayInfo(upString)
-      this.getMileagePile(this.roadId)
+      await this.getHighwayInfo(upString)
+      await this.getMileagePile(this.roadId)
     },
 
-    numberRemoteMethod (query) {
+    numberRemoteMethod(query) {
       this.searchNumberList = this.numberList.fliter(item => item.SCZH.toString().indexOf(query) > -1)
     },
 
     // 查询公路
-    async getHighwayInfo (query) {
+    async getHighwayInfo(query) {
       this.loading = true
       const { result } = await getHighwayInfo({ pageSize: 20, pageNum: 1, roadCode: query })
-      this.highWayList = result.data.features
+      if (!result.data.features.length) {
+        this.highWayList = []
+      } else {
+        result.data.features?.forEach(item => {
+          this.highWayList.some((highWayItem) => highWayItem.LXBH === item.LXBH) ? '' : this.highWayList.push(item)
+        });
+      }
       this.loading = false
     },
     // 查询桩号
-    async getMileagePile (roadId) {
+    async getMileagePile(roadId) {
       this.loading = true
-      const { result } = await getMileagePile({ pageSize: 1000, pageNum: 1, roadCode: roadId })
+      const { result } = await getMileagePile({ pageSize: 100, pageNum: 1, roadCode: roadId })
       this.numberList = result.data.features
       this.loading = false
     }
