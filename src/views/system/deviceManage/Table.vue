@@ -1,90 +1,93 @@
 <template>
   <div>
-    <el-button
-      type='primary'
-      @click="openDialog(0)"
-    >新增</el-button>
-    <el-button
-      type='danger'
-      @click="deleteDev()"
-    >删除</el-button>
-    <el-table
+    <vxe-toolbar setting>
+      <template v-slot:buttons>
+        <el-button
+          type='primary'
+          @click="openDialog(0)"
+        >新增</el-button>
+        <el-button
+          type='danger'
+          @click="deleteDev()"
+        >批量删除</el-button>
+      </template>
+    </vxe-toolbar>
+    <vxe-table
       v-loading="loading"
-      class="custom-table"
       :data="tableData"
-      height="650"
+      border
+      auto-resize
+      show-overflow
       highlight-current-row
-      @row-click="handleRowClick"
-      @selection-change="selectionChange"
+      @cell-click="handleRowClick"
+      @checkbox-change="selectionChange"
+      @checkbox-all="selectionChange"
+      row-id="id"
     >
-      <el-table-column
-        type="selection"
-        width="55"
-      >
-      </el-table-column>
-      <el-table-column
-        prop="index"
-        label="序号"
+      <vxe-table-column
+        type="checkbox"
+        align="center"
         width="50"
+      ></vxe-table-column>
+      <vxe-table-column
+        field="deviceName"
+        title="设备名称"
       >
-      </el-table-column>
-      <el-table-column
-        prop="deviceName"
-        label="设备名称"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="deviceNumber"
+        title="设备编号（序列号）"
       >
-      </el-table-column>
-      <el-table-column
-        prop="deviceNumber"
-        label="设备编号（序列号）"
-        width="200"
-      >
-      </el-table-column>
-      <el-table-column
-        prop="deviceType"
-        label="设备类型"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="deviceType"
+        title="设备类型"
       >
         <template slot-scope="scope">
           {{selectDictLabelEx(devTypeOptions,scope.row.deviceType)}}
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="deviceStatus"
-        label="设备状态"
-        width="200"
+      </vxe-table-column>
+      <vxe-table-column
+        field="deviceStatus"
+        title="设备状态"
       >
         <template slot-scope="scope">
           {{selectDictLabelEx(devStaOptions,scope.row.deviceStatus)}}
         </template>
-      </el-table-column>
-      <!-- <el-table-column
-        prop="isConnectPlatform"
-        label="是否联接第三方平台"
-        width="200"
+      </vxe-table-column>
+      <!-- <vxe-table-column
+        field="isConnectPlatform"
+        title="是否联接第三方平台"
       >
-      </el-table-column> -->
-      <el-table-column
-        prop="address"
-        label="当前位置"
-        width=""
+      </vxe-table-column> -->
+      <vxe-table-column
+        field="address"
+        title="当前位置"
       >
-      </el-table-column>
-      <el-table-column
-        prop="centerName"
-        label="所属管理中心"
-        width="150"
+      </vxe-table-column>
+      <vxe-table-column
+        field="centerName"
+        title="所属管理中心"
       >
-      </el-table-column>
-      <el-table-column label="操作">
+      </vxe-table-column>
+      <vxe-table-column
+        title="操作"
+        align="center"
+      >
         <template slot-scope="scope">
           <el-button
-            type="success"
+            type="text"
+            size="mini"
             @click.stop="openDialog(1,scope.row)"
           >编辑</el-button>
+          <el-button
+            type="text"
+            size="mini"
+            @click.stop="deleteDev([scope.row.id])"
+          >删除</el-button>
         </template>
-      </el-table-column>
-    </el-table>
+      </vxe-table-column>
+    </vxe-table>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -92,6 +95,7 @@
       :page-sizes="[10,15,25,50]"
       :page-size="pagination.pageSize"
       layout="total, sizes, prev, pager, next"
+      background
       :total="pagination.total"
     >
     </el-pagination>
@@ -127,7 +131,7 @@ export default {
   },
   methods: {
     selectionChange(selection) {
-      this.selIds = selection.map((item) => item.id)
+      this.selIds = selection.records.map((item) => item.id)
     },
     openDialog(isEdit, info) {
       this.$emit("openDialog", isEdit, info)
@@ -139,7 +143,9 @@ export default {
       this.getListDev(pageNumber, undefined)
     },
     handleRowClick(row) {
-      this.$emit("update:selDevInfo", row)
+      if (row.$columnIndex !== 0) {
+        this.$emit("update:selDevInfo", row.row)
+      }
     },
     async getListDev(pageNumber = this.pagination.pageNumber, pageSize = this.pagination.pageSize) {
       try {

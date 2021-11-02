@@ -179,7 +179,7 @@ export default {
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
       } else {
-        this.form = info
+        this.form = { ...info }
       }
       this.dialogVisible = true
     },
