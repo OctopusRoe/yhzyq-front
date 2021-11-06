@@ -9,8 +9,8 @@ const url = {
   saveOrUpdate: '/yhzyq/workJob/saveOrUpdate',
   selectById: '/yhzyq/workJob/selectById',
   queryMangeCenter: '/yhzyq/workJob/queryMangeCenter',
-  roadInfo: '/geo/getRoadInfo',
-  mileagePile: '/geo/getMileagePile'
+  roadInfo: '/yhzyq/workJob/queryLoadByName',
+  mileagePile: '/yhzyq/workJob/queryMilepostByFdsf'
 }
 
 // 删除施工作业
@@ -61,9 +61,7 @@ export function queryMangeCenter (params) {
 /**
  * @description 查询公路
  * @param {Object} params
- * @param {Number} params.pageNum 起始页面
- * @param {Number} params.pageSize 列表展示大小
- * @param {String} params.roadCode 路线编码,或者文字
+ * @param {String} params.name 路段名称
  * @returns 
  */
 export function getHighwayInfo (params) {
@@ -77,9 +75,7 @@ export function getHighwayInfo (params) {
 /**
  * @description 查询桩号
  * @param {Object} params
- * @param {Number} params.pageNum 起始页面
- * @param {Number} params.pageSize 列表展示大小
- * @param {String} params.roadCode 路线编码,或者文字
+ * @param {Number} params.fdsf 路段关键词信息
  * @returns 
  */
 export function getMileagePile (params) {

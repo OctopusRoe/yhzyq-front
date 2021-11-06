@@ -149,7 +149,7 @@ export default {
       this.getListDev(pageNumber, undefined)
     },
     handleRowClick(row) {
-      this.$emit("update:selWorInfo", row)
+      this.$emit("update:selWorInfo", row.row)
     },
     async getListWor(pageNumber = this.pagination.pageNumber, pageSize = this.pagination.pageSize) {
       try {

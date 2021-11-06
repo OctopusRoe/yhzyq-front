@@ -16,7 +16,10 @@
           {{selWorInfo.jobName}}
         </el-form-item>
         <el-form-item label="施工区域">
-          {{`${selWorInfo.roadName}${selWorInfo.landmarkStart}至${selWorInfo.landmarkStartId}`}}
+          {{`${selWorInfo.roadName}${selWorInfo.landmarkStartId}至${selWorInfo.landmarkEndId}`}}
+        </el-form-item>
+        <el-form-item label="公路里程">
+          {{`${selWorInfo.mile}`}}
         </el-form-item>
         <el-form-item label="车道">
           {{selWorInfo.lane}}

@@ -23,53 +23,36 @@
         prop="deviceNumber"
       >
         <el-select
-          v-model="roadId"
+          v-model="road"
           filterable
           remote
           reserve-keyword
-          placeholder="请输入公路编码"
+          :placeholder="form.roadName?form.roadName:'请输入公路名称'"
           :remote-method="roadRemoteMethod"
           :loading="loading"
+          @change="selectRoad"
         >
           <el-option
-            v-for="item in highWayList"
-            :key="item.attributes.ID"
-            :label="`${item.attributes.LXMC}`"
-            :value="item.attributes.LXBH"
+            v-for="(item,index) in highWayList"
+            :key="index"
+            :label="`${item.lxbm}-${item.lxmc}-${item.fdmc}`"
+            :value="item.objStr"
           />
         </el-select>
-        <el-select
-          style="marginLeft: 10px"
-          v-model="landmarkStartId"
-          placeholder="请选择起点桩号"
-          :remote-method="numberRemoteMethod"
-          :loading="loading"
-          clearable
-          :disabled="!highWayList.length"
-        >
-          <el-option
-            v-for="item in searchNumberList"
-            :key="item.attributes.SFBM"
-            :label="`${item.attributes.KXMC} - ${item.attributes.SCZH}`"
-            :value="item.attributes.SFBM"
-          />
-        </el-select>
-        <el-select
-          style="marginLeft: 10px"
-          v-model="landmarkEndId"
-          placeholder="请选择终点桩号"
-          :remote-method="numberRemoteMethod"
-          :loading="loading"
-          clearable
-          :disabled="!highWayList.length"
-        >
-          <el-option
-            v-for="item in searchNumberList"
-            :key="item.attributes.SFBM"
-            :label="`${item.attributes.KXMC} - ${item.attributes.SCZH}`"
-            :value="item.attributes.SFBM"
-          />
-        </el-select>
+        <el-input
+          style="width:31%;margin: 0 1%"
+          readonly
+          disabled
+          v-model="form.landmarkStartId"
+          placeholder="起点桩号"
+        ></el-input>
+        <el-input
+          style="width:31%;margin: 0 1%"
+          readonly
+          disabled
+          v-model="form.landmarkEndId"
+          placeholder="终点桩号"
+        ></el-input>
       </el-form-item>
       <el-form-item
         label="请选择车道"
@@ -187,11 +170,7 @@ export default {
       dialogVisible: false,
       isEdit: 0,
       highWayList: [],
-      numberList: [],
-      searchNumberList: [],
-      roadId: '',
-      landmarkStartId: '',
-      landmarkEndId: '',
+      road: null,
       form: {
         centerId: "",
         centerName: "",
@@ -254,7 +233,10 @@ export default {
       this.isEdit = isEdit
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
+        this.road = null
+        this.getHighwayInfo(undefined, true)
       } else {
+        this.getHighwayInfo(undefined, true)
         this.form = info
       }
       this.dialogVisible = true
@@ -271,6 +253,13 @@ export default {
         }
       })
     },
+    selectRoad(objStr) {
+      const road = JSON.parse(objStr)
+      this.form.roadId = road.lxbm + "-" + road.fdsf
+      this.form.roadCode = road.lxbm
+      this.form.roadName = `${road.lxbm}-${road.lxmc}-${road.fdmc}`
+      this.getMileagePile(road.fdsf)
+    },
     async saveWor(form = this.form, sucFun, failFun) {
       const { code, message } = await saveWor(form)
       if (code === 200) {
@@ -282,33 +271,29 @@ export default {
     },
 
     async roadRemoteMethod(query) {
-      const upString = query.toLocaleUpperCase()
       await this.getHighwayInfo(upString)
-      await this.getMileagePile(this.roadId)
-    },
-
-    numberRemoteMethod(query) {
-      this.searchNumberList = this.numberList.fliter(item => item.SCZH.toString().indexOf(query) > -1)
     },
 
     // 查询公路
-    async getHighwayInfo(query) {
+    async getHighwayInfo(name, isInit) {
+      if (!name && !isInit) return
       this.loading = true
-      const { result } = await getHighwayInfo({ pageSize: 20, pageNum: 1, roadCode: query })
-      if (!result.data.features.length) {
-        this.highWayList = []
-      } else {
-        result.data.features?.forEach(item => {
-          this.highWayList.some((highWayItem) => highWayItem.LXBH === item.LXBH) ? '' : this.highWayList.push(item)
-        });
-      }
+      const { result } = await getHighwayInfo({ name })
+      this.highWayList = result.map((item) => {
+        return {
+          ...item,
+          objStr: JSON.stringify(item)
+        }
+      })
       this.loading = false
     },
     // 查询桩号
-    async getMileagePile(roadId) {
+    async getMileagePile(fdsf) {
       this.loading = true
-      const { result } = await getMileagePile({ pageSize: 100, pageNum: 1, roadCode: roadId })
-      this.numberList = result.data.features
+      const { result } = await getMileagePile({ fdsf })
+      this.form.landmarkStartId = result.startNumber
+      this.form.landmarkEndId = result.endNumber
+      this.form.mile = result.mile
       this.loading = false
     }
   },
