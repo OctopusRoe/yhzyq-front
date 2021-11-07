@@ -49,7 +49,7 @@ const setingList = [
   {
     label: '后台管理',
     key: 'seting',
-    path: '',
+    path: '/deviceManage/index',
     icon: require('../assets/images/seting.png'),
     active: false
   },

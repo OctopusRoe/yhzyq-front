@@ -44,11 +44,11 @@ export function workJobCount () {
 }
 
 // 施工信息
-export function workJobInfo () {
-  return request.get(path.workJobInfo)
+export function workJobInfo (params) {
+  return request.get(path.workJobInfo, { params: params })
 }
 
 // 月度施工信息
-export function monthWorkJobCount () {
-  return request.get(path.MonthWorkJobCount)
+export function monthWorkJobCount (params) {
+  return request.get(path.MonthWorkJobCount, { params: params })
 }

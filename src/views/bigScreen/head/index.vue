@@ -24,6 +24,7 @@ export default {
     activeSeting (item) {
       switch (item.key) {
         case 'seting':
+          this.$router.push(item.path)
           break;
         case 'jump':
           break;

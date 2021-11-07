@@ -19,7 +19,9 @@ import {
   tileBaseUrl,
   queryMangeCenter,
   querySelectDeviceByTypeCount,
-  selectDeviceByMangeCenter
+  selectDeviceByMangeCenter,
+  monthWorkJobCount,
+  workJobInfo
 } from './api/index'
 import controlMap from './controlMap'
 
@@ -42,7 +44,10 @@ export default {
         children: 'children',
         label: 'name'
       },
-      treeName: ''
+      treeName: '',
+      nameList: [],
+      valueList: [],
+      tableList: []
     }
   },
   computed: {
@@ -52,16 +57,14 @@ export default {
   beforeDestroy () {
     document.getElementById('app').style.cssText = 'transform: scale(1, 1.125)'
   },
-  activated () {
-  },
-  created () {
-  },
   mounted () {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
     document.getElementById('app').style.cssText = 'height: 1080px !important'
     this.getMap()
     this.getManagerCenter()
     this.selectDeviceByMangeCenter()
+    this.workJobInfo()
+    this.monthWorkJobCount()
   },
   methods: {
 
@@ -116,9 +119,27 @@ export default {
       this.createMark(back.result)
     },
 
+    // 施工列表
+    async workJobInfo (id = '') {
+      const { result } = await workJobInfo({ centerId: id })
+      this.tableList = result
+    },
+
+    // 月度施工情况
+    async monthWorkJobCount (id = '') {
+      const { result } = await monthWorkJobCount({ centerId: id })
+      result.forEach((item, index) => {
+        if (index > 7) return
+        this.$set(this.nameList, index, item.name)
+        this.$set(this.valueList, index, ~~item.mileSum)
+      })
+    },
+
     // 点击树形
     nodeClick (data, node) {
       this.selectDeviceByMangeCenter(data.id)
+      this.workJobInfo(data.id)
+      this.monthWorkJobCount(data.id)
     },
 
     // 转跳意见反馈
@@ -147,7 +168,11 @@ export default {
       @node-click="nodeClick"
     />
     <Left />
-    <Right />
+    <Right
+      :nameList="nameList"
+      :valueList="valueList"
+      :tableList="tableList"
+    />
 
     <img
       src="./assets/images/yjfk.png"

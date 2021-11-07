@@ -20,11 +20,14 @@ export default {
     TableItemTwo
   },
   props: {
+    tableList: {
+      type: Array,
+      default: () => []
+    }
   },
   data () {
     return {
-      tableTitle,
-      tableList: []
+      tableTitle
     }
   },
   computed: {
@@ -38,13 +41,8 @@ export default {
   created () {
   },
   mounted () {
-    this.workJobInfo()
   },
   methods: {
-    async workJobInfo () {
-      const { result } = await workJobInfo()
-      this.tableList = result
-    }
   }
 
 }

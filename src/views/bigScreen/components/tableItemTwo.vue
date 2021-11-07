@@ -47,7 +47,7 @@ export default {
         class="item-column center-box"
         style="width: 130px"
       >
-        {{`${item.landmarkStart} - ${item.landmarkEnd}`}}
+        {{`${~~item.landmarkEndId} - ${~~item.landmarkStartId}`}}
       </div>
       <div
         class="item-column center-box"
