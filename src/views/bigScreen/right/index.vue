@@ -24,6 +24,10 @@ export default {
     tableList: {
       type: Array,
       default: () => []
+    },
+    backValue: {
+      type: Function,
+      default: () => { }
     }
   },
   data () {
@@ -49,7 +53,10 @@ export default {
 </script>
 <template>
   <div class="big-screen-right-box">
-    <Top :tableList="tableList" />
+    <Top
+      :tableList="tableList"
+      @backvalue="backValue"
+    />
     <Bottom
       :nameList="nameList"
       :valueList="valueList"

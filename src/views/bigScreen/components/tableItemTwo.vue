@@ -41,7 +41,7 @@ export default {
         class="item-column center-box"
         style="width: 80px"
       >
-        {{item.roadName}}
+        {{item.roadName.split('-')[2]}}
       </div>
       <div
         class="item-column center-box"
@@ -96,6 +96,10 @@ export default {
   flex-flow: column nowrap;
   justify-content: center;
   color: #ffffff;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   .table-item-box {
     display: flex;

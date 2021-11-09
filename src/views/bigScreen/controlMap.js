@@ -3,6 +3,7 @@ export default {
     return {
       domMarker: null,
       viewMarker: null,
+      line: null,
       imgList: {
         DEVICE_TYPE_TACHOMETER: require('./assets/images/b3.png'),
         DEVICE_TYPE_POSITIONER: require('./assets/images/b4.png'),
@@ -48,6 +49,20 @@ export default {
 
       this.domMarker.addClick(this.createDomMarker)
       this.map.addOverlay(this.domMarker.overlays)
+    },
+
+    createLine (options) {
+      this.map.removeLayer(this.map.searchLayers('line'))
+      this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
+      this.map.addLayer(this.line.layer)
+
+      if (Array.isArray(options)) {
+        options.forEach(item => {
+          this.line.create({ point: item.point })
+        })
+      } else {
+        this.line.create({ point: options.point })
+      }
     },
 
     createDomMarker (data) {

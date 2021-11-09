@@ -70,7 +70,7 @@
     "moment": "^2.29.1",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
-    "octopus-map-one": "^0.1.4",
+    "octopus-map-one": "^0.1.5",
     "path-to-regexp": "2.4.0",
     "qs": "^6.10.1",
     "quill": "1.3.7",
