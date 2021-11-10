@@ -117,7 +117,7 @@ export default {
     // 获取全部设备信息
     async selectDeviceByMangeCenter (id = '') {
       const back = await selectDeviceByMangeCenter({ id: id })
-      // this.createMark(back.result)
+      this.createMark(back.result)
     },
 
     // 施工列表
@@ -134,7 +134,6 @@ export default {
     // 月度施工情况
     async monthWorkJobCount (id = '') {
       const { result } = await monthWorkJobCount({ centerId: id })
-      console.log('%c 🍾 result: ', 'font-size:20px;background-color: #465975;color:#fff;', result);
       result.forEach((item, index) => {
         if (index > 7) return
         this.$set(this.nameList, index, item.name)
