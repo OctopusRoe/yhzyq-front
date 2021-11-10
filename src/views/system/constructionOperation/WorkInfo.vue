@@ -21,8 +21,8 @@
         <el-form-item label="公路里程">
           {{`${selWorInfo.mile}`}}
         </el-form-item>
-        <el-form-item label="车道">
-          {{selWorInfo.lane}}
+        <el-form-item label="上下行">
+          {{selWorInfo.lane==='1'?'上行':'下行'}}
         </el-form-item>
         <el-form-item label="计划施工时间">
           {{`${selWorInfo.planStartTime.substr(0,10)}至${selWorInfo.planEndTime.substr(0,10)}`}}
@@ -55,9 +55,9 @@
             id="map"
           />
         </el-form-item>
-        <el-form-item label="施工作业视频">
+        <!-- <el-form-item label="施工作业视频">
           <div id="player"></div>
-        </el-form-item>
+        </el-form-item> -->
         <!-- <el-form-item label="违规消息">
         </el-form-item>
         <el-form-item label="施工作业评价">
@@ -69,6 +69,7 @@
 
 <script>
 import mapMixin from './mixins/mapMixin';
+import { queryLonAndLatByZH } from '../../bigScreen/api'
 export default {
   props: {
     selWorInfo: {
@@ -119,14 +120,9 @@ export default {
         //     this.realplay()
         //   }, 1000)
         // }
-        // if (info && info?.centerPoint?.length) {
-        //   setTimeout(() => {
-        //     // info.centerPoint
-        //     this.setMapCenter(undefined)
-        //     const points = this.splitStrArr(info.roadGeo)
-        //     this.createPolygon(undefined)
-        //   }, 1000)
-        // }
+        if (info) {
+          this.backValue(info)
+        }
       }
     }
   },
@@ -145,7 +141,7 @@ export default {
     },
     setMapCenter(center = [115.904642, 28.680854]) {
       this.map.setCenter(center)
-      this.map.setZoom(15)
+      this.map.setZoom(10)
     },
     createPolygon(point = [
       [115.904642, 28.680854],
@@ -169,6 +165,24 @@ export default {
         color: '#fff'
       })
       this.map.addLayer(gridPolygon.layer)
+    },
+    createLine(options) {
+      this.map.removeLayer(this.map.searchLayers('line'))
+      this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
+      this.map.addLayer(this.line.layer)
+
+      if (Array.isArray(options)) {
+        options.forEach(item => {
+          this.line.create({ point: item.point })
+        })
+      } else {
+        this.line.create({ point: options.point })
+      }
+    },
+    async backValue(item) {
+      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
+      this.setMapCenter(back.result[0])
+      this.createLine({ point: back.result })
     },
     init() {
       // 设置播放容器的宽高并监听窗口大小变化
@@ -246,6 +260,7 @@ export default {
 .detail-info {
   width: 100%;
   height: 100%;
+  padding-bottom: 100px;
   text-align: center;
 }
 .custom-form {

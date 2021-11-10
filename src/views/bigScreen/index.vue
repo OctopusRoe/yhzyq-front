@@ -37,7 +37,7 @@ export default {
   mixins: [controlMap],
   props: {
   },
-  data () {
+  data() {
     return {
       treeList: null,
       map: null,
@@ -55,10 +55,10 @@ export default {
   },
   watch: {
   },
-  beforeDestroy () {
+  beforeDestroy() {
     document.getElementById('app').style.cssText = 'transform: scale(1, 1.125)'
   },
-  mounted () {
+  mounted() {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
     document.getElementById('app').style.cssText = 'height: 1080px !important'
     this.getMap()
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
 
-    async getMap () {
+    async getMap() {
       try {
         const back = await getMapData()
         this.mapInit(back.data)
@@ -80,7 +80,7 @@ export default {
     },
 
     // 初始化地图
-    mapInit (data) {
+    mapInit(data) {
       this.map = new MapInit({
         target: this.$refs.map,
         useControl: false
@@ -108,31 +108,31 @@ export default {
     },
 
     // 获取管理中心
-    async getManagerCenter () {
+    async getManagerCenter() {
       const back = await queryMangeCenter()
       this.treeName = back.result[0].name
       this.treeList = back.result
     },
 
     // 获取全部设备信息
-    async selectDeviceByMangeCenter (id = '') {
+    async selectDeviceByMangeCenter(id = '') {
       const back = await selectDeviceByMangeCenter({ id: id })
       this.createMark(back.result)
     },
 
     // 施工列表
-    async workJobInfo (id = '') {
+    async workJobInfo(id = '') {
       const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
       this.tableList = result
       if (result.lenght === 0) return
       result.forEach(async item => {
-        const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode })
+        const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
         this.createLine({ point: back.result })
       })
     },
 
     // 月度施工情况
-    async monthWorkJobCount (id = '') {
+    async monthWorkJobCount(id = '') {
       const { result } = await monthWorkJobCount({ centerId: id })
       result.forEach((item, index) => {
         if (index > 7) return
@@ -142,19 +142,19 @@ export default {
     },
 
     // 点击树形
-    nodeClick (data, node) {
+    nodeClick(data, node) {
       this.selectDeviceByMangeCenter(data.id)
       this.workJobInfo(data.id)
       this.monthWorkJobCount(data.id)
     },
 
-    async backValue (item) {
-      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode })
+    async backValue(item) {
+      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
       this.createLine({ point: back.result })
     },
 
     // 转跳意见反馈
-    goToYJFK () {
+    goToYJFK() {
 
     },
   }

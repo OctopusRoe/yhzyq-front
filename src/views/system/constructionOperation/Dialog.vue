@@ -5,6 +5,7 @@
     :append-to-body="true"
     destroy-on-close
     width="60%"
+    top="5vh"
   >
     <el-form
       ref="formRef"
@@ -55,7 +56,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item
-        label="请选择车道"
+        label="请选择上下行"
         prop="lane"
       >
         <el-select
@@ -64,9 +65,9 @@
         >
           <el-option
             v-for="item in laneOptions"
-            :key="item.name"
+            :key="item.value"
             :label="item.name"
-            :value="item.name"
+            :value="item.value"
           >
           </el-option>
         </el-select>
@@ -136,7 +137,7 @@
         <el-input
           v-model="form.remark"
           type="textarea"
-          :autosize="{ minRows: 6, maxRows: 10}"
+          :autosize="{ minRows: 2, maxRows: 6}"
           placeholder="请输入内容"
         >
         </el-input>
@@ -195,25 +196,12 @@ export default {
       },
       laneOptions: [
         {
-          name: '一车道',
+          name: '上行',
+          value: '1',
         },
         {
-          name: '二车道',
-        },
-        {
-          name: '三车道',
-        },
-        {
-          name: '四车道',
-        },
-        {
-          name: '五车道',
-        },
-        {
-          name: '六车道',
-        },
-        {
-          name: '七车道',
+          name: '下行',
+          value: '2'
         },
       ]
     }
@@ -303,6 +291,9 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .el-dialog__footer {
   text-align: center;
+}
+::v-deep .el-dialog__body {
+  padding: 0 20px;
 }
 // ::v-deep .el-form-item {
 //   display: inline-block;
