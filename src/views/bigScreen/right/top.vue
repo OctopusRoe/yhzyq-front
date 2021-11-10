@@ -20,11 +20,18 @@ export default {
     TableItemTwo
   },
   props: {
+    tableList: {
+      type: Array,
+      default: () => []
+    },
+    backValue: {
+      type: Function,
+      default: () => { }
+    }
   },
   data () {
     return {
-      tableTitle,
-      tableList: []
+      tableTitle
     }
   },
   computed: {
@@ -38,13 +45,8 @@ export default {
   created () {
   },
   mounted () {
-    this.workJobInfo()
   },
   methods: {
-    async workJobInfo () {
-      const { result } = await workJobInfo()
-      this.tableList = result
-    }
   }
 
 }
@@ -59,11 +61,13 @@ export default {
       </div>
       <div class="table-content">
         <el-scrollbar style="height: 490px">
-          <TableItemTwo
+          <div
             v-for="(item, index) in tableList"
             :key="index"
-            :item="item"
-          />
+            @click="$emit('backvalue', item)"
+          >
+            <TableItemTwo :item="item" />
+          </div>
         </el-scrollbar>
       </div>
     </div>

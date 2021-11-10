@@ -2,7 +2,7 @@
 const path = require("path");
 const defaultSettings = require("./src/settings.js");
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir);
 }
 
@@ -239,7 +239,7 @@ module.exports = {
       })
     ]
   },
-  chainWebpack(config) {
+  chainWebpack (config) {
     config.plugins.delete("preload"); // TODO: need test
     config.plugins.delete("prefetch"); // TODO: need test
     config.resolve.alias.set("@$", resolve("src"));
@@ -296,10 +296,10 @@ module.exports = {
         }
       });
       config.optimization.runtimeChunk("single"),
-        {
-          from: path.resolve(__dirname, "./public/robots.txt"), //防爬虫文件
-          to: "./" //到根目录下
-        };
+      {
+        from: path.resolve(__dirname, "./public/robots.txt"), //防爬虫文件
+        to: "./" //到根目录下
+      };
     });
   }
 };

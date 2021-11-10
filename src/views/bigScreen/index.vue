@@ -19,7 +19,10 @@ import {
   tileBaseUrl,
   queryMangeCenter,
   querySelectDeviceByTypeCount,
-  selectDeviceByMangeCenter
+  selectDeviceByMangeCenter,
+  monthWorkJobCount,
+  workJobInfo,
+  queryLonAndLatByZH
 } from './api/index'
 import controlMap from './controlMap'
 
@@ -42,7 +45,10 @@ export default {
         children: 'children',
         label: 'name'
       },
-      treeName: ''
+      treeName: '',
+      nameList: [],
+      valueList: [],
+      tableList: []
     }
   },
   computed: {
@@ -52,16 +58,14 @@ export default {
   beforeDestroy () {
     document.getElementById('app').style.cssText = 'transform: scale(1, 1.125)'
   },
-  activated () {
-  },
-  created () {
-  },
   mounted () {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
     document.getElementById('app').style.cssText = 'height: 1080px !important'
     this.getMap()
     this.getManagerCenter()
     this.selectDeviceByMangeCenter()
+    this.workJobInfo()
+    this.monthWorkJobCount()
   },
   methods: {
 
@@ -89,18 +93,18 @@ export default {
         minZoom: 7
       })
 
-      // this.map.useGLKF({
-      //   url: tileBaseUrl,
-      //   data: data,
-      //   proj: 'EPSG: 4326'
-      // })
-
-      this.map.useTianDiTu({
-        type: ['vec', 'cva'],
-        proj: 'EPSG:4326',
-        key: 'a3f0bbf7db728e8db4ebbe860679d4bb',
-        url: 'http://t{0-7}.tianditu.gov.cn/'
+      this.map.useGLKF({
+        url: tileBaseUrl,
+        data: data,
+        proj: 'EPSG: 4326'
       })
+
+      // this.map.useTianDiTu({
+      //   type: ['vec', 'cva'],
+      //   proj: 'EPSG:4326',
+      //   key: 'a3f0bbf7db728e8db4ebbe860679d4bb',
+      //   url: 'http://t{0-7}.tianditu.gov.cn/'
+      // })
     },
 
     // 获取管理中心
@@ -116,9 +120,37 @@ export default {
       this.createMark(back.result)
     },
 
+    // 施工列表
+    async workJobInfo (id = '') {
+      const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
+      this.tableList = result
+      if (result.lenght === 0) return
+      result.forEach(async item => {
+        const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode })
+        this.createLine({ point: back.result })
+      })
+    },
+
+    // 月度施工情况
+    async monthWorkJobCount (id = '') {
+      const { result } = await monthWorkJobCount({ centerId: id })
+      result.forEach((item, index) => {
+        if (index > 7) return
+        this.$set(this.nameList, index, item.name)
+        this.$set(this.valueList, index, ~~item.mileSum)
+      })
+    },
+
     // 点击树形
     nodeClick (data, node) {
       this.selectDeviceByMangeCenter(data.id)
+      this.workJobInfo(data.id)
+      this.monthWorkJobCount(data.id)
+    },
+
+    async backValue (item) {
+      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode })
+      this.createLine({ point: back.result })
     },
 
     // 转跳意见反馈
@@ -147,7 +179,12 @@ export default {
       @node-click="nodeClick"
     />
     <Left />
-    <Right />
+    <Right
+      :nameList="nameList"
+      :valueList="valueList"
+      :tableList="tableList"
+      :backValue="backValue"
+    />
 
     <img
       src="./assets/images/yjfk.png"

@@ -10,7 +10,8 @@ const path = {
   centerCount: '/yhBigScreen/selectDeviceByCenterCount',
   workJobCount: '/yhBigScreen/selectCenterWorkJobCount',
   workJobInfo: '/yhBigScreen/selectWorkJobInfo',
-  MonthWorkJobCount: '/yhMonthWorkJobCountBigScreen/select'
+  MonthWorkJobCount: '/yhBigScreen/selectMonthWorkJobCount',
+  queryLonAndLatByZH: '/yhzyq/workJob/queryLonAndLatByZH'
 }
 
 // 获取地图数据
@@ -44,11 +45,16 @@ export function workJobCount () {
 }
 
 // 施工信息
-export function workJobInfo () {
-  return request.get(path.workJobInfo)
+export function workJobInfo (params) {
+  return request.get(path.workJobInfo, { params: params })
 }
 
 // 月度施工信息
-export function monthWorkJobCount () {
-  return request.get(path.MonthWorkJobCount)
+export function monthWorkJobCount (params) {
+  return request.get(path.MonthWorkJobCount, { params: params })
+}
+
+// 查询施工路段的经纬度
+export function queryLonAndLatByZH (params) {
+  return request.get(path.queryLonAndLatByZH, { params: params })
 }

@@ -7,19 +7,23 @@
 import TitleBox from '../components/titleBox'
 import LineComponent from './Line.vue'
 
-import { monthWorkJobCount } from '../api/index'
-
 export default {
   components: {
     TitleBox,
     LineComponent
   },
   props: {
+    nameList: {
+      type: Array,
+      default: () => []
+    },
+    valueList: {
+      type: Array,
+      default: () => []
+    }
   },
   data () {
     return {
-      nameList: [],
-      valueList: []
     }
   },
   computed: {
@@ -35,14 +39,6 @@ export default {
   mounted () {
   },
   methods: {
-    async monthWorkJobCount () {
-      const { result } = await monthWorkJobCount()
-      result.forEach((item, index) => {
-        if (index > 7) return
-        this.$set(this.nameList, index, item.name)
-        this.$set(this.valueList, index, ~~item.mileSum)
-      })
-    }
   }
 
 }

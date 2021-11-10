@@ -13,6 +13,22 @@ export default {
     Top
   },
   props: {
+    nameList: {
+      type: Array,
+      default: () => []
+    },
+    valueList: {
+      type: Array,
+      default: () => []
+    },
+    tableList: {
+      type: Array,
+      default: () => []
+    },
+    backValue: {
+      type: Function,
+      default: () => { }
+    }
   },
   data () {
     return {
@@ -37,8 +53,14 @@ export default {
 </script>
 <template>
   <div class="big-screen-right-box">
-    <Top />
-    <Bottom />
+    <Top
+      :tableList="tableList"
+      @backvalue="backValue"
+    />
+    <Bottom
+      :nameList="nameList"
+      :valueList="valueList"
+    />
   </div>
 </template>
 <style lang="scss" scoped>
