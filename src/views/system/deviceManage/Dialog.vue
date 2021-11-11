@@ -4,6 +4,7 @@
     :visible.sync="dialogVisible"
     :append-to-body="true"
     destroy-on-close
+    :close-on-click-modal="false"
     width="60%"
   >
     <el-form
