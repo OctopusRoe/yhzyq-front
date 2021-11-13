@@ -25,6 +25,7 @@ import {
   queryLonAndLatByZH
 } from './api/index'
 import controlMap from './controlMap'
+import VideoDialog from './VideoDialog.vue'
 
 export default {
   components: {
@@ -32,7 +33,8 @@ export default {
     Left,
     Right,
     Example,
-    DropDownTree
+    DropDownTree,
+    VideoDialog
   },
   mixins: [controlMap],
   props: {
@@ -191,7 +193,7 @@ export default {
       class="yjfk"
       @clcik="goToYJFK"
     />
-
+    <video-dialog ref="videoDialogRef"/>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -314,5 +316,10 @@ export default {
   bottom: 218px;
   width: 28px;
   height: 92px;
+}
+
+::v-deep #checkVideo {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>

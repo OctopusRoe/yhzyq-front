@@ -1,28 +1,28 @@
 export default {
-  data () {
+  data() {
     return {
       domMarker: null,
       viewMarker: null,
       line: null,
       imgList: {
-        DEVICE_TYPE_TACHOMETER: require('./assets/images/b3.png'),
+        DEVICE_TYPE_TACHOMETER: require('./assets/images/b1.png'),
         DEVICE_TYPE_POSITIONER: require('./assets/images/b4.png'),
         DEVICE_TYPE_VIDEO_CAMERA: require('./assets/images/b2.png'),
-        DEVICE_TYPE_LEI_DA: require('./assets/images/b1.png')
+        DEVICE_TYPE_LEI_DA: require('./assets/images/b3.png')
       },
       titleList: {
-        DEVICE_TYPE_TACHOMETER: '雷达',
+        DEVICE_TYPE_TACHOMETER: '智能锥桶',
         DEVICE_TYPE_POSITIONER: '智能标识牌',
         DEVICE_TYPE_VIDEO_CAMERA: '摄像机',
-        DEVICE_TYPE_LEI_DA: '智能锥桶'
+        DEVICE_TYPE_LEI_DA: '雷达'
       }
     }
   },
 
-  mounted () {
+  mounted() {
   },
   methods: {
-    createMark (data) {
+    createMark(data) {
       this.map.removeOverlay(this.map.overlays)
 
       this.domMarker = this.map.DomMarker({
@@ -51,7 +51,7 @@ export default {
       this.map.addOverlay(this.domMarker.overlays)
     },
 
-    createLine (options) {
+    createLine(options) {
       this.map.removeLayer(this.map.searchLayers('line'))
       this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
       this.map.addLayer(this.line.layer)
@@ -65,7 +65,7 @@ export default {
       }
     },
 
-    createDomMarker (data) {
+    createDomMarker(data) {
       const lonlat = data.item.point
       const item = data.item.data
 
@@ -88,18 +88,25 @@ export default {
       this.map.addOverlay(this.viewMarker.overlays)
 
       document.getElementById('closeOverlayer').addEventListener('click', this.clsoeOverlayer)
+      document.getElementById('checkVideo').addEventListener('click', this.openVideo)
+
     },
 
     // 关闭弹框模组
-    clsoeOverlayer () {
+    clsoeOverlayer() {
       console.log(1)
       this.map.removeOverlay(this.map.searchOverlays('viewMarker'))
     },
+    // 打开实时视频窗口
+    openVideo() {
+      this.$refs.videoDialogRef.open()
+    },
 
     // 创建dom节点
-    createElement (data) {
+    createElement(data) {
       const titleList = this.titleList
-      return `
+      if (data.deviceType !== 'DEVICE_TYPE_VIDEO_CAMERA') {
+        return `
         <div class="overlayer-box">
           <div class="title-box">
             <div class="title">
@@ -147,6 +154,56 @@ export default {
           </div>
         </div>
       `
+      } else {
+        return `
+        <div class="overlayer-box">
+          <div class="title-box">
+            <div class="title">
+              ${titleList[data.deviceType]}
+            </div>
+            <div
+              class="close"
+              id="closeOverlayer"
+            >
+              <i class="el-icon-circle-close" ></i>
+            </div>
+          </div>
+          <div class="center-box-box">
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">路段名称</div>
+                <div class="center-center">${data['address']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">桩 号</div>
+                <div class="center-center">${data['pileNumber']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">设备归属</div>
+                <div class="center-center">${data['centerName']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">摆放时间</div>
+                <div class="center-center">${data['createTime']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box" >
+                <div class="center-title">实时视频</div>
+                <div class="center-center" id='checkVideo'>查看实时视频</div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      `
+      }
     }
   }
 }
