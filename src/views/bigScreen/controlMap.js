@@ -4,6 +4,7 @@ export default {
       domMarker: null,
       viewMarker: null,
       line: null,
+      key: null,
       imgList: {
         DEVICE_TYPE_TACHOMETER: require('./assets/images/b3.png'),
         DEVICE_TYPE_POSITIONER: require('./assets/images/b4.png'),
@@ -53,9 +54,14 @@ export default {
 
     createLine (options) {
       this.map.removeLayer(this.map.searchLayers('line'))
+      // 删除上个鼠标滚轮事件
+      if (this.key) {
+        this.map.unon(this.key)
+      }
       this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
+      // 添加滚轮放大线的宽度
       this.map.addLayer(this.line.layer)
-
+      this.key = this.line.addWheel()
       if (Array.isArray(options)) {
         options.forEach(item => {
           this.line.create({ point: item.point })
