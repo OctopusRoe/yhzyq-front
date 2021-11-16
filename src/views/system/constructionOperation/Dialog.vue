@@ -21,6 +21,32 @@
         <el-input v-model="form.jobName"></el-input>
       </el-form-item>
       <el-form-item
+        label="管理中心"
+        prop="centerId"
+      >
+        <el-select
+          style="width:100%"
+          v-model="form.centerId"
+          @change="nodeClick"
+        >
+          <el-option
+            style="height: 200px"
+            :value="form.centerId"
+            :label="form.centerName"
+          >
+            <el-scrollbar style="height:100%">
+              <el-tree
+                ref="tree"
+                :data="centerTree"
+                @node-click="nodeClick"
+                :props="{children: 'children',label: 'name'}"
+              >
+              </el-tree>
+            </el-scrollbar>
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item
         label="施工区域"
         prop="deviceNumber"
       >
@@ -95,30 +121,7 @@
         >
         </el-date-picker>
       </el-form-item>
-      <el-form-item
-        label="管理中心"
-        prop="centerId"
-      >
-        <el-select
-          style="width:100%"
-          v-model="form.centerId"
-          @change="nodeClick"
-        >
-          <el-option
-            style="height: 300px"
-            :value="form.centerId"
-            :label="form.centerName"
-          >
-            <el-tree
-              ref="tree"
-              :data="centerTree"
-              @node-click="nodeClick"
-              :props="{children: 'children',label: 'name'}"
-            >
-            </el-tree>
-          </el-option>
-        </el-select>
-      </el-form-item>
+
       <el-form-item
         label="联系人名称"
         prop="centerId"

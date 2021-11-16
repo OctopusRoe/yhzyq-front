@@ -63,17 +63,19 @@
           style="width:88%"
         >
           <el-option
-            style="height: 300px"
+            style="height: 200px"
             :value="form.centerId"
             :label="form.centerName"
           >
-            <el-tree
-              ref="tree"
-              :data="centerTree"
-              @node-click="nodeClick"
-              :props="{children: 'children',label: 'name'}"
-            >
-            </el-tree>
+            <el-scrollbar style="height:100%">
+              <el-tree
+                ref="tree"
+                :data="centerTree"
+                @node-click="nodeClick"
+                :props="{children: 'children',label: 'name'}"
+              >
+              </el-tree>
+            </el-scrollbar>
           </el-option>
         </el-select>
       </el-form-item>
