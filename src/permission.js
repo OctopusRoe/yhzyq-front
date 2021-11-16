@@ -18,7 +18,7 @@ const whiteList = [
 ];
 
 router.beforeEach((to, from, next) => {
-  
+
   NProgress.start();
   if (getToken()) {
     /* has token*/
@@ -50,7 +50,8 @@ router.beforeEach((to, from, next) => {
               if (store.getters.userCheckedOrgIndex >= 0) {
                 next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
               } else {
-                next({ path: "/index" });
+                // next({ path: "/index" });
+                next({ path: "/bigScreen" })
               }
             });
           })

@@ -4,7 +4,8 @@
  */
 const navList = [
   {
-    label: '资产概览',
+    // label: '资产概览',
+    label: '',
     key: '',
     icon: '',
     path: '',
@@ -12,7 +13,8 @@ const navList = [
     offset: 'left: -5px'
   },
   {
-    label: '公路技术状况',
+    // label: '公路技术状况',
+    label: '',
     key: '',
     icon: '',
     path: '',
@@ -20,7 +22,8 @@ const navList = [
     offset: '-5px'
   },
   {
-    label: '养护辅助决策',
+    // label: '养护辅助决策',
+    label: '',
     key: '',
     icon: '',
     path: '',
@@ -28,7 +31,8 @@ const navList = [
     offset: '-5px'
   },
   {
-    label: '日常养护管理',
+    // label: '日常养护管理',
+    label: '',
     key: '',
     icon: '',
     path: '',
@@ -49,7 +53,7 @@ const setingList = [
   {
     label: '后台管理',
     key: 'seting',
-    path: '/deviceManage/index',
+    path: '/deviceList',
     icon: require('../assets/images/seting.png'),
     active: false
   },
@@ -60,7 +64,10 @@ const setingList = [
     icon: require('../assets/images/jump.png'),
     active: false,
     children: [
-
+      {
+        label: '测试用例1',
+        path: '33333'
+      }
     ]
   },
   {
