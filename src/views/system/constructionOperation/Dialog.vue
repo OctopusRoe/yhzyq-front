@@ -51,6 +51,7 @@
         prop="deviceNumber"
       >
         <el-select
+          :disabled="roadSelectAble"
           v-model="road"
           filterable
           remote
@@ -68,15 +69,15 @@
           />
         </el-select>
         <el-input
+          controls-position="right"
           style="width:31%;margin: 0 1%"
-          readonly
           disabled
           v-model="form.landmarkStartId"
           placeholder="起点桩号"
         ></el-input>
         <el-input
+          controls-position="right"
           style="width:31%;margin: 0 1%"
-          readonly
           disabled
           v-model="form.landmarkEndId"
           placeholder="终点桩号"
@@ -207,7 +208,8 @@ export default {
           name: '下行',
           value: '2'
         },
-      ]
+      ],
+      roadSelectAble: true
     }
   },
   computed: {
@@ -226,9 +228,8 @@ export default {
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
         this.road = null
-        this.getHighwayInfo(undefined, true)
+        this.roadSelectAble = true
       } else {
-        this.getHighwayInfo(undefined, true)
         this.form = info
       }
       this.dialogVisible = true
@@ -267,16 +268,16 @@ export default {
     },
 
     // 查询公路
-    async getHighwayInfo(name, isInit) {
-      if (!name && !isInit) return
+    async getHighwayInfo(name) {
       this.loading = true
-      const { result } = await getHighwayInfo({ name })
-      this.highWayList = result.map((item) => {
-        return {
-          ...item,
-          objStr: JSON.stringify(item)
-        }
-      })
+      const { result } = await getHighwayInfo({ name, centerLevelCode: this.selectedCenter.levelCode })
+      this.roadSelectAble = false
+        this.highWayList = result.map((item) => {
+          return {
+            ...item,
+            objStr: JSON.stringify(item)
+          }
+        })
       this.loading = false
     },
     // 查询桩号

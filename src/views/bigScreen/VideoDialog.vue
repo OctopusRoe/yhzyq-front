@@ -33,17 +33,17 @@ export default {
         playback: ''
       },
       model: 0,
+      timeoutId: null
     }
   },
   methods: {
     async open() {
       this.dialogVisible = true
       if (this.info.deviceNumber) {
-        // const { code, result } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
-        // if (code === 200) {
-        //   this.urls.realplay = result
-        //   console.log('%c 🍣 this.urls.realplay: ', 'font-size:20px;background-color: #4b4b4b;color:#fff;', this.urls.realplay);
-        // }
+        this.getUrl()
+        this.timeoutId = setTimeout(() => {
+          this.getUrl()
+        }, 5000);
         setTimeout(() => {
           this.init()
           this.createPlayer()
@@ -55,6 +55,7 @@ export default {
     close() {
       this.dialogVisible = false
       this.player = null
+      clearTimeout(this.timeoutId)
     },
     init() {
       // 设置播放容器的宽高并监听窗口大小变化
@@ -118,6 +119,13 @@ export default {
         e => { console.error(e) }
       )
     },
+    async getUrl() {
+      const { code, result } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
+      if (code === 200) {
+        this.urls.realplay = result
+        console.log('%c 🍣 this.urls.realplay: ', 'font-size:20px;background-color: #4b4b4b;color:#fff;', this.urls.realplay);
+      }
+    }
   },
 }
 </script>

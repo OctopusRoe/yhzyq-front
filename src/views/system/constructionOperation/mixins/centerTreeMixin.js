@@ -3,13 +3,15 @@ export default {
     data() {
         return {
             selectedCenter: {},
-            centerTree: [],
+            centerTree: []
         }
     },
     watch: {
         selectedCenter(center) {
             this.form.centerId = center.id
             this.form.centerName = center.name
+            this.roadSelectAble = false
+            this.getHighwayInfo()
         }
     },
     mounted() {
@@ -18,7 +20,8 @@ export default {
     methods: {
         nodeClick(node) {
             this.selectedCenter = node
-            this.selectedCenterArr.push(node)
+            this.roadSelectAble = false
+            // this.selectedCenterArr.push(node)
         },
         async queryMangeCenter() {
             try {
