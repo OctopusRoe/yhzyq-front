@@ -32,6 +32,9 @@ export default {
           this.$router.push(item.path)
           break;
       }
+    },
+    clickChildren (e) {
+      console.log(e, 123)
     }
   }
 
@@ -61,8 +64,34 @@ export default {
         @click="activeSeting(item)"
         class="big-screen-seting-item"
       >
-        <img :src="item.icon">
-        {{item.label}}
+        <el-dropdown
+          v-if="item.children && item.children.lenght !== 0"
+          @command="clickChildren"
+        >
+          <div class="big-screen-seting-item">
+            <img :src="item.icon">
+            {{item.label}}
+          </div>
+          <el-dropdown-menu
+            slot="dropdown"
+            :append-to-body="false"
+          >
+            <el-dropdown-item
+              v-for="(itemO, indexO) in item.children"
+              :key="indexO"
+              :command="itemO.path"
+            >
+              {{itemO.label}}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <div
+          v-else
+          class="big-screen-seting-item"
+        >
+          <img :src="item.icon">
+          {{item.label}}
+        </div>
       </div>
     </div>
   </div>
@@ -139,5 +168,29 @@ export default {
       }
     }
   }
+}
+
+.el-dropdown-menu,
+.el-popper,
+.el-dropdown-menu--medium {
+  background-color: #0a243c;
+  border: 2px solid #0a243c;
+}
+
+::v-deep .el-dropdown-menu__item {
+  color: #ffffff !important;
+}
+::v-deep .el-dropdown-menu__item:hover {
+  background-color: #1b8777 !important;
+}
+
+::v-deep .el-dropdown-menu__item:active {
+  background-color: #1b8777 !important;
+}
+
+::v-deep .el-dropdown-menu__item:focus {
+  background-color: #1b8777 !important;
+}
+::v-deep .popper__arrow {
 }
 </style>
