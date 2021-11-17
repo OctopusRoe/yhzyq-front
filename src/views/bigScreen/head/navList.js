@@ -64,10 +64,10 @@ const setingList = [
     icon: require('../assets/images/jump.png'),
     active: false,
     children: [
-      {
-        label: '测试用例1',
-        path: '33333'
-      }
+      // {
+      //   label: '测试用例1',
+      //   path: '33333'
+      // }
     ]
   },
   {

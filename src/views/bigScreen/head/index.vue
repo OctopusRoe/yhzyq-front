@@ -64,8 +64,12 @@ export default {
         @click="activeSeting(item)"
         class="big-screen-seting-item"
       >
-        <el-dropdown
+        <!-- <el-dropdown
           v-if="item.children && item.children.lenght !== 0"
+          @command="clickChildren"
+        > -->
+        <el-dropdown
+          v-if="false"
           @command="clickChildren"
         >
           <div class="big-screen-seting-item">

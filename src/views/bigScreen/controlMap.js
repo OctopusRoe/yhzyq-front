@@ -1,5 +1,5 @@
 export default {
-  data() {
+  data () {
     return {
       domMarker: null,
       viewMarker: null,
@@ -20,10 +20,10 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
   },
   methods: {
-    createMark(data) {
+    createMark (data) {
       this.map.removeOverlay(this.map.overlays)
 
       this.domMarker = this.map.DomMarker({
@@ -52,7 +52,7 @@ export default {
       this.map.addOverlay(this.domMarker.overlays)
     },
 
-    createLine(options) {
+    createLine (options) {
       this.map.removeLayer(this.map.searchLayers('line'))
       // 删除上个鼠标滚轮事件
       if (this.key) {
@@ -61,7 +61,7 @@ export default {
       this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
       // 添加滚轮放大线的宽度
       this.map.addLayer(this.line.layer)
-      this.key = this.line.addWheel()
+      // this.key = this.line.addWheel()
       if (Array.isArray(options)) {
         options.forEach(item => {
           this.line.create({ point: item.point })
@@ -71,7 +71,7 @@ export default {
       }
     },
 
-    createDomMarker(data) {
+    createDomMarker (data) {
       const lonlat = data.item.point
       const item = data.item.data
 
@@ -99,17 +99,17 @@ export default {
     },
 
     // 关闭弹框模组
-    clsoeOverlayer() {
+    clsoeOverlayer () {
       console.log(1)
       this.map.removeOverlay(this.map.searchOverlays('viewMarker'))
     },
     // 打开实时视频窗口
-    openVideo() {
+    openVideo () {
       this.$refs.videoDialogRef.open()
     },
 
     // 创建dom节点
-    createElement(data) {
+    createElement (data) {
       const titleList = this.titleList
       if (data.deviceType !== 'DEVICE_TYPE_VIDEO_CAMERA') {
         return `
