@@ -68,20 +68,28 @@
             :value="item.objStr"
           />
         </el-select>
-        <el-input
+        <el-input-number
           controls-position="right"
           style="width:31%;margin: 0 1%"
-          disabled
+          :disabled="!form.roadId"
           v-model="form.landmarkStartId"
+          :min="startMinMil"
+          :max="startMaxMil"
           placeholder="起点桩号"
-        ></el-input>
-        <el-input
+        ></el-input-number>
+        <el-input-number
           controls-position="right"
           style="width:31%;margin: 0 1%"
-          disabled
+          :disabled="!form.roadId"
           v-model="form.landmarkEndId"
           placeholder="终点桩号"
-        ></el-input>
+          :min="endMinMil"
+          :max="endMaxMil"
+        ></el-input-number>
+        <div
+          style="color:red;font-size:12px;height:24px"
+          v-if="form.roadId"
+        >{{`桩号范围：（${startMinMil}~${endMaxMil}）`}}</div>
       </el-form-item>
       <el-form-item
         label="请选择上下行"
@@ -170,6 +178,24 @@ export default {
       default: () => { }
     },
   },
+  watch: {
+    'form.landmarkStartId': {
+      immediate: true,
+      handler(landmarkStartId) {
+        if (landmarkStartId - this.form.landmarkEndId >= 0 || landmarkStartId - this.form.landmarkEndId < -4) {
+          this.form.landmarkEndId = landmarkStartId + 4
+        }
+      },
+    },
+    'form.landmarkEndId': {
+      immediate: true,
+      handler(landmarkEndId) {
+        if (landmarkEndId - this.form.landmarkStartId <= 0 || landmarkEndId - this.form.landmarkStartId > 4) {
+          this.form.landmarkStartId = landmarkEndId - 4
+        }
+      }
+    }
+  },
   data() {
     return {
       loading: false,
@@ -209,7 +235,11 @@ export default {
           value: '2'
         },
       ],
-      roadSelectAble: true
+      roadSelectAble: true,
+      startMinMil: '',
+      startMaxMil: '',
+      endMinMil: '',
+      endMaxMil: ''
     }
   },
   computed: {
@@ -229,6 +259,10 @@ export default {
         this.form = Object.assign({}, this.$options.data().form)
         this.road = null
         this.roadSelectAble = true
+        this.startMinMil = ''
+        this.startMaxMil = ''
+        this.endMinMil = ''
+        this.endMaxMil = ''
       } else {
         this.form = info
       }
@@ -272,20 +306,26 @@ export default {
       this.loading = true
       const { result } = await getHighwayInfo({ name, centerLevelCode: this.selectedCenter.levelCode })
       this.roadSelectAble = false
-        this.highWayList = result.map((item) => {
-          return {
-            ...item,
-            objStr: JSON.stringify(item)
-          }
-        })
+      this.highWayList = result.map((item) => {
+        return {
+          ...item,
+          objStr: JSON.stringify(item)
+        }
+      })
       this.loading = false
     },
     // 查询桩号
     async getMileagePile(fdsf) {
       this.loading = true
       const { result } = await getMileagePile({ fdsf })
-      this.form.landmarkStartId = result.startNumber
-      this.form.landmarkEndId = result.endNumber
+      const startNumber = Number(result.startNumber)
+      const endNumber = Number(result.endNumber)
+      this.form.landmarkStartId = startNumber
+      this.form.landmarkEndId = startNumber + 4
+      this.startMinMil = startNumber
+      this.startMaxMil = endNumber - 4
+      this.endMinMil = startNumber + 4
+      this.endMaxMil = endNumber
       this.form.mile = result.mile
       this.loading = false
     }
@@ -299,6 +339,9 @@ export default {
 }
 ::v-deep .el-dialog__body {
   padding: 0 20px;
+}
+::v-deep .el-input-number__decrease, ::v-deep .el-input-number__increase {
+  display: none;
 }
 // ::v-deep .el-form-item {
 //   display: inline-block;
