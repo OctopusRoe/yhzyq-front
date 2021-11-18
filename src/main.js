@@ -124,6 +124,8 @@ Vue.use(shuttleBox);
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$eventBus = new Vue()
+
 new Vue({
   el: "#app",
   router,
