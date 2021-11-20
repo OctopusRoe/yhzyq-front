@@ -135,6 +135,7 @@ export default {
     },
     openDialog(isEdit, info) {
       this.$emit("openDialog", isEdit, info)
+      console.log('%c 🍻 info: ', 'font-size:20px;background-color: #7F2B82;color:#fff;', info);
     },
     handleSizeChange(pageSize) {
       this.getListDev(1, pageSize)

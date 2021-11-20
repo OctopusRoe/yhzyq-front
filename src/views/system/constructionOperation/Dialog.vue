@@ -24,27 +24,13 @@
         label="管理中心"
         prop="centerId"
       >
-        <el-select
+        <el-cascader
+          ref="cascaderRef"
           style="width:100%"
           v-model="form.centerId"
-          @change="nodeClick"
-        >
-          <el-option
-            style="height: 200px"
-            :value="form.centerId"
-            :label="form.centerName"
-          >
-            <el-scrollbar style="height:100%">
-              <el-tree
-                ref="tree"
-                :data="centerTree"
-                @node-click="nodeClick"
-                :props="{children: 'children',label: 'name'}"
-              >
-              </el-tree>
-            </el-scrollbar>
-          </el-option>
-        </el-select>
+          :options="centerTree"
+          :props="{children: 'children', label: 'name', checkStrictly: true, value:'id', emitPath:false}"
+        ></el-cascader>
       </el-form-item>
       <el-form-item
         label="施工区域"
@@ -179,9 +165,25 @@ export default {
     },
   },
   watch: {
+    'form.centerId': {
+      immediate: true,
+      handler(centerId) {
+        if (centerId) {
+          this.$nextTick(() => {
+            this.selectedCenter = this.$refs.cascaderRef?.getCheckedNodes()[0]?.data
+            this.form.centerName = this.selectedCenter?.name ? this.selectedCenter?.name : this.form.centerName
+            this.roadSelectAble = true
+            this.road = null
+            this.getHighwayInfo()
+          })
+        }
+      },
+    },
     'form.landmarkStartId': {
       immediate: true,
       handler(landmarkStartId) {
+
+
         if (landmarkStartId - this.form.landmarkEndId >= 0 || landmarkStartId - this.form.landmarkEndId < -4) {
           this.form.landmarkEndId = landmarkStartId + 4
         }
@@ -190,6 +192,7 @@ export default {
     'form.landmarkEndId': {
       immediate: true,
       handler(landmarkEndId) {
+        if (!landmarkEndId) return
         if (landmarkEndId - this.form.landmarkStartId <= 0 || landmarkEndId - this.form.landmarkStartId > 4) {
           this.form.landmarkStartId = landmarkEndId - 4
         }
@@ -202,6 +205,7 @@ export default {
       dialogVisible: false,
       isEdit: 0,
       highWayList: [],
+      selectedCenter: {},
       road: null,
       form: {
         centerId: "",
@@ -212,9 +216,9 @@ export default {
         jobName: "",
         jobStatus: 0,
         landmarkEnd: "",
-        landmarkEndId: "",
+        landmarkEndId: 0,
         landmarkStart: "",
-        landmarkStartId: "",
+        landmarkStartId: 0,
         lane: "",
         mile: '',
         planEndTime: "",
@@ -236,34 +240,38 @@ export default {
         },
       ],
       roadSelectAble: true,
-      startMinMil: '',
-      startMaxMil: '',
-      endMinMil: '',
-      endMaxMil: ''
+      startMinMil: 0,
+      startMaxMil: 0,
+      endMinMil: 0,
+      endMaxMil: 0
     }
   },
   computed: {
     rules() {
       return {
-        // deviceName: [{ required: true, message: '请输入设备名称', trigger: 'blur' }],
-        // deviceNumber: [{ required: true, message: '请输入设备编号', trigger: 'blur' }],
-        // deviceType: [{ required: true, message: '请选择设备类型', trigger: 'blur' }],
-        // centerId: [{ required: true, message: '请选择管理中心', trigger: 'blur' }]
       }
     }
   },
   methods: {
-    open(isEdit, info) {
+    async open(isEdit, info) {
+      this.queryMangeCenter()
       this.isEdit = isEdit
       if (!isEdit) {
         this.form = Object.assign({}, this.$options.data().form)
         this.road = null
         this.roadSelectAble = true
-        this.startMinMil = ''
-        this.startMaxMil = ''
-        this.endMinMil = ''
-        this.endMaxMil = ''
+        this.startMinMil = 0
+        this.startMaxMil = 0
+        this.endMinMil = 0
+        this.endMaxMil = 0
+        this.load = null
       } else {
+        this.startMinMil = 0
+        this.startMaxMil = 0
+        this.endMinMil = 0
+        this.endMaxMil = 0
+        this.load = null
+        await this.getMileagePile(info.roadId)
         this.form = info
       }
       this.dialogVisible = true
@@ -282,7 +290,7 @@ export default {
     },
     selectRoad(objStr) {
       const road = JSON.parse(objStr)
-      this.form.roadId = road.lxbm + "-" + road.fdsf
+      this.form.roadId = road.fdsf
       this.form.roadCode = road.lxbm
       this.form.roadName = `${road.lxbm}-${road.lxmc}-${road.fdmc}`
       this.getMileagePile(road.fdsf)
@@ -312,6 +320,7 @@ export default {
           objStr: JSON.stringify(item)
         }
       })
+      this.load = null
       this.loading = false
     },
     // 查询桩号
@@ -340,7 +349,8 @@ export default {
 ::v-deep .el-dialog__body {
   padding: 0 20px;
 }
-::v-deep .el-input-number__decrease, ::v-deep .el-input-number__increase {
+::v-deep .el-input-number__decrease,
+::v-deep .el-input-number__increase {
   display: none;
 }
 // ::v-deep .el-form-item {

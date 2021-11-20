@@ -58,26 +58,13 @@
         prop="centerId"
         style="width:100%"
       >
-        <el-select
+        <el-cascader
+          ref="cascaderRef"
+          style="width:100%"
           v-model="form.centerId"
-          style="width:88%"
-        >
-          <el-option
-            style="height: 200px"
-            :value="form.centerId"
-            :label="form.centerName"
-          >
-            <el-scrollbar style="height:100%">
-              <el-tree
-                ref="tree"
-                :data="centerTree"
-                @node-click="nodeClick"
-                :props="{children: 'children',label: 'name'}"
-              >
-              </el-tree>
-            </el-scrollbar>
-          </el-option>
-        </el-select>
+          :options="centerTree"
+          :props="{children: 'children', label: 'name', checkStrictly: true, value:'id', emitPath:false}"
+        ></el-cascader>
       </el-form-item>
       <el-form-item
         label="设备地址"
@@ -148,6 +135,7 @@ export default {
     return {
       dialogVisible: false,
       isEdit: 0,
+      selectedCenter: {},
       form: {
         address: "",
         centerId: "",
@@ -165,6 +153,14 @@ export default {
         longitude: ''
       }
     }
+  },
+  watch: {
+    'form.centerId' (centerId) {
+      if (centerId) {
+        this.selectedCenter = this.$refs.cascaderRef?.getCheckedNodes()[0]?.data
+        this.form.centerName = this.selectedCenter?.name ? this.selectedCenter?.name : this.form.centerName
+      }
+    },
   },
   computed: {
     rules() {

@@ -2,27 +2,13 @@ import { queryMangeCenter } from "@/api/system/constructionOperation/";
 export default {
     data() {
         return {
-            selectedCenter: {},
             centerTree: []
-        }
-    },
-    watch: {
-        selectedCenter(center) {
-            this.form.centerId = center.id
-            this.form.centerName = center.name
-            this.roadSelectAble = false
-            this.getHighwayInfo()
         }
     },
     mounted() {
         this.queryMangeCenter();
     },
     methods: {
-        nodeClick(node) {
-            this.selectedCenter = node
-            this.roadSelectAble = false
-            // this.selectedCenterArr.push(node)
-        },
         async queryMangeCenter() {
             try {
                 const { code, result } = await queryMangeCenter()

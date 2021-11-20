@@ -14,7 +14,7 @@ const url = {
 }
 
 // 删除施工作业
-export function deleteWor (data) {
+export function deleteWor(data) {
   return request({
     url: url.delete,
     method: "delete",
@@ -23,7 +23,7 @@ export function deleteWor (data) {
 }
 
 // 分页查询施工作业
-export function getListWor (params) {
+export function getListWor(params) {
   return request({
     url: url.pageDataList,
     method: "get",
@@ -32,7 +32,7 @@ export function getListWor (params) {
 }
 
 // 新增/修改施工作业
-export function saveWor (data) {
+export function saveWor(data) {
   return request({
     url: url.saveOrUpdate,
     method: "post",
@@ -41,7 +41,7 @@ export function saveWor (data) {
 }
 
 // 根据id查询详情
-export function selectByIdWor (params) {
+export function selectByIdWor(params) {
   return request({
     url: url.selectById,
     method: "get",
@@ -50,11 +50,12 @@ export function selectByIdWor (params) {
 }
 
 // 查询管理中心
-export function queryMangeCenter (params) {
+export function queryMangeCenter(params) {
+  const paramsData = { ...params, type: '2' }
   return request({
     url: url.queryMangeCenter,
     method: "get",
-    params
+    params: paramsData
   });
 }
 
@@ -64,7 +65,7 @@ export function queryMangeCenter (params) {
  * @param {String} params.name 路段名称
  * @returns 
  */
-export function getHighwayInfo (params) {
+export function getHighwayInfo(params) {
   return request({
     url: url.roadInfo,
     method: 'get',
@@ -78,7 +79,7 @@ export function getHighwayInfo (params) {
  * @param {Number} params.fdsf 路段关键词信息
  * @returns 
  */
-export function getMileagePile (params) {
+export function getMileagePile(params) {
   return request({
     url: url.mileagePile,
     method: 'get',
