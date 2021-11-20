@@ -35,7 +35,7 @@ export default {
   <div class="table-item">
     <div
       class="table-item-box"
-      :class="{['background-url']: item.planEndTime === ''}"
+      :class="{['background-url']: item.endTime === '' || item.endTime === null }"
     >
       <div
         class="item-column center-box"
@@ -47,15 +47,15 @@ export default {
         class="item-column center-box"
         style="width: 130px"
       >
-        {{`${~~item.landmarkEndId} - ${~~item.landmarkStartId}`}}
+        {{`${~~item.landmarkStartId} - ${~~item.landmarkEndId}`}}
       </div>
       <div
         class="item-column center-box"
         style="width: 100px"
       >
         <div class="date-box">
-          <div>{{item.planStartTime.split(' ')[0]}}</div>
-          <div>{{item.planStartTime.split(' ')[1]}}</div>
+          <div>{{item.startTime.split(' ')[0]}}</div>
+          <div>{{item.startTime.split(' ')[1]}}</div>
         </div>
       </div>
       <div
@@ -63,11 +63,11 @@ export default {
         style="width: 100px"
       >
         <div
-          v-if="item.planEndTime"
+          v-if="item.endTime"
           class="date-box"
         >
-          <div>{{item.planEndTime.split(' ')[0]}}</div>
-          <div>{{item.planEndTime.split(' ')[1]}}</div>
+          <div>{{item.endTime.split(' ')[0]}}</div>
+          <div>{{item.endTime.split(' ')[1]}}</div>
         </div>
         <div v-else>{{ '-' }}</div>
       </div>

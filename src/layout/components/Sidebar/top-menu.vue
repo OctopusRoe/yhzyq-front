@@ -2,7 +2,10 @@
   <div>
     <div class="t">
       <div class="logo">
-        <img src="../../../assets/image/style1/logo.png" alt="" />
+        <img
+          src="../../../assets/image/style1/logo.png"
+          alt=""
+        />
         <span>工程建设项目数字化管控平台</span>
       </div>
       <div class="menu-box">
@@ -23,23 +26,35 @@
       </div>
       <div class="right">
         <div v-popover:pop>
-          <img src="../../../assets/image/style1/icon6.png" alt="" /><span
-            >通知</span
-          >
+          <img
+            src="../../../assets/image/style1/icon6.png"
+            alt=""
+          /><span>通知</span>
           <i>{{ msgUnreadNum }}</i>
         </div>
 
         <div @click.stop="showSet">
-          <img src="../../../assets/image/style1/icon7.png" alt="" /><span>{{
+          <img
+            src="../../../assets/image/style1/icon7.png"
+            alt=""
+          /><span>{{
             $store.getters.userInfo.name || $store.getters.userInfo.nickName
-          }}</span
-          ><img src="../../../assets/image/style1/icon8.png" alt="" />
-          <div class="set-sublist" v-show="setflag">
+          }}</span><img
+            src="../../../assets/image/style1/icon8.png"
+            alt=""
+          />
+          <div
+            class="set-sublist"
+            v-show="setflag"
+          >
             <div>修改密码</div>
             <div>基本设置</div>
             <div>管理后台</div>
             <div @click="logout">退出登录</div>
-            <dl class="bg" @click.stop="hideSet"></dl>
+            <dl
+              class="bg"
+              @click.stop="hideSet"
+            ></dl>
           </div>
         </div>
       </div>
@@ -58,7 +73,7 @@ import { countMsgUnread } from "@/api/system/msg/inner";
 export default {
   name: "top-menu",
   components: { MenuItem, Logo },
-  data() {
+  data () {
     return {
       secondMenu: [],
       threeMenu: [],
@@ -68,7 +83,7 @@ export default {
       setflag: false,
       scrollIndex: 0,
       tempOptions: [
-        
+
       ],
       tempValue: "",
       timer: "",
@@ -80,7 +95,7 @@ export default {
   computed: {
     ...mapState(["settings"]),
     ...mapGetters(["permission_routes", "sidebar"]),
-    activeMenu() {
+    activeMenu () {
       const route = this.$route;
       const { meta, path } = route;
       // if set path, the sidebar will highlight the path you set
@@ -89,13 +104,13 @@ export default {
       }
       return path;
     },
-    showLogo() {
+    showLogo () {
       return this.$store.state.settings.sidebarLogo;
     },
-    variables() {
+    variables () {
       return variables;
     },
-    isCollapse() {
+    isCollapse () {
       return !this.sidebar.opened;
     },
   },
@@ -106,7 +121,7 @@ export default {
       this.showSecondMenuForIndex(this.loadSidebar(newVal), false);
     }
   },
-  created() {
+  created () {
     let routesList = deepClone(this.permission_routes);
 
     for (let i = 0; i < routesList.length; i++) {
@@ -124,8 +139,6 @@ export default {
       this.$store.state.permission.secondRouter = sencodMenus;
     }
 
-    console.log(this.menu);
-
     //定时查询：是否有新消息
     // 发起请求去获取消息数据。
     // 获取到的记录数是否大于0
@@ -137,7 +150,7 @@ export default {
       that.onMsgNotice();
     }, 1000 * 60 * 5);
   },
-  mounted() {
+  mounted () {
     // this.showSecondMenu(this.permission_routes[0])
     // this.showSecondMenuForIndex(storageFunc.getActiveFirstRouteIndex(), 'init');
     // const tempSecondPath = storageFunc.getActiveSecondRouteIndex();
@@ -154,7 +167,7 @@ export default {
      * author：陈偲
      * time：20210716
      */
-    loadSidebar(path) {
+    loadSidebar (path) {
       const indexArr = [];
 
       let indexNum = -1;
@@ -189,7 +202,7 @@ export default {
 
       return indexNum;
     },
-    changeActiveMenu(newVal, oldVal) {
+    changeActiveMenu (newVal, oldVal) {
       //选中状态
       //console.log(this.$route.path)
       for (let i = 0; i < this.menu.length; i++) {
@@ -211,15 +224,15 @@ export default {
     //     this.$router.push({ path: item.redirect })
     //   }
     // },
-    proSelect() {
+    proSelect () {
       if (this.$store.getters.userOrgList.length > 1) {
         this.$router.push({ path: "/index" });
       }
     },
-    hideProSelect() {
+    hideProSelect () {
       this.showProFlag = false;
     },
-    showSecondMenuForIndex(index, isLoad = true) {
+    showSecondMenuForIndex (index, isLoad = true) {
       this.acitveIndex = index;
 
       storageFunc.setActiveFirstRouteIndex(index);
@@ -251,13 +264,13 @@ export default {
     //     this.$router.push({ path: item.redirect });
     //   }
     // },
-    showSet() {
+    showSet () {
       this.setflag = true;
     },
-    hideSet() {
+    hideSet () {
       this.setflag = false;
     },
-    next() {
+    next () {
       let length = document.getElementById("scrollwrap").children.length - 10;
       if (length - Math.abs(this.scrollIndex) == 1) {
         this.scrollIndex -= 1;
@@ -274,7 +287,7 @@ export default {
       document.getElementById("scrollwrap").style.cssText =
         "margin-left:" + left + "px";
     },
-    prev() {
+    prev () {
       let length = document.getElementById("scrollwrap").children.length - 10;
       if (length - Math.abs(this.scrollIndex) == 0) {
         this.scrollIndex += 1;
@@ -291,7 +304,7 @@ export default {
       document.getElementById("scrollwrap").style.cssText =
         "margin-left:" + left + "px";
     },
-    tempChange(p) {
+    tempChange (p) {
       if (p == 1) {
         this.$router.push({ path: "/updateModel/index" });
       } else if (p == 2) {
@@ -314,7 +327,7 @@ export default {
         this.$router.push({ path: "/zhilaingkongzhi/index" });
       }
     },
-    onMsgNotice() {
+    onMsgNotice () {
       countMsgUnread().then((resp) => {
         if (resp.data > this.msgUnreadNum) {
           this.$notify.info({
@@ -327,7 +340,7 @@ export default {
       });
     },
   },
-  beforeDestroy() {
+  beforeDestroy () {
     window.clearInterval(this.timer);
   },
 };
@@ -477,7 +490,7 @@ export default {
 }
 
 .set-sublist::before {
-  content: "";
+  content: '';
   width: 16px;
   height: 9px;
   position: absolute;

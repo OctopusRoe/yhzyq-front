@@ -91,7 +91,7 @@ export default {
       this.map.addView({
         center: [115.69319722700004, 27.36884229800006],
         proj: 'EPSG:4326',
-        zoom: 7,
+        zoom: 8,
         minZoom: 7,
         maxZoom: 22
       })
@@ -118,25 +118,29 @@ export default {
     },
 
     // 获取全部设备信息
-    async selectDeviceByMangeCenter (id = '') {
+    async selectDeviceByMangeCenter (id = 'A01') {
       const back = await selectDeviceByMangeCenter({ id: id })
       this.createMark(back.result)
     },
 
     // 施工列表
-    async workJobInfo (id = '') {
+    async workJobInfo (id = 'A01') {
       const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
       this.tableList = result
       if (result.length === 0) return
       result.forEach(async item => {
-        const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
-        this.createLine({ point: back.result })
+        const point = JSON.parse(item.roadGeo)
+        this.createLine({ point: point })
       })
     },
 
     // 月度施工情况
-    async monthWorkJobCount (id = '') {
+    async monthWorkJobCount (id = 'A01') {
       const { result } = await monthWorkJobCount({ centerId: id })
+      if (result.length === 0) {
+        this.nameList = []
+        this.valueList = []
+      }
       result.forEach((item, index) => {
         if (index > 7) return
         this.$set(this.nameList, index, item.name)
@@ -146,16 +150,16 @@ export default {
 
     // 点击树形
     nodeClick (data, node) {
-      this.selectDeviceByMangeCenter(data.id)
+      // this.selectDeviceByMangeCenter(data.id)
       this.workJobInfo(data.id)
       this.monthWorkJobCount(data.id)
     },
 
     async backValue (item) {
-      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
-      this.createLine({ point: back.result })
-      this.map.setCenter(back.result[~~(back.result.length / 2)])
-
+      if (item.roadGeo === '') return
+      const point = JSON.parse(item.roadGeo)
+      this.createLine({ point: point })
+      this.map.setCenter(back.result[~~(point.length / 2)])
       this.map.setZoom(15)
     },
 
@@ -291,6 +295,13 @@ export default {
 
 ::v-deep .one-zindex {
   z-index: 100;
+}
+
+::v-deep .camera {
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /*************************************/

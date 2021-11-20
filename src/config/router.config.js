@@ -115,20 +115,20 @@ export const constantRoutes = [
     path: "/",
     component: PageWapper,
     redirect: "/index",
-    children: [
-      {
-        path: "index",
-        component: resolve =>
-          require(["@/views/plaf/company/home.vue"], resolve),
-        name: "首页",
-        meta: {
-          title: "首页",
-          icon: "dashboard",
-          noCache: true,
-          affix: true
-        }
-      }
-    ]
+    // children: [
+    //   {
+    //     path: "index",
+    //     component: resolve =>
+    //       require(["@/views/plaf/company/home.vue"], resolve),
+    //     name: "首页",
+    //     meta: {
+    //       title: "首页",
+    //       icon: "dashboard",
+    //       noCache: true,
+    //       affix: true
+    //     }
+    //   }
+    // ]
   },
   {
     path: "/dict",
