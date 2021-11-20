@@ -334,9 +334,6 @@ export default {
       return res.name
     },
     organizationTypeFormat({ cellValue }) {
-      console.log('%c 🍶 cellValue: ', 'font-size:20px;background-color: #EA7E5C;color:#fff;', cellValue);
-      console.log('%c 🍜 this.orgTypeOptions: ', 'font-size:20px;background-color: #FCA650;color:#fff;', this.orgTypeOptions);
-      console.log('%c 🍈 res: ', 'font-size:20px;background-color: #EA7E5C;color:#fff;', res);
       let res = this.orgTypeOptions.find((item) => item.vals === cellValue)
       return res.name
     },
