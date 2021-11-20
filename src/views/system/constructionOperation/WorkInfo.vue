@@ -180,9 +180,11 @@ export default {
       }
     },
     async backValue(item) {
-      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
-      this.setMapCenter(back.result[0])
-      this.createLine({ point: back.result })
+      if (item.roadGeo === '') return
+      const point = JSON.parse(item.roadGeo)
+      this.createLine({ point: point })
+      this.map.setCenter(point[~~(point.length / 2)])
+      this.map.setZoom(15)
     },
     init() {
       // 设置播放容器的宽高并监听窗口大小变化
