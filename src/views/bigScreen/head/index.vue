@@ -54,7 +54,8 @@ export default {
         case 'jump':
           break;
         case 'logout':
-          this.logout()
+          location.href = 'https://yh.jxgsgl.com:6443/portal/v1/logout'
+          // this.logout()
           break;
       }
     },
