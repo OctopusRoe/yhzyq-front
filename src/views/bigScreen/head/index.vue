@@ -8,6 +8,7 @@ import { navList, setingList } from './navList'
 import { storageFunc } from "@/utils/common";
 import { mapGetters, mapState, mapActions } from "vuex";
 import { deepClone } from "@/utils";
+import { getMenuList } from '../api'
 
 export default {
   props: {
@@ -21,6 +22,7 @@ export default {
       secondMenu: [],
       threeMenu: [],
       menu: [],
+      menuList: []
     }
   },
   computed: {
@@ -29,11 +31,30 @@ export default {
   },
   created () {
     this.getIndexNavList()
+    this.getMenuList()
   },
   methods: {
     ...mapActions({
       logout: "Logout",
     }),
+
+    async getMenuList () {
+      try {
+        const backValue = await getMenuList({
+          appID: 'YHBI',
+          userId: this.$store.state.user.userId
+        })
+
+        if (backValue.code !== 200) {
+          console.error(backValue.msg)
+          return
+        }
+
+        this.menuList = backValue.obj
+      } catch (e) {
+        console.error(e)
+      }
+    },
 
     activeNav (index) {
       this.activeIndex = index
@@ -58,6 +79,7 @@ export default {
           break;
       }
     },
+
     showSecondMenuForIndex (index, isLoad = true) {
       this.index = index;
 
@@ -95,7 +117,11 @@ export default {
       }
     },
     clickChildren (e) {
-      console.log(e, 123)
+      if (e.indexOf('http') > -1) {
+        window.location.href = e
+      } else {
+        window.location.href = 'https://' + e
+      }
     }
   }
 
@@ -125,12 +151,8 @@ export default {
         @click="activeSeting(item)"
         class="big-screen-seting-item"
       >
-        <!-- <el-dropdown
-          v-if="item.children && item.children.lenght !== 0"
-          @command="clickChildren"
-        > -->
         <el-dropdown
-          v-if="false"
+          v-if="item.children"
           @command="clickChildren"
         >
           <div class="big-screen-seting-item">
@@ -142,11 +164,11 @@ export default {
             :append-to-body="false"
           >
             <el-dropdown-item
-              v-for="(itemO, indexO) in item.children"
+              v-for="(itemO, indexO) in menuList"
               :key="indexO"
-              :command="itemO.path"
+              :command="itemO.SYSTEM_URL"
             >
-              {{itemO.label}}
+              {{itemO.SHORT_NAME}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
