@@ -159,7 +159,7 @@ export default {
       if (item.roadGeo === '') return
       const point = JSON.parse(item.roadGeo)
       this.createLine({ point: point })
-      this.map.setCenter(back.result[~~(point.length / 2)])
+      this.map.setCenter(point[~~(point.length / 2)])
       this.map.setZoom(15)
     },
 
