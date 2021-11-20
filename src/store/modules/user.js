@@ -10,6 +10,7 @@ const user = {
   state: {
     token: getToken(),
     userId: "",
+    realName: '',
     name: "",
     avatar: "",
     roles: [],
@@ -29,6 +30,9 @@ const user = {
     SET_NAME: (state, name) => {
       state.name = name;
     },
+    SET_REAL_NAME: (state, realName) => {
+      state.realName = realName
+    },
     SET_AVATAR: (state, avatar) => {
       state.avatar = avatar;
     },
@@ -46,7 +50,6 @@ const user = {
     },
     SET_CHECKED_ORG: (state, i) => {
       state.checkedOrg = i;
-
       storage.set(USER_CHECKED_ORG, i);
     }
   },

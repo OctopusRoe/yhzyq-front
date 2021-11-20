@@ -1,4 +1,5 @@
 import request from "@/utils/request";
+import Qs from 'qs'
 
 const url = {
   getUserInfo: "/sso/getUserInfo",
@@ -70,5 +71,38 @@ export function findQrcodeLandDetail(data) {
     url: url.findQrcodeLandDetail,
     method: "post",
     data: data
+  });
+}
+
+/**
+ * 单点登录认证URL
+ * @param data
+ * @returns {AxiosPromise}
+ */
+export function tokenValidate(data) {
+  return request({
+    url: 'https://yh.jxgsgl.com:6443/portal/v1/tokenValidate',
+    method: "post",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data: Qs.stringify(data)
+  });
+}
+
+
+/**
+ * 临时令牌校验接口
+ * @param data
+ * @returns {AxiosPromise}
+ */
+export function tpTokenValidate(data) {
+  return request({
+    url: 'https://yh.jxgsgl.com:6443/portal/v1/tpTokenValidate',
+    method: "post",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data: Qs.stringify(data)
   });
 }
