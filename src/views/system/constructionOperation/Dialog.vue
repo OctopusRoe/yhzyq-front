@@ -27,9 +27,10 @@
         <el-cascader
           ref="cascaderRef"
           style="width:100%"
+          :show-all-levels="false"
           v-model="form.centerId"
           :options="centerTree"
-          :props="{children: 'children', label: 'name', checkStrictly: true, value:'id', emitPath:false}"
+          :props="{children: 'children', label: 'name', value:'id', emitPath:false}"
         ></el-cascader>
       </el-form-item>
       <el-form-item
@@ -312,7 +313,7 @@ export default {
     // 查询公路
     async getHighwayInfo(name) {
       this.loading = true
-      const { result } = await getHighwayInfo({ name, centerLevelCode: this.selectedCenter.levelCode })
+      const { result } = await getHighwayInfo({ name, orgCode: this.selectedCenter.id })
       this.roadSelectAble = false
       this.highWayList = result.map((item) => {
         return {
