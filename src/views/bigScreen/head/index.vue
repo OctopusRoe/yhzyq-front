@@ -5,6 +5,9 @@
  */
 
 import { navList, setingList } from './navList'
+import { storageFunc } from "@/utils/common";
+import { mapGetters, mapState, mapActions } from "vuex";
+import { deepClone } from "@/utils";
 
 export default {
   props: {
@@ -13,10 +16,25 @@ export default {
     return {
       navList,
       setingList,
-      activeIndex: 4
+      activeIndex: 4,
+      index: storageFunc.getActiveFirstRouteIndex() || 0,
+      secondMenu: [],
+      threeMenu: [],
+      menu: [],
     }
   },
+  computed: {
+    ...mapState(["settings"]),
+    ...mapGetters(["permission_routes", "sidebar"]),
+  },
+  created () {
+    this.getIndexNavList()
+  },
   methods: {
+    ...mapActions({
+      logout: "Logout",
+    }),
+
     activeNav (index) {
       this.activeIndex = index
     },
@@ -24,13 +42,56 @@ export default {
     activeSeting (item) {
       switch (item.key) {
         case 'seting':
+          let index
+          this.menu.forEach((item, indexO) => {
+            if (item.path === '/manage') {
+              index = indexO
+            }
+          })
+          this.showSecondMenuForIndex(index)
           this.$router.push(item.path)
           break;
         case 'jump':
           break;
         case 'logout':
-          this.$router.push(item.path)
+          this.logout()
           break;
+      }
+    },
+    showSecondMenuForIndex (index, isLoad = true) {
+      this.index = index;
+
+      storageFunc.setActiveFirstRouteIndex(index);
+
+      let item = this.menu[index];
+      this.secondMenu = item.children;
+      this.$store.state.permission.secondRouter = this.secondMenu;
+
+      storageFunc.setActiveSecondRoute(this.secondMenu);
+
+      if (isLoad) {
+        if (item.redirect) {
+          this.$router.push({ path: item.redirect });
+        } else {
+          this.$router.push({ path: item.path });
+        }
+      }
+    },
+
+    getIndexNavList () {
+      let routesList = deepClone(this.permission_routes);
+
+      for (let i = 0; i < routesList.length; i++) {
+        if (routesList[i].meta && !routesList[i].hidden) {
+          this.menu.push(routesList[i]);
+        }
+      }
+
+      if (this.index) {
+        const sencodMenus = this.menu[this.index].children;
+
+        storageFunc.setActiveSecondRoute(sencodMenus);
+        this.$store.state.permission.secondRouter = sencodMenus;
       }
     },
     clickChildren (e) {

@@ -1,12 +1,10 @@
 <template>
   <div class="___container-chk-project">
     <h1 class="title">请选择项目</h1>
-    <div
-      :class="{
+    <div :class="{
         'chk-project-grid': true,
         'chk-project-grid-more': userOrgList.length > 5
-      }"
-    >
+      }">
       <el-card
         shadow="hover"
         class="single-grid"
@@ -26,7 +24,7 @@
 <script>
 export default {
   name: "chkProject",
-  created() {
+  created () {
     // if (
     //   this.$store.getters.userOrgList &&
     //   this.$store.getters.userOrgList.length === 1
@@ -36,19 +34,19 @@ export default {
     //   this.clickItem(this.chkIndex);
     // }
   },
-  mounted() {
+  mounted () {
     // console.log("store.getters.chk-project", this.$store.getters.userOrgList);
   },
   computed: {
-    userOrgList() {
+    userOrgList () {
       return this.$store.getters.userOrgList;
     },
-    chkIndex() {
+    chkIndex () {
       return this.$store.getters.userCheckedOrgIndex;
     }
   },
   methods: {
-    clickItem(i) {
+    clickItem (i) {
       this.$store.commit("SET_CHECKED_ORG", i);
 
       // 跳转

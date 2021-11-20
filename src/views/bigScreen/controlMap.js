@@ -32,8 +32,8 @@ export default {
       })
 
       data.forEach(item => {
-        const lonlat = [item.longitude, item.latitude]
-
+        // const lonlat = [item.longitude, item.latitude]
+        const lonlat = this.map.tranForm.gcjToWgs([item.longitude, item.latitude])
         this.domMarker.create({
           data: item,
           name: 'marker',
@@ -43,10 +43,12 @@ export default {
           innerHTML: `<img src='${this.imgList[item.deviceType]}' style='width: 44px; height: 56px'>`
         })
       })
-      const lonlat = [data[0].longitude, data[0].latitude]
 
-      this.map.setCenter(lonlat)
-      this.map.setZoom(12)
+      // const midItem = data[~~(data.length / 2)]
+      // const midLonLat = this.map.tranForm.gcjToWgs([midItem.longitude, midItem.latitude])
+
+      // this.map.setCenter(midLonLat)
+      // this.map.setZoom(12)
 
       this.domMarker.addClick(this.createDomMarker)
       this.map.addOverlay(this.domMarker.overlays)
@@ -100,7 +102,6 @@ export default {
 
     // 关闭弹框模组
     clsoeOverlayer () {
-      console.log(1)
       this.map.removeOverlay(this.map.searchOverlays('viewMarker'))
     },
     // 打开实时视频窗口
@@ -125,7 +126,7 @@ export default {
               <i class="el-icon-circle-close" ></i>
             </div>
           </div>
-          <div class="center-box-box">
+          <!-- <div class="center-box-box">
             <div class="item-box">
               <div class="content-box line-box">
                 <div class="center-title">路段名称</div>
@@ -136,6 +137,18 @@ export default {
               <div class="content-box line-box">
                 <div class="center-title">桩 号</div>
                 <div class="center-center">${data['pileNumber']}</div>
+              </div>
+            </div> -->
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">设备名称</div>
+                <div class="center-center">${data['deviceName']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">设备编号</div>
+                <div class="center-center">${data['deviceNumber']}</div>
               </div>
             </div>
             <div class="item-box">
@@ -175,7 +188,7 @@ export default {
             </div>
           </div>
           <div class="center-box-box">
-            <div class="item-box">
+            <!-- <div class="item-box">
               <div class="content-box line-box">
                 <div class="center-title">路段名称</div>
                 <div class="center-center">${data['address']}</div>
@@ -185,6 +198,18 @@ export default {
               <div class="content-box line-box">
                 <div class="center-title">桩 号</div>
                 <div class="center-center">${data['pileNumber']}</div>
+              </div>
+            </div> -->
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">设备名称</div>
+                <div class="center-center">${data['deviceName']}</div>
+              </div>
+            </div>
+            <div class="item-box">
+              <div class="content-box line-box">
+                <div class="center-title">设备编号</div>
+                <div class="center-center camera">${data['deviceNumber']}</div>
               </div>
             </div>
             <div class="item-box">

@@ -53,7 +53,7 @@ const setingList = [
   {
     label: '后台管理',
     key: 'seting',
-    path: '/deviceList',
+    path: '/org',
     icon: require('../assets/images/seting.png'),
     active: false
   },
