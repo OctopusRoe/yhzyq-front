@@ -183,8 +183,7 @@ export default {
     'form.landmarkStartId': {
       immediate: true,
       handler(landmarkStartId) {
-
-
+        console.log('%c 🍓 landmarkStartId: ', 'font-size:20px;background-color: #F5CE50;color:#fff;', landmarkStartId);
         if (landmarkStartId - this.form.landmarkEndId >= 0 || landmarkStartId - this.form.landmarkEndId < -4) {
           this.form.landmarkEndId = landmarkStartId + 4
         }
@@ -193,6 +192,7 @@ export default {
     'form.landmarkEndId': {
       immediate: true,
       handler(landmarkEndId) {
+        console.log('%c 🍦 landmarkEndId: ', 'font-size:20px;background-color: #42b983;color:#fff;', landmarkEndId);
         if (!landmarkEndId) return
         if (landmarkEndId - this.form.landmarkStartId <= 0 || landmarkEndId - this.form.landmarkStartId > 4) {
           this.form.landmarkStartId = landmarkEndId - 4
@@ -334,9 +334,9 @@ export default {
       this.form.landmarkEndId = startNumber + 4
       this.startMinMil = startNumber
       this.startMaxMil = endNumber - 4
-      this.endMinMil = startNumber + 4
+      this.endMinMil = endNumber - startNumber <= 4 ? startNumber : startNumber
       this.endMaxMil = endNumber
-      this.form.mile = result.mile
+      // this.form.mile = result.mile
       this.loading = false
     }
   },

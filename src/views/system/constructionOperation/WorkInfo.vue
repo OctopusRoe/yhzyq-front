@@ -113,13 +113,6 @@ export default {
     selWorInfo: {
       immediate: true,
       handler (info) {
-        // if (info) {
-        //   setTimeout(() => {
-        //     this.init()
-        //     this.createPlayer()
-        //     this.realplay()
-        //   }, 1000)
-        // }
         if (info) {
           setTimeout(() => {
             this.backValue(info)
@@ -187,69 +180,7 @@ export default {
       this.createLine({ point: point })
       this.map.setCenter(point[~~(point.length / 2)])
       this.map.setZoom(15)
-    },
-    init () {
-      // 设置播放容器的宽高并监听窗口大小变化
-      window.addEventListener('resize', () => {
-        this.player.JS_Resize()
-      })
-    },
-    createPlayer () {
-      this.player = new JSPlugin({
-        szId: 'player',
-        szBasePath: "/",
-        iMaxSplit: 1,
-        iCurrentSplit: this.IS_MOVE_DEVICE ? 1 : 2,
-        openDebug: true,
-        oStyle: {
-          borderSelect: this.IS_MOVE_DEVICE ? '#000' : '#FFCC00',
-        }
-      })
-
-      // 事件回调绑定
-      this.player.JS_SetWindowControlCallback({
-        windowEventSelect: function (iWndIndex) {  //插件选中窗口回调
-          console.log('windowSelect callback: ', iWndIndex);
-        },
-        pluginErrorHandler: function (iWndIndex, iErrorCode, oError) {  //插件错误回调
-          console.log('pluginError callback: ', iWndIndex, iErrorCode, oError);
-        },
-        windowEventOver: function (iWndIndex) {  //鼠标移过回调
-          //console.log(iWndIndex);
-        },
-        windowEventOut: function (iWndIndex) {  //鼠标移出回调
-          //console.log(iWndIndex);
-        },
-        windowEventUp: function (iWndIndex) {  //鼠标mouseup事件回调
-          //console.log(iWndIndex);
-        },
-        windowFullCcreenChange: function (bFull) {  //全屏切换回调
-          console.log('fullScreen callback: ', bFull);
-        },
-        firstFrameDisplay: function (iWndIndex, iWidth, iHeight) {  //首帧显示回调
-          console.log('firstFrame loaded callback: ', iWndIndex, iWidth, iHeight);
-        },
-        performanceLack: function () {  //性能不足回调
-          console.log('performanceLack callback: ');
-        }
-      });
-    },
-    realplay () {
-      let { player, mode, urls } = this,
-        index = player.currentWindowIndex,
-        playURL = urls.realplay
-
-      player.JS_Play(playURL, { playURL, mode }, index).then(
-        () => { console.log('realplay success') },
-        e => { console.error(e) }
-      )
-    },
-    stopPlay () {
-      this.player.JS_Stop().then(
-        () => { this.playback.rate = 0; console.log('stop realplay success') },
-        e => { console.error(e) }
-      )
-    },
+    }
   },
 }
 

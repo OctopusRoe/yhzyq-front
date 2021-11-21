@@ -29,7 +29,7 @@
     const PLAYM4_FIRST_FRAME_NOT_ICURRENT               =101;   //定位后送进来的第一帧不是定位帧所在的I帧（Ni>Mp）
 
 
-    importScripts('Decoder.js');
+    // importScripts('Decoder.js');
     Module.addOnPostRun(function () {
         postMessage({'function': "loaded"});
     });
