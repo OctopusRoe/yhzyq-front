@@ -65,9 +65,11 @@ export default {
     document.getElementById('app').style.cssText = 'width: 100% !important; height: 100% !important'
     this.getMap()
     this.getManagerCenter()
-    this.selectDeviceByMangeCenter()
     this.workJobInfo()
     this.monthWorkJobCount()
+    setTimeout(() => {
+      this.selectDeviceByMangeCenter()
+    }, 1000)
   },
   methods: {
 
@@ -128,10 +130,16 @@ export default {
       const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
       this.tableList = result
       if (result.length === 0) return
-      result.forEach(async item => {
-        const point = JSON.parse(item.roadGeo)
+      // result.forEach(async item => {
+      //   const point = JSON.parse(item.roadGeo)
+      //   this.createLine({ point: point })
+      // })
+
+      for (let i = 0; i < result.length; i++) {
+        if (result[i].roadGeo === '') continue
+        const point = JSON.parse(result[i].roadGeo)
         this.createLine({ point: point })
-      })
+      }
     },
 
     // 月度施工情况
