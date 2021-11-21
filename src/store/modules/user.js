@@ -152,8 +152,9 @@ const user = {
         validateLoginFunc(params).then(
           token => {
             setToken(token);
-
             commit("SET_TOKEN", token);
+            commit("SET_TOKEN", params.userId);
+            commit("SET_NAME", params.name);
 
             resolve(token);
           },
