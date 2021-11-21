@@ -74,21 +74,7 @@ export function findQrcodeLandDetail(data) {
   });
 }
 
-/**
- * 单点登录认证URL
- * @param data
- * @returns {AxiosPromise}
- */
-export function tokenValidate(data) {
-  return request({
-    url: 'https://yh.jxgsgl.com:6443/portal/v1/tokenValidate',
-    method: "post",
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    data: Qs.stringify(data)
-  });
-}
+
 
 
 /**
@@ -99,6 +85,23 @@ export function tokenValidate(data) {
 export function tpTokenValidate(data) {
   return request({
     url: 'https://yh.jxgsgl.com:6443/portal/v1/tpTokenValidate',
+    method: "post",
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data: Qs.stringify(data)
+  });
+}
+
+
+/**
+ * 单点登录认证URL
+ * @param data
+ * @returns {AxiosPromise}
+ */
+export function tokenValidate(data) {
+  return request({
+    url: 'https://yh.jxgsgl.com:6443/portal/v1/tokenValidate',
     method: "post",
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',

@@ -16,8 +16,7 @@ import { param } from "../utils";
 export default {
   created() {
     const params = this.$route.query;
-    this.validateLogin(params).then(
-      () => {
+    this.validateLogin(params).then(() => {
         /**
          * 在此获取用户信息
          * author:陈偲
@@ -28,8 +27,8 @@ export default {
          */
 
         // this.$router.push({ name: 'Analysis' }, () => {
-        this.$router.push({ path: storage.get(APP_REDIRECT) || "/" }, () => {
-          storage.remove(APP_REDIRECT);
+        this.$router.push({ path: '/bigScreen' }, () => {
+          // storage.remove(APP_REDIRECT);
           // this.$router.push({ path: '/dashboard/analysis' }, () => {
           this.msgSuccess("欢迎回来");
         });
