@@ -65,10 +65,10 @@ export default {
     document.getElementById('app').style.cssText = 'width: 100% !important; height: 100% !important'
     this.getMap()
     this.getManagerCenter()
-    this.workJobInfo()
     this.monthWorkJobCount()
     setTimeout(() => {
       this.selectDeviceByMangeCenter()
+      this.workJobInfo()
     }, 1000)
   },
   methods: {
