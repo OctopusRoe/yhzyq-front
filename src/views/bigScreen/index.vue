@@ -118,7 +118,7 @@ export default {
     },
 
     // 获取全部设备信息
-    async selectDeviceByMangeCenter (id = 'A01') {
+    async selectDeviceByMangeCenter (id = '') {
       const back = await selectDeviceByMangeCenter({ id: id })
       this.createMark(back.result)
     },
@@ -245,7 +245,7 @@ export default {
 }
 
 ::v-deep .big-screen-box {
-  height: 1080px;
+  // height: 1080px;
   width: 1920px;
   background-color: rgb(4, 2, 44);
   position: relative;
