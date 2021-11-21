@@ -39,11 +39,11 @@ export default {
     }),
 
     async getMenuList () {
+      console.log('%c 🥫 this.$store: ', 'font-size:20px;background-color: #E41A6A;color:#fff;', this.$store);
       try {
         const backValue = await getMenuList({
           appID: 'YHBI',
-          // userId: this.$store.state.userId
-          userId: '1'
+          userId: this.$store.state.userId
         })
 
         if (backValue.code !== 200) {

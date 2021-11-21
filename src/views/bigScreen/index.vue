@@ -127,7 +127,6 @@ export default {
     async workJobInfo (id = 'A01') {
       const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
       this.tableList = result
-      console.log('%c 🍱 tableList: ', 'font-size:20px;background-color: #465975;color:#fff;', tableList);
       if (result.length === 0) return
       result.forEach(async item => {
         const point = JSON.parse(item.roadGeo)
@@ -142,8 +141,9 @@ export default {
         this.nameList = []
         this.valueList = []
       }
+
       result.forEach((item, index) => {
-        if (index > 7) return
+        // if (index > 7) return
         this.$set(this.nameList, index, item.name)
         this.$set(this.valueList, index, ~~item.mileSum)
       })

@@ -19,13 +19,6 @@ export default {
       default: () => []
     }
   },
-  mounted () {
-    const div = document.getElementById('line')
-    console.log('%c 🍒 div.preatend: ', 'font-size:20px;background-color: #7F2B82;color:#fff;', div.parentNode.clientWidth);
-    console.log('%c 🥃 div.parentNode: ', 'font-size:20px;background-color: #7F2B82;color:#fff;', div.parentNode.clientHeight);
-    div.style.width = div.parentNode.clientWidth
-    div.style.height = div.parentNode.clientHeight
-  },
   computed: {
     options () {
       return {
