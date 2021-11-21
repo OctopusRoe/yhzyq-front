@@ -39,11 +39,10 @@ export default {
     }),
 
     async getMenuList () {
-      console.log('%c 🥫 this.$store: ', 'font-size:20px;background-color: #E41A6A;color:#fff;', this.$store);
       try {
         const backValue = await getMenuList({
           appID: 'YHBI',
-          userId: this.$store.state.userId
+          userId: this.$store.state.user.userId
         })
 
         if (backValue.code !== 200) {
@@ -51,7 +50,6 @@ export default {
           return
         }
         this.menuList = backValue.obj
-        console.log('%c 🍪 backValue: ', 'font-size:20px;background-color: #ED9EC7;color:#fff;', backValue);
       } catch (e) {
         console.error(e)
       }
@@ -252,6 +250,10 @@ export default {
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #c5f3ff;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       img {
         margin-right: 10px;
