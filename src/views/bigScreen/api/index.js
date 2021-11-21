@@ -3,6 +3,8 @@ import request from "@/utils/request"
 
 export const tileBaseUrl = 'http://106.225.147.187:7890/arcgis/rest/services/jx/JxMapblue2021/MapServer'
 
+export const mentListUrl = 'https://yh.jxgsgl.com:6443/portal/uum/v1/getSubSystem'
+
 const path = {
   manageCenter: '/yhzyq/workJob/queryMangeCenter',
   typeCount: '/yhBigScreen/selectDeviceByTypeCount',
@@ -16,51 +18,56 @@ const path = {
 }
 
 // 获取地图数据
-export function getMapData() {
+export function getMapData () {
   return Axios.get(tileBaseUrl + '?f=pjson')
 }
 
 // 查询管理中心
-export function queryMangeCenter() {
+export function queryMangeCenter () {
   return request.get(path.manageCenter)
 }
 
 // 查询设备总量
-export function querySelectDeviceByTypeCount() {
+export function querySelectDeviceByTypeCount () {
   return request.get(path.typeCount)
 }
 
 // 查询全部设备信息
-export function selectDeviceByMangeCenter(params) {
+export function selectDeviceByMangeCenter (params) {
   return request.get(path.deviceManager, { params: params })
 }
 
 // 查询管理中心设备
-export function queryCenterCount() {
+export function queryCenterCount () {
   return request.get(path.centerCount)
 }
 
 // 管理中心施工情况
-export function workJobCount() {
+export function workJobCount () {
   return request.get(path.workJobCount)
 }
 
 // 施工信息
-export function workJobInfo(params) {
+export function workJobInfo (params) {
   return request.get(path.workJobInfo, { params: params })
 }
 
 // 月度施工信息
-export function monthWorkJobCount(params) {
+export function monthWorkJobCount (params) {
   return request.get(path.MonthWorkJobCount, { params: params })
 }
 
 // 查询施工路段的经纬度
-export function queryLonAndLatByZH(params) {
+export function queryLonAndLatByZH (params) {
   return request.get(path.queryLonAndLatByZH, { params: params })
 }
 
 // 查询摄像头流地址
-export function getCameraPreviewURL(params) {
+export function getCameraPreviewURL (params) {
   return request.get(path.getCameraPreviewURL, { params: params })
+}
+
+// 获取转跳列表
+export function getMenuList (params) {
+  return request.get(mentListUrl, { params: params })
 }

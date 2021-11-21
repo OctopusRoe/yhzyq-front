@@ -78,7 +78,7 @@ export default {
     },
   },
   mixins: [mapMixin],
-  data() {
+  data () {
     return {
       player: null,
       IS_MOVE_DEVICE: false,
@@ -112,7 +112,7 @@ export default {
   watch: {
     selWorInfo: {
       immediate: true,
-      handler(info) {
+      handler (info) {
         // if (info) {
         //   setTimeout(() => {
         //     this.init()
@@ -121,16 +121,18 @@ export default {
         //   }, 1000)
         // }
         if (info) {
-          this.backValue(info)
+          setTimeout(() => {
+            this.backValue(info)
+          }, 500)
         }
       }
     }
   },
   methods: {
-    closeWorInf() {
+    closeWorInf () {
       this.$emit("update:selWorInfo", null)
     },
-    splitStrArr(roadGeo) {
+    splitStrArr (roadGeo) {
       const arr = []
       const resArr = roadGeo.split(',').map((item) => {
         const arr = item.split(' ')
@@ -139,11 +141,11 @@ export default {
       arr.push(resArr)
       return arr
     },
-    setMapCenter(center = [115.904642, 28.680854]) {
+    setMapCenter (center = [115.904642, 28.680854]) {
       this.map.setCenter(center)
       this.map.setZoom(10)
     },
-    createPolygon(point = [
+    createPolygon (point = [
       [115.904642, 28.680854],
       [115.90469, 28.680417],
       [115.905204, 28.680444],
@@ -166,7 +168,7 @@ export default {
       })
       this.map.addLayer(gridPolygon.layer)
     },
-    createLine(options) {
+    createLine (options) {
       this.map.removeLayer(this.map.searchLayers('line'))
       this.line = this.map.Line({ name: 'line', style: { color: 'red', width: 3 } })
       this.map.addLayer(this.line.layer)
@@ -179,18 +181,20 @@ export default {
         this.line.create({ point: options.point })
       }
     },
-    async backValue(item) {
-      const back = await queryLonAndLatByZH({ endNum: item.landmarkEndId, startNum: item.landmarkStartId, lxbm: item.roadCode, direction: item.lane })
-      this.setMapCenter(back.result[0])
-      this.createLine({ point: back.result })
+    async backValue (item) {
+      if (item.roadGeo === '') return
+      const point = JSON.parse(item.roadGeo)
+      this.createLine({ point: point })
+      this.map.setCenter(point[~~(point.length / 2)])
+      this.map.setZoom(15)
     },
-    init() {
+    init () {
       // 设置播放容器的宽高并监听窗口大小变化
       window.addEventListener('resize', () => {
         this.player.JS_Resize()
       })
     },
-    createPlayer() {
+    createPlayer () {
       this.player = new JSPlugin({
         szId: 'player',
         szBasePath: "/",
@@ -230,7 +234,7 @@ export default {
         }
       });
     },
-    realplay() {
+    realplay () {
       let { player, mode, urls } = this,
         index = player.currentWindowIndex,
         playURL = urls.realplay
@@ -240,7 +244,7 @@ export default {
         e => { console.error(e) }
       )
     },
-    stopPlay() {
+    stopPlay () {
       this.player.JS_Stop().then(
         () => { this.playback.rate = 0; console.log('stop realplay success') },
         e => { console.error(e) }

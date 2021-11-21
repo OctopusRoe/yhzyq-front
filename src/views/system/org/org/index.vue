@@ -59,18 +59,18 @@
                 width="100"
                 :formatter="statusFormat"
               ></vxe-table-column>
-              <vxe-table-column
+              <!-- <vxe-table-column
                 field="organizationType"
                 title="机构组织类型"
                 align="center"
                 :formatter="organizationTypeFormat"
-              ></vxe-table-column>
-              <vxe-table-column
+              ></vxe-table-column> -->
+              <!-- <vxe-table-column
                 field="buzType"
                 title="机构业务类型"
                 align="center"
                 :formatter="buzTypeFormat"
-              ></vxe-table-column>
+              ></vxe-table-column> -->
               <vxe-table-column field="address" align="center" width="120" title="机构所在地点"></vxe-table-column>
               <vxe-table-column title="操作" width="200" align="center">
                 <template slot-scope="scope">

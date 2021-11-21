@@ -32,28 +32,27 @@ export default {
         talk: '',
         playback: ''
       },
-      model: 0,
+      mode: 1,
+      muted: true,
+      volume: 50,
+      volumeOnSvg: {
+        template: '<svg t="1624453273744" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1421" width="200" height="200"><path d="M597.994667 138.005333q130.005333 28.010667 213.994667 132.992t84.010667 241.002667-84.010667 241.002667-213.994667 132.992l0-88q93.994667-28.010667 153.002667-106.005333t59.008-180.010667-59.008-180.010667-153.002667-106.005333l0-88zM704 512q0 120-106.005333 172.010667l0-344q106.005333 52.010667 106.005333 172.010667zM128 384l170.005333 0 213.994667-213.994667 0 684.010667-213.994667-213.994667-170.005333 0 0-256z" p-id="1422"></path></svg>'
+      },
+      volumeOffSvg: {
+        template: '<svg t="1624453193279" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9147" width="200" height="200"><path d="M512 170.005333l0 180.010667-90.005333-90.005333zM181.994667 128l714.005333 714.005333-53.994667 53.994667-88-88q-74.005333 58.005333-156.010667 77.994667l0-88q50.005333-13.994667 96-50.005333l-181.994667-181.994667 0 288-213.994667-213.994667-170.005333 0 0-256 202.005333 0-202.005333-202.005333zM810.005333 512q0-101.994667-59.008-180.010667t-153.002667-106.005333l0-88q130.005333 28.010667 213.994667 132.992t84.010667 241.002667q0 96-44.010667 178.005333l-64-66.005333q21.994667-53.994667 21.994667-112zM704 512q0 18.005333-2.005333 26.005333l-104-104 0-93.994667q106.005333 52.010667 106.005333 172.010667z" p-id="9148"></path></svg>'
+      },
       timeoutId: null
     }
   },
   methods: {
     async open() {
       this.dialogVisible = true
-      if (this.info.deviceNumber) {
-        this.getUrl()
-        this.timeoutId = setTimeout(() => {
-          this.getUrl()
-        }, 5000);
-        setTimeout(() => {
-          this.init()
-          this.createPlayer()
-          this.realplay()
-        }, 1000)
-      }
-
+      await this.customCreatePlayer()
+      this.getUrl()
     },
     close() {
       this.dialogVisible = false
+      this.stopPlay()
       this.player = null
       clearTimeout(this.timeoutId)
     },
@@ -64,7 +63,8 @@ export default {
       })
     },
     createPlayer() {
-      this.player = new JSPlugin({
+      const that = this
+      this.player = new window.JSPlugin({
         szId: 'player',
         szBasePath: "/",
         iMaxSplit: 1,
@@ -78,28 +78,30 @@ export default {
       // 事件回调绑定
       this.player.JS_SetWindowControlCallback({
         windowEventSelect: function (iWndIndex) {  //插件选中窗口回调
-          console.log('windowSelect callback: ', iWndIndex);
+
         },
         pluginErrorHandler: function (iWndIndex, iErrorCode, oError) {  //插件错误回调
-          console.log('pluginError callback: ', iWndIndex, iErrorCode, oError);
+
         },
         windowEventOver: function (iWndIndex) {  //鼠标移过回调
-          //console.log(iWndIndex);
+
         },
         windowEventOut: function (iWndIndex) {  //鼠标移出回调
-          //console.log(iWndIndex);
+
         },
         windowEventUp: function (iWndIndex) {  //鼠标mouseup事件回调
-          //console.log(iWndIndex);
+
         },
         windowFullCcreenChange: function (bFull) {  //全屏切换回调
-          console.log('fullScreen callback: ', bFull);
+
         },
         firstFrameDisplay: function (iWndIndex, iWidth, iHeight) {  //首帧显示回调
-          console.log('firstFrame loaded callback: ', iWndIndex, iWidth, iHeight);
+          that.timeoutId = setTimeout(() => {
+            that.getUrl()
+          }, 4.5 * 60 * 1000)
         },
         performanceLack: function () {  //性能不足回调
-          console.log('performanceLack callback: ');
+
         }
       });
     },
@@ -109,21 +111,45 @@ export default {
         playURL = urls.realplay
 
       player.JS_Play(playURL, { playURL, mode }, index).then(
-        () => { console.log('realplay success') },
-        e => { console.error(e) }
+        () => {
+          this.openSound()
+        },
+        e => {
+          this.realplay()
+          clearTimeout(this.timeoutId)
+          this.timeoutId = setTimeout(() => {
+            this.getUrl()
+          }, 4.5 * 60 * 1000)
+        }
       )
     },
     stopPlay() {
       this.player.JS_Stop().then(
-        () => { this.playback.rate = 0; console.log('stop realplay success') },
-        e => { console.error(e) }
+        () => { this.playback.rate = 0; },
+        e => { }
       )
     },
+    // 开启声音
+    openSound() {
+      const index = this.player.currentWindowIndex
+      this.player.JS_OpenSound(index).then(() => {
+        console.log('open sound success')
+        this.player.JS_SetVolume(index, 50).then(() => {
+          console.log('set volume success')
+        })
+      })
+    },
+    async customCreatePlayer() {
+      await this.init()
+      await this.createPlayer()
+    },
     async getUrl() {
-      const { code, result } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
-      if (code === 200) {
+      const { code, result, message } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
+      if (code === 200 && result) {
         this.urls.realplay = result
-        console.log('%c 🍣 this.urls.realplay: ', 'font-size:20px;background-color: #4b4b4b;color:#fff;', this.urls.realplay);
+        this.realplay()
+      } else if (!result || message === '获取摄像头视频地址失败，请刷新') {
+        this.getUrl()
       }
     }
   },

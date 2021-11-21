@@ -33,10 +33,8 @@ export default {
 </script>
 <template>
   <div class="table-item">
-    <div
-      class="table-item-box"
-      :class="{['background-url']: item.endTime === '' || item.endTime === null }"
-    >
+    <!-- :class="{['background-url']: item.endTime === '' || item.endTime === null }" -->
+    <div class="table-item-box">
       <div
         class="item-column center-box"
         style="width: 80px"

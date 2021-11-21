@@ -155,10 +155,11 @@ export default {
     }
   },
   watch: {
-    'form.centerId' (centerId) {
+    'form.centerId'(centerId) {
       if (centerId) {
         this.selectedCenter = this.$refs.cascaderRef?.getCheckedNodes()[0]?.data
         this.form.centerName = this.selectedCenter?.name ? this.selectedCenter?.name : this.form.centerName
+        this.$refs.cascaderRef.dropDownVisible = false
       }
     },
   },
