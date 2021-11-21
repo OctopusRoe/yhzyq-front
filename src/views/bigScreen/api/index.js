@@ -1,7 +1,7 @@
 import Axios from "axios"
 import request from "@/utils/request"
 
-export const tileBaseUrl = 'http://106.225.147.187:7890/arcgis/rest/services/jx/JxMapblue2021/MapServer'
+export const tileBaseUrl = 'https://yhxt.jxgsgl.com:7031/arcgis/rest/services/jx/JxMapblue2021/MapServer'
 
 export const mentListUrl = 'https://yh.jxgsgl.com:6443/portal/uum/v1/getSubSystem'
 

@@ -88,7 +88,7 @@ export default {
         />
       </div>
       <div class="table-content">
-        <el-scrollbar style="height:400px">
+        <el-scrollbar style="height:100%">
           <TableItemOne
             v-for="(item, index) in centerList"
             :key="index"
@@ -102,13 +102,13 @@ export default {
 <style lang="scss" scoped>
 .big-screen-left-top-box {
   width: 100%;
-  height: 644px;
+  height: 60%;
   background: url('~../assets/images/one.png') no-repeat center / contain;
-  background-size: 100% 644px;
+  background-size: 100% 100%;
 
   .num-card-box {
     width: 100%;
-    height: 110px;
+    height: 92px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,7 +116,7 @@ export default {
 
   .table-box {
     width: 100%;
-    height: 484px;
+    height: 70%;
     padding: 15px 10px 10px 15px;
 
     .table-title {
@@ -125,24 +125,24 @@ export default {
 
     .table-content {
       margin-top: 20px;
-      width: 420px;
-      height: 400px;
+      width: 100%;
+      height: 84%;
       background-color: rgba(227, 227, 227, 0.08);
     }
   }
 }
 
-.el-scrollbar__wrap {
+:v-deep .el-scrollbar__wrap {
   overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
+:v-deep body::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 /*滚动条的滑块*/
-body ::-webkit-scrollbar-thumb {
+:v-deep body ::-webkit-scrollbar-thumb {
   background-color: #409eff;
   border-radius: 3px;
 }

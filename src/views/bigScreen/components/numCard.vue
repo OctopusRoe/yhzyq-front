@@ -51,18 +51,18 @@ export default {
   align-items: center;
 
   .number-font-box {
-    font-size: 38px;
+    font-size: 30px;
     font-family: Impact;
     font-weight: 400;
     padding-bottom: 5px;
   }
 
   .font-box {
-    font-size: 14px;
+    font-size: 13px;
     font-family: Microsoft YaHei;
     font-weight: 400;
     color: #ffffff;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
 }
 </style>

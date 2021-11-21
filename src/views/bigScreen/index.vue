@@ -62,7 +62,7 @@ export default {
   },
   mounted () {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
-    document.getElementById('app').style.cssText = 'height: 1080px !important'
+    document.getElementById('app').style.cssText = 'width: 100% !important; height: 100% !important'
     this.getMap()
     this.getManagerCenter()
     this.selectDeviceByMangeCenter()
@@ -127,6 +127,7 @@ export default {
     async workJobInfo (id = 'A01') {
       const { result } = await workJobInfo({ centerId: id, jobStatus: 1 })
       this.tableList = result
+      console.log('%c 🍱 tableList: ', 'font-size:20px;background-color: #465975;color:#fff;', tableList);
       if (result.length === 0) return
       result.forEach(async item => {
         const point = JSON.parse(item.roadGeo)
@@ -246,7 +247,7 @@ export default {
 
 ::v-deep .big-screen-box {
   // height: 1080px;
-  width: 1920px;
+  width: 100%;
   background-color: rgb(4, 2, 44);
   position: relative;
   z-index: 0;
@@ -306,8 +307,8 @@ export default {
 
 /*************************************/
 .map-box {
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   z-index: -1;
@@ -315,14 +316,14 @@ export default {
 
 .position-box {
   position: absolute;
-  top: 108px;
-  right: 480px;
+  top: 12%;
+  right: 25%;
 }
 
 .tree-box {
   position: absolute;
-  top: 108px;
-  left: 480px;
+  top: 12%;
+  left: 25%;
 }
 
 .yjfk {

@@ -39,5 +39,9 @@ export default {
     align-items: center;
     padding: 0 20px;
   }
+
+  img {
+    width: 100%;
+  }
 }
 </style>

@@ -37,19 +37,19 @@ export default {
     <div class="table-item-box">
       <div
         class="item-column center-box"
-        style="width: 80px"
+        style="width: 21%"
       >
         {{item.roadName.split('-')[2]}}
       </div>
       <div
         class="item-column center-box"
-        style="width: 130px"
+        style="width: 29%"
       >
         {{`${~~item.landmarkStartId} - ${~~item.landmarkEndId}`}}
       </div>
       <div
         class="item-column center-box"
-        style="width: 100px"
+        style="width: 25%"
       >
         <div class="date-box">
           <div>{{item.startTime.split(' ')[0]}}</div>
@@ -58,7 +58,7 @@ export default {
       </div>
       <div
         class="item-column center-box"
-        style="width: 100px"
+        style="width: 25%"
       >
         <div
           v-if="item.endTime"
@@ -88,7 +88,7 @@ export default {
 }
 
 .table-item {
-  width: 418px;
+  width: 100%;
   height: 50px;
   display: flex;
   flex-flow: column nowrap;
@@ -101,11 +101,11 @@ export default {
 
   .table-item-box {
     display: flex;
-    width: 418px;
+    width: 100%;
     height: 44px;
   }
   img {
-    width: 416;
+    width: 100%;
   }
 
   .background-url {

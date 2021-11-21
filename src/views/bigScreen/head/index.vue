@@ -42,15 +42,16 @@ export default {
       try {
         const backValue = await getMenuList({
           appID: 'YHBI',
-          userId: this.$store.state.user.userId
+          // userId: this.$store.state.userId
+          userId: '1'
         })
 
         if (backValue.code !== 200) {
           console.error(backValue.msg)
           return
         }
-
         this.menuList = backValue.obj
+        console.log('%c 🍪 backValue: ', 'font-size:20px;background-color: #ED9EC7;color:#fff;', backValue);
       } catch (e) {
         console.error(e)
       }
@@ -187,33 +188,36 @@ export default {
 <style lang="scss" scoped>
 .nav-active {
   background: url('~../assets/images/four.png') no-repeat center / contain;
-  background-size: 210px 70px;
+  // background-size: 200px 88px;
+  background-size: 150px 70px;
 }
 
 .big-screen-head-box {
   height: 89px;
-  width: 1920px;
+  width: 100%;
   display: flex;
   background: url('~../assets/images/three.png') no-repeat center / contain;
-  background-size: 1920px 89px;
+  background-size: 100% 89px;
 
   .big-screen-head-one {
-    width: 558px;
+    // width: 558px;
+    width: 29%;
     height: 92px;
     display: flex;
     align-items: center;
 
     img {
       margin-left: 21px;
-      width: 502px;
+      // width: 502px;
+      width: 90%;
       height: 46px;
     }
   }
 
   .big-screen-head-two {
-    width: 990px;
+    width: 51%;
     height: 62px;
-    font-size: 16px;
+    font-size: 13px;
     font-family: Microsoft YaHei;
     font-weight: 400;
     color: #ffffff;
@@ -225,8 +229,8 @@ export default {
 
     .big-screen-nav-item {
       position: relative;
-      width: 220px;
-      height: 62px;
+      width: 25%;
+      height: 58px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -236,7 +240,7 @@ export default {
   .big-screen-head-three {
     display: flex;
     justify-content: space-around;
-    width: 370px;
+    width: 20%;
     height: 50px;
 
     .big-screen-seting-item {
@@ -244,7 +248,7 @@ export default {
       justify-content: center;
       align-items: center;
 
-      font-size: 18px;
+      font-size: 14px;
       font-family: Microsoft YaHei;
       font-weight: 400;
       color: #c5f3ff;

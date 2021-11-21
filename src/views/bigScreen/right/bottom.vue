@@ -57,14 +57,14 @@ export default {
 <style lang="scss" scoped>
 .big-screen-right-buttom-box {
   width: 100%;
-  height: 306px;
+  height: 30%;
   background: url('~../assets/images/two.png') no-repeat center / contain;
-  background-size: 100% 306px;
+  background-size: 100% 100%;
   margin-top: 18px;
 
   .echarts-box {
-    width: 100%;
-    height: 256px;
+    width: 380px;
+    height: 250px;
     padding: 5px 15px;
   }
 }
