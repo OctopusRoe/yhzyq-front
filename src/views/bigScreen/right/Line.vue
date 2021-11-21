@@ -1,8 +1,7 @@
 <template>
-  <v-chart
-    style="width: 100%; height: 100%;"
-    :option="options"
-  ></v-chart>
+  <div id="line">
+    <v-chart :option="options" />
+  </div>
 </template>
 
 <script>

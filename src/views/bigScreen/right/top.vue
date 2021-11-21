@@ -60,7 +60,7 @@ export default {
         <TableTitleTwo :label-array="tableTitle" />
       </div>
       <div class="table-content">
-        <el-scrollbar style="height: 490px">
+        <el-scrollbar style="height: 100%">
           <div
             v-for="(item, index) in tableList"
             :key="index"
@@ -76,27 +76,43 @@ export default {
 <style lang="scss" scoped>
 .big-screen-right-top-box {
   width: 100%;
-  height: 644px;
+  height: 60%;
   background: url('~../assets/images/one.png') no-repeat center / contain;
-  background-size: 100% 644px;
+  background-size: 100% 100%;
 
   .table-box {
     width: 100%;
-    height: 594px;
-    padding: 15px 10px 10px 15px;
+    height: 90%;
+    // padding: 15px 15px 10px 15px;
+    padding: 12px 9px 10px 9px;
     background: url('~../assets/images/bg-one.png') no-repeat center / contain;
-    background-size: 418px 564px;
+    background-size: 95% 95%;
 
     .table-title {
-      width: 418px;
+      width: 100%;
       height: 56px;
     }
 
     .table-content {
       margin-top: 8px;
-      width: 418px;
-      height: 550px;
+      width: 100%;
+      height: 84%;
     }
   }
+}
+
+:v-deep .el-scrollbar__wrap {
+  overflow-x: hidden;
+}
+
+:v-deep body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/*滚动条的滑块*/
+:v-deep body ::-webkit-scrollbar-thumb {
+  background-color: #409eff;
+  border-radius: 3px;
 }
 </style>

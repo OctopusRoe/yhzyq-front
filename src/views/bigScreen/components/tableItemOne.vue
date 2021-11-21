@@ -55,19 +55,19 @@ export default {
 }
 
 .table-item-box {
-  width: 420px;
+  width: 100%;
   height: 45px;
   display: flex;
   align-items: center;
 
   .item-column-one {
-    width: 137px;
+    width: 31%;
     color: #cbebec;
     margin: 0 5px;
   }
 
   .item-column-two {
-    width: 82px;
+    width: 23%;
     font-size: 24px;
     font-family: Impact;
     font-weight: 400;

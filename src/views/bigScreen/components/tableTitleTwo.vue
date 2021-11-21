@@ -26,13 +26,13 @@ export default {
 </template>
 <style lang='scss' scoped>
 .title-box {
-  width: 418px;
+  width: 100%;
   height: 56px;
   display: flex;
   align-items: center;
   background: url('~../assets/images/list-title.png') no-repeat center / contain;
-  background-size: 418px 56px;
-  font-size: 14px;
+  background-size: 100% 100%;
+  font-size: 13px;
   font-family: Microsoft YaHei;
   font-weight: bold;
   color: #fffc2c;

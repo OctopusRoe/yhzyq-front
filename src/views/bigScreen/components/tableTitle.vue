@@ -41,7 +41,7 @@ export default {
   border: 2px solid #ffffff;
   box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.4),
     0px 0px 18px 0px rgba(158, 158, 158, 0.75);
-  font-size: 18px;
+  font-size: 13px;
   font-family: Microsoft YaHei;
   font-weight: bold;
   color: #0a243c;
