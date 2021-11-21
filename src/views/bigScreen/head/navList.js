@@ -55,7 +55,8 @@ const setingList = [
     key: 'seting',
     path: '/org',
     icon: require('../assets/images/seting.png'),
-    active: false
+    active: false,
+    children: false
   },
   {
     label: '系统转跳',
@@ -70,7 +71,8 @@ const setingList = [
     key: 'logout',
     path: '/index',
     icon: require('../assets/images/logout.png'),
-    active: false
+    active: false,
+    children: false
   }
 ]
 
