@@ -66,7 +66,7 @@ export default {
       const that = this
       this.player = new window.JSPlugin({
         szId: 'player',
-        szBasePath: "./yhbi",
+        szBasePath: "yhbi/",
         iMaxSplit: 1,
         iCurrentSplit: this.IS_MOVE_DEVICE ? 1 : 2,
         openDebug: true,
