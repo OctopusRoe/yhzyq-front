@@ -146,7 +146,7 @@ export default {
     async getUrl() {
       const { code, result, message } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
       if (code === 200 && result) {
-        this.urls.realplay = result
+        this.urls.realplay = result.replace('ws://','wss://')
         this.realplay()
       } else if (!result || message === '获取摄像头视频地址失败，请刷新') {
         this.getUrl()
