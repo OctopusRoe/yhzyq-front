@@ -96,6 +96,7 @@ export default {
 
         },
         firstFrameDisplay: function (iWndIndex, iWidth, iHeight) {  //首帧显示回调
+          clearTimeout(that.timeoutId)
           that.timeoutId = setTimeout(() => {
             that.getUrl()
           }, 4.5 * 60 * 1000)
