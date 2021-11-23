@@ -53,7 +53,7 @@ export default {
     <TitleBox title="管理中心施工情况" />
     <div
       class="echarts-box"
-      :style="{height: 'calc((100vh * 95% * 30%) - 20px)', width: 'calc((100wh * 23%) - 30px)'}"
+      :style="{height: 'calc((100vh * 95% * 30%) - 20px)', width: 'calc((100vw * 23%) - 30px)', maxHeight: '287px', maxWidth: '411px', mixHeight: '200px', minWidth: '300px'}"
     >
       <Bar
         :nameList="nameList"

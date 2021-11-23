@@ -109,7 +109,7 @@ export default {
     // 打开实时视频窗口
     openVideo () {
 
-      this.videoInfo = JSON.parse(document.getElementById('checkVideo').getAttribute('item'))
+      this.videoInfo = document.getElementById('checkVideo').getAttribute('item')
       console.log('videoInfo: ', this.videoInfo)
       this.$refs.videoDialogRef.open()
     },
@@ -179,7 +179,7 @@ export default {
         </div>
       `
       } else {
-        const str = JSON.stringify(item)
+        const str = data.devicenumber
         return `
         <div class="overlayer-box">
           <div class="title-box">
