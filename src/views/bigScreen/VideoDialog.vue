@@ -115,7 +115,6 @@ export default {
           this.openSound()
         },
         e => {
-          this.realplay()
           clearTimeout(this.timeoutId)
           this.timeoutId = setTimeout(() => {
             this.getUrl()
@@ -146,7 +145,6 @@ export default {
     async getUrl() {
       const { code, result, message } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
       if (code === 200 && result) {
-        // this.urls.realplay = result.replace('ws://','wss://')
         this.urls.realplay = result
         this.realplay()
       } else if (!result || message === '获取摄像头视频地址失败，请刷新') {
