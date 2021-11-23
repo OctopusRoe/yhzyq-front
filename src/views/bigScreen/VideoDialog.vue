@@ -142,7 +142,7 @@ export default {
       await this.createPlayer()
     },
     async getUrl() {
-      const { code, result } = await getCameraPreviewURL({ deviceId: this.info })
+      const { code, result } = await getCameraPreviewURL({ deviceId: this.info ? this.info : 'b9a6dfb9cb4a4cb5ad753cb8361f581c' })
       if (code === 200 && result) {
         this.urls.realplay = result
         this.realplay()

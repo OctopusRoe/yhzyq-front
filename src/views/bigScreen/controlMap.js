@@ -179,7 +179,7 @@ export default {
         </div>
       `
       } else {
-        const str = data.devicenumber
+        const str = data.deviceNumber
         return `
         <div class="overlayer-box">
           <div class="title-box">
