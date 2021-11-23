@@ -16,10 +16,8 @@ import { getCameraPreviewURL } from './api';
 export default {
   props: {
     info: {
-      type: Object | null,
-      default: () => {
-        return { deviceNumber: '8aebd07eeaf34f86986e2d61d61e3b0c' }
-      }
+      type: string,
+      default:''
     },
   },
   data() {
@@ -144,7 +142,7 @@ export default {
       await this.createPlayer()
     },
     async getUrl() {
-      const { code, result } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
+      const { code, result } = await getCameraPreviewURL({ deviceId: this.info })
       if (code === 200 && result) {
         this.urls.realplay = result
         this.realplay()
