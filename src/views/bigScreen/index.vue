@@ -211,7 +211,7 @@ export default {
       class="yjfk"
       @clcik="goToYJFK"
     />
-    <video-dialog ref="videoDialogRef" />
+    <video-dialog ref="videoDialogRef" :info="videoInfo"/>
   </div>
 </template>
 <style lang="scss" scoped>
