@@ -9,6 +9,7 @@ import { storageFunc } from "@/utils/common";
 import { mapGetters, mapState, mapActions } from "vuex";
 import { deepClone } from "@/utils";
 import { getMenuList } from '../api'
+import { logout } from '@/config/sso'
 
 export default {
   props: {
@@ -74,8 +75,7 @@ export default {
         case 'jump':
           break;
         case 'logout':
-          location.href = 'https://yh.jxgsgl.com:6443/portal/v1/logout'
-          // this.logout()
+          logout()
           break;
       }
     },

@@ -1,6 +1,6 @@
 // import { login, logout, getInfo } from "@/api/login";
 import { login, getInfo } from "@/api/login";
-import { getToken, setToken, removeToken } from "@/utils/auth";
+import {getToken, setToken, removeToken, getUserId, setUserId} from "@/utils/auth";
 import { validateLoginFunc, logout } from "@/config/sso";
 import storage from "store";
 
@@ -9,7 +9,7 @@ import { USER_INFO, USER_CHECKED_ORG } from "@/store/mutation-types";
 const user = {
   state: {
     token: getToken(),
-    userId: "",
+    userId: getUserId(),
     realName: '',
     name: "",
     avatar: "",
@@ -77,7 +77,7 @@ const user = {
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         // alert("store user")
-        getInfo(state.userId, state.token)
+        getInfo(state.userId, getToken())
           .then(res => {
             if (res.success) {
               res = JSON.parse(res.data).data;
@@ -152,8 +152,9 @@ const user = {
         validateLoginFunc(params).then(
           token => {
             setToken(token);
+            setUserId(params.userId)
             commit("SET_TOKEN", token);
-            commit("SET_TOKEN", params.userId);
+            commit("SET_USERID", params.userId);
             commit("SET_NAME", params.name);
 
             resolve(token);

@@ -114,6 +114,7 @@ export const constantRoutes = [
   {
     path: "/",
     component: PageWapper,
+    name: 'PageWapper',
     redirect: "/index",
     // children: [
     //   {

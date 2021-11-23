@@ -28,6 +28,7 @@ import controlMap from './controlMap'
 import VideoDialog from './VideoDialog.vue'
 
 export default {
+  name: 'bigScreen',
   components: {
     Head,
     Left,
