@@ -5,6 +5,7 @@ export default {
       viewMarker: null,
       line: null,
       key: null,
+      videoInfo: null,
       imgList: {
         DEVICE_TYPE_TACHOMETER: require('./assets/images/b1.png'),
         DEVICE_TYPE_POSITIONER: require('./assets/images/b4.png'),
@@ -90,7 +91,8 @@ export default {
         point: lonlat,
         positioning: 'center-left',
         innerHTML: this.createElement(item),
-        className: 'one-zindex'
+        className: 'one-zindex',
+        item: item
       })
 
       this.map.addOverlay(this.viewMarker.overlays)
@@ -106,6 +108,9 @@ export default {
     },
     // 打开实时视频窗口
     openVideo () {
+
+      this.videoInfo = JSON.parse(document.getElementById('checkVideo').getAttribute('item'))
+      console.log('videoInfo: ', this.videoInfo)
       this.$refs.videoDialogRef.open()
     },
 
@@ -174,6 +179,7 @@ export default {
         </div>
       `
       } else {
+        const str = JSON.stringify(item)
         return `
         <div class="overlayer-box">
           <div class="title-box">
@@ -227,7 +233,7 @@ export default {
             <div class="item-box">
               <div class="content-box" >
                 <div class="center-title">实时视频</div>
-                <div class="center-center" id='checkVideo'>查看实时视频</div>
+                <div class="center-center" id='checkVideo' item=${str}>查看实时视频</div>
               </div>
             </div>
             </div>

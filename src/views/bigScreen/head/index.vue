@@ -10,6 +10,7 @@ import { mapGetters, mapState, mapActions } from "vuex";
 import { deepClone } from "@/utils";
 import { getMenuList } from '../api'
 import { logout } from '@/config/sso'
+import { getUserId } from '@/utils/auth'
 
 export default {
   props: {
@@ -43,7 +44,7 @@ export default {
       try {
         const backValue = await getMenuList({
           appID: 'YHBI',
-          userId: this.$store.state.user.userId
+          userId: getUserId()
         })
 
         if (backValue.code !== 200) {
