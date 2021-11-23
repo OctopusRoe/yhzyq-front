@@ -18,7 +18,7 @@ export default {
     info: {
       type: Object | null,
       default: () => {
-        return { deviceNumber: 'b9a6dfb9cb4a4cb5ad753cb8361f581c' }
+        return { deviceNumber: '8aebd07eeaf34f86986e2d61d61e3b0c' }
       }
     },
   },
@@ -144,11 +144,11 @@ export default {
       await this.createPlayer()
     },
     async getUrl() {
-      const { code, result, message } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
+      const { code, result } = await getCameraPreviewURL({ deviceId: this.info.deviceNumber })
       if (code === 200 && result) {
         this.urls.realplay = result
         this.realplay()
-      } else if (!result || message === '获取摄像头视频地址失败，请刷新') {
+      } else if (result === '获取摄像头视频地址失败，请刷新') {
         this.getUrl()
       }
     }
