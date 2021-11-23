@@ -69,5 +69,11 @@ export function getCameraPreviewURL (params) {
 
 // 获取转跳列表
 export function getMenuList (params) {
-  return request.post(mentListUrl, { params: params })
+  return request.post(mentListUrl,
+    { data: params },
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+    })
 }
