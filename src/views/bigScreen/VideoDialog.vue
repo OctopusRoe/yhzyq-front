@@ -16,7 +16,7 @@ import { getCameraPreviewURL } from './api';
 export default {
   props: {
     info: {
-      type: string,
+      type: String,
       default:''
     },
   },
