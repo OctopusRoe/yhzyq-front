@@ -18,7 +18,7 @@ export default {
     info: {
       type: Object | null,
       default: () => {
-        return { deviceNumber: '8aebd07eeaf34f86986e2d61d61e3b0c' }
+        return { deviceNumber: 'b9a6dfb9cb4a4cb5ad753cb8361f581c' }
       }
     },
   },
