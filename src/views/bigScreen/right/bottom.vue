@@ -46,7 +46,10 @@ export default {
 <template>
   <div class="big-screen-right-buttom-box">
     <TitleBox title="月度施工情况" />
-    <div class="echarts-box">
+    <div
+      class="echarts-box"
+      :style="{height: 'calc((100vh * 95% * 30%) - 20px)', width: 'calc((100wh * 23%) - 30px)'}"
+    >
       <LineComponent
         :nameList="nameList"
         :valueList="valueList"
@@ -63,8 +66,9 @@ export default {
   margin-top: 18px;
 
   .echarts-box {
-    width: 380px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px 15px;
   }
 }
