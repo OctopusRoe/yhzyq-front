@@ -179,7 +179,7 @@ export default {
         </div>
       `
       } else {
-        const str = JSON.stringify(item)
+        const str = JSON.stringify(data)
         return `
         <div class="overlayer-box">
           <div class="title-box">
