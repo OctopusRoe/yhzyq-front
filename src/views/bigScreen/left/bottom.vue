@@ -19,7 +19,9 @@ export default {
   data () {
     return {
       nameList: [],
-      valueList: []
+      valueList: [],
+      width: 0,
+      height: 0
     }
   },
   computed: {
@@ -31,6 +33,10 @@ export default {
   activated () {
   },
   created () {
+    const width = document.getElementById('app').offsetWidth
+    const height = document.getElementById('app').offsetHeight
+    this.height = height * 0.95 * 0.3 - 20
+    this.width = width * 0.23 - 30
   },
   mounted () {
     this.workJobCount()
@@ -53,7 +59,7 @@ export default {
     <TitleBox title="管理中心施工情况" />
     <div
       class="echarts-box"
-      :style="{height: 'calc((100vh * 95% * 30%) - 20px)', width: 'calc((100vw * 23%) - 30px)', maxHeight: '287px', maxWidth: '411px', mixHeight: '200px', minWidth: '300px'}"
+      :style="{height: `${this.height}px`, width: `${this.width}px`}"
     >
       <Bar
         :nameList="nameList"
