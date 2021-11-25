@@ -211,7 +211,10 @@ export default {
       class="yjfk"
       @clcik="goToYJFK"
     />
-    <video-dialog ref="videoDialogRef" :info="videoInfo"/>
+    <video-dialog
+      ref="videoDialogRef"
+      :info="videoInfo"
+    />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -281,7 +284,7 @@ export default {
   align-items: center;
   padding: 0 13px;
   width: 100%;
-  height: 40px;
+  height: 50px;
 }
 
 ::v-deep .center-title {

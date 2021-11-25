@@ -162,12 +162,12 @@ export default {
                 <div class="center-center">${data['centerName']}</div>
               </div>
             </div>
-            <div class="item-box">
+            <!-- <div class="item-box">
               <div class="content-box line-box">
                 <div class="center-title">摆放时间</div>
                 <div class="center-center">${data['createTime']}</div>
               </div>
-            </div>
+            </div> -->
             <div class="item-box">
               <div class="content-box" >
                 <div class="center-title">违规情况</div>
@@ -224,12 +224,12 @@ export default {
                 <div class="center-center">${data['centerName']}</div>
               </div>
             </div>
-            <div class="item-box">
+            <!-- <div class="item-box">
               <div class="content-box line-box">
                 <div class="center-title">摆放时间</div>
                 <div class="center-center">${data['createTime']}</div>
               </div>
-            </div>
+            </div> -->
             <div class="item-box">
               <div class="content-box" >
                 <div class="center-title">实时视频</div>
