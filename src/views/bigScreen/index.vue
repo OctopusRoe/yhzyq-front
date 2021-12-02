@@ -51,7 +51,9 @@ export default {
       treeName: '',
       nameList: [],
       valueList: [],
-      tableList: []
+      tableList: [],
+      width: 0,
+      height: 0
     }
   },
   computed: {
@@ -63,7 +65,9 @@ export default {
   },
   mounted () {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
-    document.getElementById('app').style.cssText = 'width: 100% !important; height: 100% !important'
+    document.getElementById('app').style.cssText = 'width: 100% !important; height: 100vh !important'
+    this.width = document.getElementById('app').offsetWidth
+    this.height = document.getElementById('app').offsetHeight
     this.getMap()
     this.getManagerCenter()
     this.monthWorkJobCount()
@@ -198,12 +202,17 @@ export default {
       :title="treeName"
       @node-click="nodeClick"
     />
-    <Left />
+    <Left
+      :width="width"
+      :height="height"
+    />
     <Right
       :nameList="nameList"
       :valueList="valueList"
       :tableList="tableList"
       :backValue="backValue"
+      :width="width"
+      :height="height"
     />
 
     <img
@@ -328,13 +337,13 @@ export default {
 
 .position-box {
   position: absolute;
-  top: 12%;
+  top: 15%;
   right: 25%;
 }
 
 .tree-box {
   position: absolute;
-  top: 12%;
+  top: 15%;
   left: 25%;
 }
 

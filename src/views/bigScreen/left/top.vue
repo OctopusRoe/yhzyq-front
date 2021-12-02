@@ -24,6 +24,14 @@ export default {
     TableItemOne
   },
   props: {
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
+    }
   },
   data () {
     return {
@@ -34,6 +42,9 @@ export default {
     }
   },
   computed: {
+    itemHeight () {
+      return this.height * 0.6
+    }
   },
   watch: {
   },
@@ -63,7 +74,10 @@ export default {
 }
 </script>
 <template>
-  <div class="big-screen-left-top-box">
+  <div
+    class="big-screen-left-top-box"
+    :style="{height: `${itemHeight}px`}"
+  >
     <TitleBox title="设备总量" />
 
     <div class="num-card-box">
@@ -77,7 +91,10 @@ export default {
       />
     </div>
 
-    <div class="table-box">
+    <div
+      class="table-box"
+      :style="{height: `${itemHeight - 50 - 92}px`}"
+    >
       <div class="table-title">
         <TableTitle
           v-for="(item, index) in tableTitle"
@@ -87,7 +104,10 @@ export default {
           :icon="item.icon"
         />
       </div>
-      <div class="table-content">
+      <div
+        class="table-content"
+        :style="{height: `${itemHeight - 50 - 92 - 33 - 20 - 25}px`}"
+      >
         <el-scrollbar style="height:100%">
           <TableItemOne
             v-for="(item, index) in centerList"
@@ -102,7 +122,6 @@ export default {
 <style lang="scss" scoped>
 .big-screen-left-top-box {
   width: 100%;
-  height: 60%;
   background: url('~../assets/images/one.png') no-repeat center / contain;
   background-size: 100% 100%;
 
@@ -116,7 +135,6 @@ export default {
 
   .table-box {
     width: 100%;
-    height: 70%;
     padding: 15px 10px 10px 15px;
 
     .table-title {
@@ -126,7 +144,6 @@ export default {
     .table-content {
       margin-top: 20px;
       width: 100%;
-      height: 84%;
       background-color: rgba(227, 227, 227, 0.08);
     }
   }

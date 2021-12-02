@@ -2,10 +2,10 @@ import router from "./router";
 import store from "./store";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import {getToken, setToken} from "@/utils/auth";
+import { getToken, setToken } from "@/utils/auth";
 import Cookies from 'js-cookie'
 import { logout } from '@/config/sso'
-import {tpTokenValidate, login, tokenValidate } from '@/api/login'
+import { tpTokenValidate, login, tokenValidate } from '@/api/login'
 
 NProgress.configure({ showSpinner: false });
 
@@ -27,6 +27,8 @@ const whiteList = [
 // }
 const redirectUrl = `${process.env.VUE_APP_SSO_BASE_API}/portal/v1/ssologin?redirect_url=${location.origin + location.pathname}`
 router.beforeEach(async (to, from, next) => {
+
+  // return next()
   NProgress.start();
 
   if (to.path.includes('/logout/setToken')) {
@@ -35,7 +37,7 @@ router.beforeEach(async (to, from, next) => {
 
   const { tpToken } = to.query
   if (Object.keys(to.query).length && tpToken) {
-    const { code, obj } = await tpTokenValidate({tpToken: tpToken, redirect_url: `${location.origin}/logout/setToken`})
+    const { code, obj } = await tpTokenValidate({ tpToken: tpToken, redirect_url: `${location.origin}/logout/setToken` })
     if (code === '200') {
       await setLocalToken(obj, next, to)
     } else {
@@ -82,7 +84,7 @@ router.beforeEach(async (to, from, next) => {
   } else {
     const oldLoginTokens = Cookies.get('loginTokens')
     if (oldLoginTokens) {
-      const {code, obj} = await tokenValidate({ loginToken: oldLoginTokens })
+      const { code, obj } = await tokenValidate({ loginToken: oldLoginTokens })
       if (code === '200') {
         await setLocalToken(obj, next, to)
       } else {

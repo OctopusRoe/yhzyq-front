@@ -2,6 +2,7 @@
   <v-chart
     style="width: 100%; height: 100%"
     :option="options"
+    :init-options="initOptions"
   />
 </template>
 
@@ -17,10 +18,24 @@ export default {
     valueList: {
       type: Array,
       default: () => []
+    },
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
     }
   },
   components: {},
   computed: {
+    initOptions () {
+      return {
+        width: this.width,
+        height: this.height
+      }
+    },
     options () {
       return {
         title: {

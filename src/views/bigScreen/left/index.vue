@@ -13,12 +13,30 @@ export default {
     Top
   },
   props: {
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
+    }
   },
   data () {
     return {
     }
   },
   computed: {
+    itemWidth () {
+      return this.width * 0.23
+    },
+    itemHeight () {
+      if (this.height === 657) {
+        return this.height * 0.90
+      } else {
+        return this.height * 0.95
+      }
+    }
   },
   watch: {
   },
@@ -27,6 +45,7 @@ export default {
   activated () {
   },
   created () {
+    console.log(this.$echarts)
   },
   mounted () {
   },
@@ -36,15 +55,22 @@ export default {
 }
 </script>
 <template>
-  <div class="big-screen-left-box">
-    <Top />
-    <Bottom />
+  <div
+    class="big-screen-left-box"
+    :style="{width: `${itemWidth}px`, height: `${itemHeight}px`}"
+  >
+    <Top
+      :width="itemWidth"
+      :height="itemHeight"
+    />
+    <Bottom
+      :width="itemWidth"
+      :height="itemHeight"
+    />
   </div>
 </template>
 <style lang="scss" scoped>
 .big-screen-left-box {
-  width: 23%;
-  height: 95%;
   padding-top: 10px;
   position: absolute;
   left: 16px;

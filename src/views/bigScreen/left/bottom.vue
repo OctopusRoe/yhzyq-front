@@ -15,16 +15,28 @@ export default {
     Bar
   },
   props: {
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
+    }
   },
   data () {
     return {
       nameList: [],
       valueList: [],
-      width: 0,
-      height: 0
     }
   },
   computed: {
+    itemHeight () {
+      return this.height * 0.3
+    },
+    itemWidth () {
+      return this.width
+    }
   },
   watch: {
   },
@@ -33,10 +45,6 @@ export default {
   activated () {
   },
   created () {
-    const width = document.getElementById('app').offsetWidth
-    const height = document.getElementById('app').offsetHeight
-    this.height = (height - 92) * 0.95 * 0.3 - 50 - 10
-    this.width = width * 0.21 - 30
   },
   mounted () {
     this.workJobCount()
@@ -55,15 +63,17 @@ export default {
 }
 </script>
 <template>
-  <div class="big-screen-left-buttom-box">
+  <div
+    class="big-screen-left-buttom-box"
+    :style="{height: `${itemHeight}px`}"
+  >
     <TitleBox title="管理中心施工情况" />
-    <div
-      class="echarts-box"
-      :style="{height: `${this.height}px`, width: `${this.width}px`}"
-    >
+    <div class="echarts-box">
       <Bar
         :nameList="nameList"
         :valueList="valueList"
+        :width="itemWidth - 30"
+        :height="itemHeight - 50 - 10"
       />
     </div>
   </div>
@@ -71,7 +81,6 @@ export default {
 <style lang="scss" scoped>
 .big-screen-left-buttom-box {
   width: 100%;
-  height: 30%;
   background: url('~../assets/images/two.png') no-repeat center / contain;
   background-size: 100% 100%;
   margin-top: 18px;

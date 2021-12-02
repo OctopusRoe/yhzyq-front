@@ -20,6 +20,14 @@ export default {
     valueList: {
       type: Array,
       default: () => []
+    },
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -29,6 +37,12 @@ export default {
     }
   },
   computed: {
+    itemHeight () {
+      return this.height * 0.3
+    },
+    itemWidth () {
+      return this.width
+    }
   },
   watch: {
   },
@@ -37,10 +51,6 @@ export default {
   activated () {
   },
   created () {
-    const width = document.getElementById('app').offsetWidth
-    const height = document.getElementById('app').offsetHeight
-    this.height = (height - 92) * 0.95 * 0.3 - 50 - 10
-    this.width = width * 0.21 - 30
   },
   mounted () {
   },
@@ -59,6 +69,8 @@ export default {
       <LineComponent
         :nameList="nameList"
         :valueList="valueList"
+        :width="itemWidth - 30"
+        :height="itemHeight - 50 - 10"
       />
     </div>
   </div>

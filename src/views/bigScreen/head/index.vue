@@ -201,7 +201,7 @@ export default {
   .big-screen-head-one {
     // width: 558px;
     width: 29%;
-    height: 92px;
+    height: 89px;
     display: flex;
     align-items: center;
 

@@ -27,6 +27,14 @@ export default {
     backValue: {
       type: Function,
       default: () => { }
+    },
+    width: {
+      type: Number,
+      default: 0
+    },
+    height: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -35,6 +43,9 @@ export default {
     }
   },
   computed: {
+    itemHeight () {
+      return this.height * 0.6
+    }
   },
   watch: {
   },
@@ -52,14 +63,23 @@ export default {
 }
 </script>
 <template>
-  <div class="big-screen-right-top-box">
+  <div
+    class="big-screen-right-top-box"
+    :style="{height: `${itemHeight}px`}"
+  >
     <TitleBox title="施工信息" />
 
-    <div class="table-box">
+    <div
+      class="table-box"
+      :style="{height: `${itemHeight - 50}px`}"
+    >
       <div class="table-title">
         <TableTitleTwo :label-array="tableTitle" />
       </div>
-      <div class="table-content">
+      <div
+        class="table-content"
+        :style="{height: `${itemHeight - 50 - 56 - 8 - 22}px`}"
+      >
         <el-scrollbar style="height: 100%">
           <div
             v-for="(item, index) in tableList"
@@ -76,14 +96,11 @@ export default {
 <style lang="scss" scoped>
 .big-screen-right-top-box {
   width: 100%;
-  height: 60%;
   background: url('~../assets/images/one.png') no-repeat center / contain;
   background-size: 100% 100%;
 
   .table-box {
     width: 100%;
-    height: 90%;
-    // padding: 15px 15px 10px 15px;
     padding: 12px 9px 10px 9px;
     background: url('~../assets/images/bg-one.png') no-repeat center / contain;
     background-size: 95% 95%;
@@ -96,7 +113,7 @@ export default {
     .table-content {
       margin-top: 8px;
       width: 100%;
-      height: 84%;
+      // height: 84%;
     }
   }
 }
