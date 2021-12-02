@@ -33,7 +33,7 @@ export default {
   },
   created () {
     this.getIndexNavList()
-    this.getMenuList()
+    // this.getMenuList()
   },
   methods: {
     ...mapActions({

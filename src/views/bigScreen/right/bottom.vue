@@ -40,7 +40,7 @@ export default {
     const width = document.getElementById('app').offsetWidth
     const height = document.getElementById('app').offsetHeight
     this.height = (height - 92) * 0.95 * 0.3 - 50 - 10
-    this.width = width * 0.23 - 30
+    this.width = width * 0.21 - 30
   },
   mounted () {
   },
