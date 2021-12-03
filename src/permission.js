@@ -28,7 +28,7 @@ const whiteList = [
 const redirectUrl = `${process.env.VUE_APP_SSO_BASE_API}/portal/v1/ssologin?redirect_url=${location.origin + location.pathname}`
 router.beforeEach(async (to, from, next) => {
 
-  return next()
+  // return next()
   NProgress.start();
 
   if (to.path.includes('/logout/setToken')) {
