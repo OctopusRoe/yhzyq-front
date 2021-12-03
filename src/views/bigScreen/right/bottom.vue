@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     itemHeight () {
-      return this.height * 0.3
+      return this.height * 0.38
     },
     itemWidth () {
       return this.width
@@ -60,12 +60,12 @@ export default {
 }
 </script>
 <template>
-  <div class="big-screen-right-buttom-box">
+  <div
+    class="big-screen-right-buttom-box"
+    :style="{height: `${itemHeight}px`}"
+  >
     <TitleBox title="月度施工情况" />
-    <div
-      class="echarts-box"
-      :style="{height: `${this.height}px`, width: `${this.width}px`}"
-    >
+    <div class="echarts-box">
       <LineComponent
         :nameList="nameList"
         :valueList="valueList"
@@ -78,10 +78,9 @@ export default {
 <style lang="scss" scoped>
 .big-screen-right-buttom-box {
   width: 100%;
-  height: 30%;
   background: url('~../assets/images/two.png') no-repeat center / contain;
   background-size: 100% 100%;
-  margin-top: 18px;
+  margin-top: 8px;
 
   .echarts-box {
     display: flex;

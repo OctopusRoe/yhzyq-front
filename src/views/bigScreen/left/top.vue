@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     itemHeight () {
-      return this.height * 0.6
+      return this.height * 0.55
     }
   },
   watch: {

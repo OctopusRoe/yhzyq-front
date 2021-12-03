@@ -50,7 +50,7 @@ export default {
           left: 15,
           top: 30,
           right: 15,
-          bottom: 15,
+          bottom: 0,
           containLabel: true
         },
         xAxis: {
@@ -59,8 +59,11 @@ export default {
           axisLabel: {
             show: true,
             interval: 0,
-            rotate: 45,
-            color: '#ACC6CE'
+            rotate: 20,
+            color: '#ACC6CE',
+            textStyle: {
+              fontSize: 10,
+            }
           },
           axisTick: {
             show: false
@@ -84,7 +87,7 @@ export default {
           },
           axisLabel: {
             show: true,
-            color: '#ACC6CE'
+            color: '#ACC6CE',
           }
         },
         series: [

@@ -51,7 +51,7 @@ export default {
           left: 15,
           top: 30,
           right: 15,
-          bottom: 15,
+          bottom: 0,
           containLabel: true,
         },
         xAxis: [{
@@ -66,6 +66,9 @@ export default {
           axisLabel: {
             color: '#d1e6eb',
             margin: 15,
+            textStyle: {
+              fontSize: 10,
+            }
           },
           axisTick: {
             show: false,

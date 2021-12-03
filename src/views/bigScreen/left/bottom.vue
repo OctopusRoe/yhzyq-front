@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     itemHeight () {
-      return this.height * 0.3
+      return this.height * 0.38
     },
     itemWidth () {
       return this.width
@@ -83,7 +83,7 @@ export default {
   width: 100%;
   background: url('~../assets/images/two.png') no-repeat center / contain;
   background-size: 100% 100%;
-  margin-top: 18px;
+  margin-top: 8px;
 
   .echarts-box {
     display: flex;

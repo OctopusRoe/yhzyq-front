@@ -50,7 +50,7 @@ export default {
       if (this.height === 657) {
         return this.height * 0.90
       } else {
-        return this.height * 0.95
+        return this.height * 0.93
       }
     }
   },

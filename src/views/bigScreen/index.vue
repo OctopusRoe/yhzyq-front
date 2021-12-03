@@ -61,11 +61,13 @@ export default {
   watch: {
   },
   beforeDestroy () {
-    document.getElementById('app').style.cssText = 'transform: scale(1, 1.125)'
+    let ratioX = document.body.clientWidth / 1920;
+    let ratioY = document.body.clientHeight / 960;
+    document.getElementById("app").style.cssText = "transform: scale(" + ratioX + "," + ratioY + ");";
   },
   mounted () {
     // 神TMD写法哦, app 设置个 cssText: "transform: scale(1, 1.125);" 在用脚写代码的嘛
-    document.getElementById('app').style.cssText = 'width: 100% !important; height: 100vh !important'
+    document.getElementById('app').style.cssText = 'width: 100% !important; height: 100vh !important;'
     this.width = document.getElementById('app').offsetWidth
     this.height = document.getElementById('app').offsetHeight
     this.getMap()
